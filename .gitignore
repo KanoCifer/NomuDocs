@@ -2,3 +2,4 @@ node_modules/
 .vitepress/cache/deps/
 .vitepress/dist/
 .DS_Store
+deploy.sh/
