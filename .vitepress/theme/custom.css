@@ -1,0 +1,80 @@
+/* ==========================================================================
+   Nomu Docs 主题 —— token 全部来自 NoonToolv1/src/core/styles/global.scss
+   表面层级: page(页面底) → elv(卡片) → soft(代码块/控件底)
+   文字: 深墨 ink；主色: Noon 黄（文字场景用同色相降饱和的金棕保证对比）
+   ========================================================================== */
+
+:root {
+  /* 表面（暖灰轻黄褐 hue 95） */
+  --vp-c-bg: oklch(0.985 0.008 95);
+  --vp-c-bg-alt: oklch(0.9735 0 81.59); /* 侧边栏 / 导航条 */
+  --vp-c-bg-elv: oklch(1 0 0); /* 浮起卡片 */
+  --vp-c-bg-soft: oklch(0.96 0.014 95); /* 代码块 / 行内 code 底 */
+
+  /* 文字 */
+  --vp-c-text-1: oklch(0.18 0.02 95);
+  --vp-c-text-2: oklch(0.4 0.02 95);
+  --vp-c-text-3: oklch(0.5 0.02 95);
+
+  /* 边框 */
+  --vp-c-border: oklch(0.89 0.015 95);
+  --vp-c-divider: oklch(0.91 0.015 95);
+  --vp-c-gutter: oklch(0.91 0.015 95);
+
+  /* 品牌色：交互文字/链接用降饱和深金（黄在浅底上不可读），
+     与扩展焦点环 --accent-slate 同族 */
+  --vp-c-brand-1: oklch(0.52 0.12 95);
+  --vp-c-brand-2: oklch(0.46 0.12 95);
+  --vp-c-brand-3: oklch(0.84 0.19 104.65);
+  --vp-c-brand-soft: oklch(0.94 0.06 100);
+
+  /* 主按钮：品牌原色 Noon 黄 + 深墨文字（扩展的 accent/contrast 组合） */
+  --vp-button-brand-bg: oklch(0.9321 0.1974 104.65);
+  --vp-button-brand-text: oklch(0.18 0.02 95);
+  --vp-button-brand-border: transparent;
+  --vp-button-brand-hover-bg: oklch(0.88 0.2 104.65);
+  --vp-button-brand-hover-text: oklch(0.18 0.02 95);
+  --vp-button-brand-active-bg: oklch(0.84 0.19 104.65);
+  --vp-button-brand-active-text: oklch(0.18 0.02 95);
+
+  /* 首页 hero 名字：黄底标记块压深墨字，替代渐变 */
+  --vp-home-hero-name-background: oklch(0.9321 0.1974 104.65);
+  --vp-home-hero-name-color: oklch(0.18 0.02 95);
+
+  /* 字体跟随扩展 token 的系统栈 */
+  --vp-font-family-base: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+    sans-serif;
+}
+
+/* hero 名字的黄块留出呼吸感 */
+.VPHero .name {
+  padding: 0 0.15em;
+  margin: 0 -0.05em;
+  border-radius: 8px;
+  box-decoration-break: clone;
+}
+
+/* 夜间模式：取自扩展 global.scss 中已调好的暗色组（黄压到琥珀金） */
+.dark {
+  --vp-c-bg: oklch(0.16 0.015 95);
+  --vp-c-bg-alt: oklch(0.185 0.015 95);
+  --vp-c-bg-elv: oklch(0.21 0.014 95);
+  --vp-c-bg-soft: oklch(0.24 0.014 95);
+
+  --vp-c-text-1: oklch(0.97 0.005 95);
+  --vp-c-text-2: oklch(0.82 0.01 95);
+  --vp-c-text-3: oklch(0.68 0.02 95);
+
+  --vp-c-border: oklch(0.32 0.02 95);
+  --vp-c-divider: oklch(0.28 0.02 95);
+  --vp-c-gutter: oklch(0.28 0.02 95);
+
+  --vp-c-brand-1: oklch(0.85 0.15 102);
+  --vp-c-brand-2: oklch(0.9 0.16 103);
+  --vp-c-brand-3: oklch(0.78 0.17 95);
+  --vp-c-brand-soft: oklch(0.94 0.1974 104.65 / 0.14);
+
+  --vp-button-brand-bg: oklch(0.9321 0.1974 104.65);
+  --vp-button-brand-hover-bg: oklch(0.88 0.2 104.65);
+  --vp-button-brand-active-bg: oklch(0.84 0.19 104.65);
+}

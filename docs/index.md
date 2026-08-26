@@ -5,6 +5,9 @@ hero:
   name: "Nomu"
   text: "把 1688 的商品，发到 Noon"
   tagline: 从 1688 采集、翻译、建图到逐件发布，一条流水线走完上架。
+  image:
+    src: /logo.png
+    alt: Nomu 吉祥物
   actions:
     - theme: brand
       text: 快速开始
