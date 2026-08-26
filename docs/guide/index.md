@@ -18,9 +18,9 @@ Nomu 是面向 Noon 卖家合作平台（UAE / Saudi）的商品上架 Chrome �
 
 Nomu 不要求额外凭证，而是与卖家日常操作共生：
 
-1. 卖家登录 Noon 后，页面注入的 content script 把请求转发到页面主世界的 fetch 桥。
-2. 桥使用 `window.fetch({ credentials: "include" })` 发起请求，携带卖家已登录的 Noon Cookie。
-3. 请求 URL 由白名单唯一门控，content script 转发前做二次门禁作为纵深防御。
+1. 扩展的 Service Worker 直接向 Noon 接口发起请求，`credentials: "include"` 会自动携带卖家已登录的 Noon Cookie，不依赖打开的 Noon 页面。
+2. 直连遇到网络层失败或返回 401 / 403 时，自动回退到页面主世界的 fetch 桥重发。
+3. 所有请求 URL 由白名单唯一门控，白名单之外的请求一律不放行。
 
 ## 支持的平台
 
@@ -34,5 +34,5 @@ Nomu 不要求额外凭证，而是与卖家日常操作共生：
 
 ## 下一步
 
-- [快速上手](./what-is-nomu) 了解采集到发布的完整流程
+- [快速上手](./quick-start) 了解采集到发布的完整流程
 - [隐私政策](/privacy/) 查看你的数据去了哪里

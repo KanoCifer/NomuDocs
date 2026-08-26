@@ -14,6 +14,7 @@ export default defineConfig({
     // https://vitepress.dev/reference/default-theme-config
     logo: { src: "/logo.png", alt: "Nomu" },
     nav: [
+      { text: "介绍", link: "https://kanocifer.chat/noon" },
       { text: "指南", link: "/guide/" },
       { text: "隐私政策", link: "/privacy/" },
     ],
@@ -25,7 +26,7 @@ export default defineConfig({
           items: [
             { text: "Nomu 是什么", link: "/guide/" },
             { text: "安装 Nomu", link: "/guide/install" },
-            { text: "快速上手", link: "/guide/what-is-nomu" },
+            { text: "快速上手", link: "/guide/quick-start" },
             { text: "更新日志", link: "/guide/changelog" },
             { text: "获取支持", link: "/guide/support" },
           ],
