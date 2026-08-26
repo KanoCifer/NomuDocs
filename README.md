@@ -24,4 +24,4 @@ pnpm deploy         # 构建并 rsync 部署到服务器
 
 ## License
 
-[MIT](./LICENSE)
+[AGPL-3.0](./LICENSE)
