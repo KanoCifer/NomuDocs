@@ -2,6 +2,14 @@
 
 所有值得注意的版本变更都会记录在这里。
 
+## 0.14.0beta
+
+_2026-08-27_
+
+- **键盘快捷键**：在 Chrome 任意页面按下快捷键即可呼出操作面板，无需先点工具栏图标。
+  - `Ctrl + Shift + Y`（mac 为 `Command + Shift + Y`）—— 一键打开 Nomu 侧边栏。
+  - `Ctrl + Shift + A`（mac 为 `Command + Shift + A`）—— 在 noon-catalog 卖家后台切换分组入口 Action Sheet，可快速创建组、切换变体组尺寸。
+
 ## 0.13.0beta
 
 _2026-08-26_
