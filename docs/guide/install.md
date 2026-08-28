@@ -1,4 +1,4 @@
-# 安装 Nomu
+ # 安装 Nomu
 
 Nomu 已上架 Chrome Web Store，整个安装过程不到一分钟。
 
@@ -39,3 +39,7 @@ Chrome 会自动更新已安装的扩展；也可以在 `chrome://extensions` �
 ### 图标点了没反应？
 
 Nomu 的主界面挂在 1688 商品页和 Noon 卖家目录页上——先登录 Noon，再打开对应页面即可看到。
+
+## 其他问题
+
+[获取支持](./support)
