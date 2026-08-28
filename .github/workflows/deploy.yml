@@ -29,6 +29,13 @@ jobs:
       - name: Build docs
         run: pnpm run docs:build
 
+      - name: Setup SSH key
+        run: |
+          mkdir -p ~/.ssh
+          printf '%s\n' "${{ secrets.SSH_PRIVATE_KEY }}" > ~/.ssh/github-actions
+          chmod 600 ~/.ssh/github-actions
+          ssh-keyscan -H "${{ secrets.SSH_HOST }}" >> ~/.ssh/known_hosts 2>/dev/null
+
       - name: Sync dist to remote
         env:
           SSH_HOST: ${{ secrets.SSH_HOST }}
