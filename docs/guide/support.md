@@ -6,7 +6,7 @@
 
 最快的方式是微信。扫码添加好友，备注「Nomu」：
 
-![微信](./images/support-wechat-qr.jpg)
+![微信](/support-wechat-qr.jpg)
 
 ## 反馈问题时，带上这些信息
 
