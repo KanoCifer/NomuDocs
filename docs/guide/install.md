@@ -1,28 +1,26 @@
 # 安装 Nomu
 
-Nomu 尚未上架 Chrome Web Store，目前通过压缩包手动安装，整个过程不到一分钟。
+Nomu 已上架 Chrome Web Store，整个安装过程不到一分钟。
 
 ## 安装步骤
 
-### 1. 下载压缩包
+### 1. 打开商店页面
 
-在[落地页](/)点击「添加到 Chrome」按钮，下载 `nomu-<版本号>-chrome.zip`。
-
-<!-- 占位图待补充：落地页下载按钮位置截图，建议文件名 images/install-step-1.png -->
-
-### 2. 打开 Chrome 扩展管理页
-
-在地址栏输入并访问：
+在浏览器里访问 Nomu 的 Chrome Web Store 页面：
 
 ```
-chrome://extensions
+https://chromewebstore.google.com/detail/nomu/idfojgkppleknejhenmggcnnnmdglaik
 ```
 
-### 3. 把 zip 直接拖进页面
+也可以在[落地页](https://kanocifer.chat/noon)直接点「添加到 Chrome」按钮跳转。
 
-确认右上角的**开发者模式**开关已打开，然后直接把下载的 zip 压缩包**拖入**扩展管理页空白处，松手即完成安装——不需要解压。
+### 2. 点击「添加至 Chrome」
 
-![安装示意：把 zip 拖入 chrome://extensions 页面](./images/install-drag-zip.png)
+在商店页面右上角点 **添加到 Chrome**，浏览器会弹窗确认。
+
+### 3. 确认权限并安装
+
+确认弹窗里展示的权限后，点 **添加扩展程序** 完成安装。
 
 ### 4. 固定到工具栏（推荐）
 
@@ -30,13 +28,13 @@ chrome://extensions
 
 ## 常见问题
 
-### 拖入时提示安装失败
+### 商店页打不开？
 
-确认开发者模式已开启；如果还是失败，尝试刷新 `chrome://extensions` 后重新拖入。
+确认当前浏览器是 Chrome、Edge 或其他基于 Chromium 的内核；Firefox / Safari 不在支持范围。
 
-### 更新版本怎么办？
+### 怎么更新到最新版？
 
-下载新版本 zip，直接拖入 `chrome://extensions` 覆盖安装即可。店铺设置与批次数据保存在浏览器本地，更新不会丢失。
+Chrome 会自动更新已安装的扩展；也可以在 `chrome://extensions` 里打开「开发者模式」后点 **检查更新** 立即拉取。店铺设置与批次数据保存在浏览器本地，更新不会丢失。
 
 ### 图标点了没反应？
 
