@@ -6,20 +6,8 @@
 
 ### Features
 
-- **Welcome 引导页焕新（Liquid Glass）**：顶部进度条改为滑动胶囊，跟随当前步骤平滑过渡；步骤切换加入方向感知，前进 / 后退动画方向相反；全局玻璃面板与背景 ambient 色斑缓慢漂移，营造沉浸基底。
-- **店铺识别步骤多态化**：Detect 步骤显式分出 idle / 已打开 / 识别中 / 成功 / 失败五种状态，识别成功后给一次绿色脉冲反馈，明确告知「拿到了」；识别过程中可手动重试。
-- **店铺识别顺手识别 partnerCode / country**：从 noon-catalog 当前 tab 的 URL 解析 `partnerCode` 与所在国家，下游 CreateStoreStep 可直接预填。
+- **Welcome 引导页焕新**：顶部进度条改为滑动胶囊，跟随当前步骤平滑过渡；步骤切换加入方向感知，前进 / 后退动画方向相反；全局玻璃面板与背景 ambient 色斑缓慢漂移，营造沉浸基底。
 - **操作菜单新增「实时汇率」入口**：从 Action Sheet 一键打开 CurrencyModal，按 CNY 基准查看 SAR / AED 等海湾货币实时汇率。
-
-### Fixes
-
-- **店铺识别接口兜底**：noon-catalog 在会话过期时会把任意 API 路径用 SPA 入口 HTML 兜底；`getNoonStoreCode` 增加 Content-Type 校验，跳过非 JSON 响应，避免 `SyntaxError` 污染控制台。
-- **CurrencyModal 抗 SW 抖动**：首次 `sendMessage` 若撞上 MV3 service worker 唤醒窗口（`Could not establish connection`），自动静默重试一次，不再瞬态把用户拉进错误态。
-
-### Polish
-
-- **履约类型文案**：FBP 标为「卖家」、FBN 标为「Noon 仓」，与 Noon 卖家中心口径对齐。
-- **欢迎页背景视觉**：新增 ambient 色斑层慢漂移，遮住内容外的空白。
 
 ## 0.18.0beta _2026-08-30_
 
