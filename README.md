@@ -23,4 +23,4 @@ pnpm docs:build     # 构建到 .vitepress/dist
 
 ## License
 
-[AGPL-3.0](./LICENSE)
+Copyright (c) 2026 Kuroome. All rights reserved.
