@@ -19,7 +19,6 @@
 pnpm install        # 安装依赖
 pnpm docs:dev       # 本地开发
 pnpm docs:build     # 构建到 .vitepress/dist
-pnpm deploy         # 构建并 rsync 部署到服务器
 ```
 
 ## License
