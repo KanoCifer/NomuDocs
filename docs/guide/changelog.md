@@ -2,6 +2,49 @@
 
 所有值得注意的版本变更都会记录在这里。
 
+## 0.60.2 _2026-09-09_
+
+- 修复 Noon 登录态探测：`isNoonSessionLive` 显式 follow 重定向并通过 `res.redirected` 判定，避免误判未登录。
+- 修复 Noon 登录 banner 被 TaskList 第一项覆盖的问题（加 z-index）。
+- 修复 Noon 登录 banner 刷新按钮样式与布局错位。
+- 修复任务面板 main 容器间距，让 banner 与任务列表视觉分隔。
+- 1688 采集主图数量上限从 7 张提升到 9 张。
+
+## 0.60.1 _2026-09-09_
+
+- 修复图片落库失败与 FBN 被误拦截上架的问题。
+- 修复 `listing-shape` 中 asset 短引用 source 字段标记，与 data: 对齐。
+- 修复图片资产 Blob 转 base64 过桥，assets 表和 images[] 不再丢数据。
+- 修复上架流程中 quantity/warehouseId 改为可选，FBN 不再被误拦截。
+
+## 0.57.1 _2026-09-08_
+
+- 修复 ImageSection 解析 asset 短引用为 blob URL，single 主图不再裂图。
+
+## 0.57.0 _2026-09-08_
+
+- 新增云端配置同步，支持 version 乐观并发字段。
+
+## 0.56.0 _2026-09-08_
+
+- 商品归组增加 brand 门禁，建组锚点修通，单列表判定收口，sizes 提交即建行。
+
+## 0.55.0 _2026-09-08_
+
+- 1688 详情页 SKU 改走 mtop 接口预取，DOM 解析降级为兜底，采集更稳定。
+- 新增上架偏好设置页。
+- 新增价格自动填写功能。
+- 新增智能体问答（集成 NomuDocs RAG 流式问答）。
+- 新增归档商品抽屉，支持恢复 / 永久删除。
+- 新增空状态占位（empty state）。
+- 账户页用 AuthShell 替换 AuthCard，新增未登录态用量空状态。
+- 性能优化：用 `useDeferredValue` 推后候选列表 / 任务列表渲染；稳定 xyflow nodeTypes 引用。
+
+## 0.54.0 _2026-09-07_
+
+- NomuDesign 商品图新增 ClickMenu，入口并入 CreateNodeToolbar，删除源改为 ModalCard。
+- 新增 AI 用量展示。
+
 ## 0.53.1 _2026-09-07_
 
 - 隐私政策及应用内隐私弹窗文案同步：补充 NomuDesign 生图、提示词优化与 AI 积分相关的数据收集说明。

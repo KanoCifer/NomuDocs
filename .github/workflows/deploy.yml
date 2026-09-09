@@ -48,6 +48,19 @@ jobs:
             .vitepress/dist/ \
             "${SSH_USER}@${SSH_HOST}:/home/kano/NomuDocs/docs/"
 
+      - name: Sync markdown source for RAG
+        env:
+          SSH_HOST: ${{ secrets.SSH_HOST }}
+          SSH_USER: ${{ secrets.SSH_USER }}
+          SSH_PORT: ${{ secrets.SSH_PORT || 22 }}
+        run: |
+          rsync -az --delete \
+            --exclude='.DS_Store' \
+            --exclude='public/' \
+            -e "ssh -i ~/.ssh/github-actions -p ${SSH_PORT} -o StrictHostKeyChecking=accept-new" \
+            docs/ \
+            "${SSH_USER}@${SSH_HOST}:/home/kano/NomuDocs/source/"
+
       - name: Deployment complete
         if: success()
         run: |
