@@ -51,6 +51,7 @@ export default defineConfig({
           text: "账户与基础",
           items: [
             { text: "账户与 AI 积分", link: "/guide/account" },
+            { text: "云端配置同步", link: "/guide/config-sync" },
             { text: "键盘快捷键", link: "/guide/shortcuts" },
           ],
         },
