@@ -1,0 +1,45 @@
+# Install Nomu
+
+Nomu is on the Chrome Web Store. The whole install takes less than a minute.
+
+## Steps
+
+### 1. Open the store page
+
+In your browser, go to Nomu's Chrome Web Store listing:
+
+```
+https://chromewebstore.google.com/detail/nomu/idfojgkppleknejhenmggcnnnmdglaik
+```
+
+You can also click the **Add to Chrome** button on the [landing page](https://nomu.kanocifer.chat) to jump straight there.
+
+### 2. Click "Add to Chrome"
+
+Click **Add to Chrome** in the top-right of the store page; Chrome will pop up a confirmation.
+
+### 3. Confirm permissions and install
+
+Review the permissions in the prompt, then click **Add extension** to finish the install.
+
+### 4. Pin it to the toolbar (recommended)
+
+After install, click the puzzle icon 🧩 in your toolbar and pin Nomu so the side panel is always one click away.
+
+## FAQ
+
+### Store page won't open?
+
+Make sure you're on Chrome, Edge, or another Chromium-based browser. Firefox / Safari are not supported.
+
+### How do I update to the latest version?
+
+Chrome auto-updates installed extensions. You can also force a check on `chrome://extensions` by turning on **Developer mode** and clicking **Update**. Store settings and batch data live locally, so updates never lose them.
+
+### I click the icon and nothing happens?
+
+Nomu's UI lives on 1688 product pages and the Noon seller catalog. Sign in to Noon first, then open one of those pages.
+
+## Other questions
+
+[Get support](./support)
