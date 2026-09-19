@@ -1,8 +1,8 @@
 # Nomu Docs
 
-[Nomu](https://kanocifer.chat/docs/) 浏览器扩展的官方文档站，基于 [VitePress](https://vitepress.dev/) 构建。
+[Nomu](https://nomu.kanocifer.chat/docs/) 浏览器扩展的官方文档站，基于 [VitePress](https://vitepress.dev/) 构建。
 
-线上地址：`https://kanocifer.chat/docs/`
+线上地址：`https://nomu.kanocifer.chat/docs/`
 
 ## 目录结构
 

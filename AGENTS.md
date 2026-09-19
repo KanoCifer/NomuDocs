@@ -1,6 +1,6 @@
 # Nomu Docs
 
-Nomu 扩展的文档站,基于 VitePress,线上部署在 `https://kanocifer.chat/docs/`(`base: "/docs/"`)。
+Nomu 扩展的文档站,基于 VitePress,线上部署在 `https://nomu.kanocifer.chat/docs/`(`base: "/docs/"`)。
 
 ## 必须知道
 

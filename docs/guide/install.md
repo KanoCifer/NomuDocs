@@ -12,7 +12,7 @@ Nomu 已上架 Chrome Web Store，整个安装过程不到一分钟。
 https://chromewebstore.google.com/detail/nomu/idfojgkppleknejhenmggcnnnmdglaik
 ```
 
-也可以在[落地页](https://kanocifer.chat/noon)直接点「添加到 Chrome」按钮跳转。
+也可以在[落地页](https://nomu.kanocifer.chat)直接点「添加到 Chrome」按钮跳转。
 
 ### 2. 点击「添加至 Chrome」
 
