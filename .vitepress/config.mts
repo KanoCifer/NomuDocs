@@ -56,6 +56,7 @@ export default defineConfig({
               items: [
                 { text: '账户与 AI 积分', link: '/guide/account' },
                 { text: '云端配置同步', link: '/guide/config-sync' },
+                { text: '云端共享池与中转站', link: '/guide/cloud-pool' },
                 { text: '键盘快捷键', link: '/guide/shortcuts' },
               ],
             },
@@ -124,6 +125,7 @@ export default defineConfig({
               items: [
                 { text: 'Account & AI credits', link: '/en/guide/account' },
                 { text: 'Cloud config sync', link: '/en/guide/config-sync' },
+                { text: 'Cloud pool & transfer station', link: '/en/guide/cloud-pool' },
                 { text: 'Keyboard shortcuts', link: '/en/guide/shortcuts' },
               ],
             },
