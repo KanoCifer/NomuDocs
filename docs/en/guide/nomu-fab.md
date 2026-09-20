@@ -42,7 +42,7 @@ The sheet is split into three groups:
 | --- | --- |
 | Live FX | Dialog showing live SAR / AED rates with a CNY base. |
 | Task panel | Open the standalone task page with full history, filter, retry, delete. |
-| Knowledge assistant | Open the RAG Q&A panel for streaming answers from Nomu docs. |
+| Knowledge assistant | Open the RAG Q&A panel for streaming answers from Nomu docs. See [Knowledge assistant](#knowledge-assistant). |
 | Documentation | Open Nomu docs in a new tab (`https://nomu.kanocifer.chat/docs/`). |
 | Settings | Open settings to manage stores, shortcuts, cache cleanup, etc. |
 | Privacy policy | Modal showing Nomu's data handling notes. |
@@ -76,3 +76,26 @@ Only shown when size variants exist. Each row shows the Partner SKU, child count
 - [Task panel](./tasks) — task status and retry mechanism
 - [Keyboard shortcuts](./shortcuts) — global shortcut list
 - [Settings](./config-sync) — cloud config sync
+- [Cloud pool & transfer station](./cloud-pool) — hand off captures across devices
+
+## Knowledge assistant
+
+The knowledge assistant is a RAG (retrieval-augmented generation) Q&A panel — **not** a general-purpose AI chat. Your question is semantically searched against the Nomu doc corpus, and the model streams an answer grounded in the matched passages.
+
+- Entry: action menu "Knowledge assistant"
+- Scope: Nomu's own docs only — it does not fetch external pages and does not read your store data
+- Use case: listing rules, field constraints, error code meanings — anything the docs already cover, but faster than browsing
+- Billing: shares the AI credits pool with translation and image generation (questions that are not `design_generate` / `nomu_prompt_optimize` still draw from the same balance)
+- Without sign-in / expired session: the panel jumps to the account page first, then returns
+
+### Not the same as the right-click "Parse with AI" entry
+
+| Dimension | Knowledge assistant | Right-click "Parse with AI" |
+| --- | --- | --- |
+| Trigger | Action menu | Right-click on any page |
+| What it does | Looks up answers in the Nomu doc corpus | Parses the current page into a draftable product |
+| Uploaded | Question text only | Page bodyText capped at 8k + 3 pageImages in DOM order + viewport screenshot |
+| Output | Streamed answer text | A product draft landed in the local batch (or pushed to the cloud pool) |
+| Billing | AI credits for Q&A | AI credits for parse (separate source label) |
+
+Right-click parse fits "I hit a page with no adapter and need a draft on the fly" — including sites Nomu does not ship a preset adapter for.
