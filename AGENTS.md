@@ -1,18 +1,27 @@
 # Nomu Docs
 
-Nomu 扩展的文档站,基于 VitePress,线上部署在 `https://nomu.kanocifer.chat/docs/`(`base: "/docs/"`)。
+Nomu Chrome 扩展的官方文档站,VitePress 2.x;线上 `https://nomu.kanocifer.chat/docs/`(`base: "/docs/"`)。
+包管理 `pnpm`,脚本 `docs:dev / docs:build / docs:preview` 在 `package.json`;内容源码在 `docs/`,配置在 `.vitepress/config.mts`。
 
-## 必须知道
+## 写作
 
-- 包管理器:`pnpm`,构建 `pnpm docs:build`,开发 `pnpm docs:dev`
-- 内容源码在 `docs/`,配置在 `.vitepress/config.mts`
-- 产品事实(功能、架构、术语)以扩展仓库 `/Users/liudetao/Code/NoonToolv1` 为准;不得虚构性能数字、客户证言
-- 落地页在 `/Users/liudetao/Code/ReadingList/frontend/apps/vue-app/src/features/noontool/`,footer 的隐私/更新日志链接指向本站
+**事实以 NoonToolv1 为准**。功能名、架构、术语、性能数字,凡涉及 Nomu 本体的描述只能来源 `/Users/liudetao/Code/NoonToolv1` 的当前实现。**禁止虚构性能数字、客户证言、版本时间**——加新能力前先回 NoonToolv1 核实,没有就不再写。
 
-## 目录约定
+**双语镜像**:`docs/` 是简体中文,`docs/en/` 是英文镜像。新增任一语言页必须同步另一语言;改 changelog 段要同步两份。
 
-- `docs/index.md` — 首页(hero + 特性卡片)
-- `docs/guide/` — 用户指南(是什么、安装、快速上手、更新日志)
+**Footer 联动**:`~/Code/NomuLanding/src/features/landing/components/NoonToolFooter.vue` 里的 `DOCS_URL` 拼出本站 `/docs/`、`/docs/privacy/`、`/docs/guide/changelog`、`/docs/guide/support`。本站改了路由要去落地页 footer 同步,反过来也成立。
+
+## 目录
+
+- `docs/index.md` — 首页 hero + 特性卡片
+- `docs/guide/` — 用户指南(是什么 / 安装 / 上手 / 更新日志 / 支持)
 - `docs/privacy/` — 隐私政策
-- `docs/dev/` — 开发者文档(领域词表、ADR),从 NoonToolv1 同步而来
-- 新版本发布时更新 `docs/guide/changelog.md`,并同步替换落地页 `public/nomu-*.zip`
+- `docs/en/` — 英文镜像
+
+新增页面要在 `.vitepress/config.mts` 中对应 locale 的 `sidebar` 块登记,然后另语言复制一份。
+
+## 发版
+
+1. `docs/guide/changelog.md` 顶部加 `## <version> _<YYYY-MM-DD>_` 段,要点形如 `**能力名**:一句话说明`
+2. 同步到 `docs/en/guide/changelog.md`
+3. 完成标志:`pnpm docs:build` 通过,中英 changelog 段落一一对应
