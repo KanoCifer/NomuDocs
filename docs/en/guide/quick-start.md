@@ -4,7 +4,7 @@ Three steps to ship a batch: capture → confirm → publish.
 
 ## 1. Capture from the source page
 
-Open any 1688 or noon.com product detail page. The extension automatically pulls the product info (title, image gallery, variant specs, price) into your batch list. 1688's "one parent / multiple variants" are split into independent items, each with full content and no cross-dependencies.
+Open any 1688, Taobao/Tmall, JD.com or noon.com product detail page. The extension automatically pulls the product info (title, image gallery, variant specs, price) into your batch list. 1688's "one parent / multiple variants" are split into independent items, each with full content and no cross-dependencies.
 
 ## 2. Confirm item by item
 
@@ -23,6 +23,11 @@ After you submit, the engine walks each item through the same chain: create prod
 - **First failure stops the batch** — the batch halts on the first failure. You never end up with "half listed, half missed".
 - **Resume** — on retry, steps that already succeeded are skipped automatically.
 - **Inspect progress** — the task panel shows every past task's status. Failed items can be retried or cancelled individually.
+
+## Side tasks
+
+- **Export the batch to Excel**: the "Export" button at the top of the capture drawer turns the current batch into an `.xlsx` (source URL, title, SKU, reference price). Hand it off to a teammate for reconciliation, or edit fields in the sheet and paste them back.
+- **Push to the transfer station**: the same drawer's "Push to transfer station" button sends the batch up to your account's cloud pool (see [Cloud pool & transfer station](./cloud-pool)). Nothing lands locally — another device claims it.
 
 ## Multi-store and multi-account
 

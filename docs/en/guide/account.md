@@ -12,7 +12,7 @@ The Nomu account is fully independent of your Noon seller account: signing into 
 
 | Feature | Nomu sign-in required | Billing |
 | --- | --- | --- |
-| Capture from 1688 / noon source | No | Free |
+| Capture from 1688 / Taobao / Tmall / JD / noon source | No | Free |
 | Local image compliance processing | No | Free |
 | Listing pipeline (product/create → activate) | No | Free |
 | Duplicate product | No | Free |

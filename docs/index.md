@@ -4,7 +4,7 @@ layout: home
 hero:
   name: "Nomu"
   text: "Noon 卖家的效率工具"
-  tagline: 从 1688 采集、翻译、建图并逐件发布。
+  tagline: 从 1688、淘宝/天猫、京东、noon.com 采集、翻译、建图并逐件发布。
   image:
     src: /logo.png
     alt: Nomu 吉祥物

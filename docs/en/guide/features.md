@@ -4,13 +4,13 @@ title: Features overview
 
 # Features overview
 
-Nomu runs one main line — "1688 / noon source product → Noon listing" — and folds store management, bulk duplication, AI imagery, catalog browsing, and task tracking into the same pipeline. This page is an index of every capability, each linked to a full guide.
+Nomu runs one main line — "1688 / Taobao / Tmall / JD / noon source product → Noon listing" — and folds store management, bulk duplication, AI imagery, catalog browsing, and task tracking into the same pipeline. This page is an index of every capability, each linked to a full guide.
 
 ## Main line: capture → list
 
 | Stage | Capability | Details |
 | --- | --- | --- |
-| Source capture | One-click capture from 1688 / noon.com product pages; title, image gallery, variant specs, and price land in one shot | [Quick start](./quick-start) |
+| Source capture | One-click capture from 1688, Taobao/Tmall, JD.com or noon.com product pages; title, image gallery, variant specs, and price land in one shot | [Quick start](./quick-start) |
 | Field editing | Per-item drawer to confirm every field — adjust price, change currency, switch category, change brand, apply a template | [Quick start](./quick-start) |
 | AI translation | Chinese → English / Arabic, titles and selling points auto-translated for UAE / Saudi | [Quick start](./quick-start) · [Account & credits](./account) |
 | Image compliance | Auto-processed to Noon spec (width ≥ 660px, aspect ≥ 0.5, ≤ 10MB JPEG) | [Quick start](./quick-start) |
@@ -59,7 +59,7 @@ Nomu runs one main line — "1688 / noon source product → Noon listing" — an
 
 ## General guarantees
 
-- **Request allow-list** — every request URL to Noon / 1688 / the Nomu backend is gated by a hardcoded allow-list. Anything outside is rejected.
+- **Request allow-list** — every request URL to Noon / 1688 / Taobao / Tmall / JD / the Nomu backend is gated by a hardcoded allow-list. Anything outside is rejected.
 - **Local-first data** — store records, batch drafts, NomuDesign drafts, and Nomu account tokens live in your browser. No analytics, no tracking. See the [Privacy policy](/en/privacy/).
 - **Cookie channel** — operates through your browser's already-signed-in Noon session. Nomu itself never stores Noon credentials.
 - **Dark mode** — the UI follows the system `prefers-color-scheme: dark` setting.

@@ -4,7 +4,7 @@ layout: home
 hero:
   name: "Nomu"
   text: "The efficiency tool for Noon sellers"
-  tagline: Capture from 1688, translate, build images, and publish one item at a time.
+  tagline: Capture from 1688, Taobao/Tmall, JD.com and noon.com, translate, build images, and publish one item at a time.
   image:
     src: /logo.png
     alt: Nomu mascot

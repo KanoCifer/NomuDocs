@@ -1,6 +1,6 @@
 # What is Nomu
 
-Nomu is a Chrome extension built for Noon sellers (UAE / Saudi) that turns a source product page (1688 / noon.com) into a listed Noon product. It collapses capture, translation, image cleanup, and publishing into one pipeline:
+Nomu is a Chrome extension built for Noon sellers (UAE / Saudi) that turns a source product page (1688, Taobao/Tmall, JD.com, or noon.com) into a listed Noon product. It collapses capture, translation, image cleanup, and publishing into one pipeline:
 
 > Capture the source product snapshot → parse it into structured product data → translate (Chinese → English / Arabic) → generate compliant product images → publish each item to Noon as a listed product.
 
@@ -26,7 +26,7 @@ Nomu does not require extra credentials. It coexists with the seller's normal wo
 
 | Stage | Supported |
 | --- | --- |
-| Source | 1688, noon.com |
+| Source | 1688, Taobao/Tmall, JD.com, noon.com |
 | Publish target | Noon UAE (`ae`), Noon Saudi (`sa`) |
 | Browser | Chrome (Manifest V3) |
 
