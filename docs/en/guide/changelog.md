@@ -11,6 +11,12 @@ Every noteworthy version change is recorded here.
 - **Warranty write fix** — fixes warranty settings failing to save in some cases.
 - **Product list and drawer polish** — refined interaction feedback in the product list and single-product drawer, and category selection now tracks the form more responsively.
 
+## 0.85.0 _2026-09-20_
+
+- **Warranty now resolves in three tiers** — the store-level warranty fallback is resolved when the task is built, so changing the store's warranty applies to every product immediately. No more syncing each product's warranty by hand.
+- **Size children inherit the parent's warranty** — set the warranty once on the parent form of a size variant group. Children are issued the parent's setting on publish, so you don't fill it in per size.
+- **New "Follow store" option for warranty** — the warranty section gains a "Follow store" choice. When the store has no warranty set, the option hides itself so you can't pick it by mistake.
+
 ## 0.84.0 _2026-09-19_
 
 - **Multi-locale UI copy** — every extension page's copy has moved to `react-i18next`, with Chinese and English built in. Switching language takes effect instantly. The HTML `lang` attribute and extension page titles follow the language switch.
