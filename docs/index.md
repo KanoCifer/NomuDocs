@@ -33,7 +33,9 @@ features:
   - title: 多店铺 / 多账号
     details: 同一 PartnerCode 多条店铺并存，从当前页一键识别店铺编码，FBP 仓库快照落库直接选用。
   - title: 归组 + 尺寸变体组
-    details: 同品牌多件商品按规格轴归并发布（Group），标准尺码走父品挂 size 子品变体（Sizes），两套互不冲突。
+    details: 同品牌多件商品按规格轴归并发布（Group），标准尺码在单商品表单里加变体一次提交（Sizes），两套互不冲突。
+  - title: 条码标签打印
+    details: 自有 SKU 打印条码标签，支持 Code 128 / EAN-13 / UPC-A，可直接打印或导出 SVG / PNG / ZPL。
   - title: 复制商品
     details: 按 PartnerSku 单件 / 批量复制 Noon 已上架商品；批量模式支持 Excel / CSV 直接粘贴。
   - title: 目录浏览与快捷搜索

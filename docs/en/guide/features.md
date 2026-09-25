@@ -17,7 +17,8 @@ Nomu runs one main line — "1688 / Taobao / Tmall / JD / noon source product �
 | AI imagery | NomuDesign canvas runs image generation with model selection, prompt optimization, and apply-to-product | [NomuDesign](./nomu-design) |
 | Listing pipeline | Declarative step table drives each item through `product/create` → `activate` + `warranty` | [Quick start](./quick-start) |
 | Group listing | Same-brand items merged along a specification axis (size / model / color) | [Group & sizes](./group-and-sizes) |
-| Sizes variant group | Parent with size children; backend fallback publishes the parent first if it is not live | [Group & sizes](./group-and-sizes) |
+| Sizes variants | Sizes live in the single-product listing form; parent and children go out in one submission | [Group & sizes](./group-and-sizes) |
+| Barcode label printing | Print barcode labels for your own SKUs; print directly or export SVG / PNG / ZPL | [Barcode label printing](./barcode-labels) |
 | Duplicate product | Clone an already-listed Noon product by PartnerSku — single, batch, or template | [Duplicate product](./duplicate) |
 
 ## Stores & accounts

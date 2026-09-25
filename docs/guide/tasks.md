@@ -20,7 +20,7 @@ title: 任务面板
 
 顶部 `TaskViewSwitch` 切换两种视图，状态与筛选各自独立：
 
-- **发布任务**（`publish`）—— 单商品、归组、尺寸变体组的上架流水线
+- **发布任务**（`publish`）—— 单商品与归组的上架流水线。尺码变体是单商品上架的最后一步，不单独立任务
 - **复制任务**（`duplicate`）—— 通过 PartnerSku 复制 Noon 已上架商品
 
 切换视图不丢搜索词、也不丢筛选——两套 filter 独立存在。
@@ -46,7 +46,7 @@ title: 任务面板
 - 缩略图 + 商品标题
 - 状态圆点
 - 国家 chip（`sa` / `ae`）
-- taskKind chip（`single` / `group` / `sizes`）
+- taskKind chip（`single` / `group`）
 - 当前 step 名
 - 失败行的 inline 展开：error.message + error.code + 失败 step.type + retryCount + 「重试」「取消」
 
@@ -61,7 +61,7 @@ title: 任务面板
 任务面板左侧侧栏的 `TaskFilterPanel` 给出三组筛选：
 
 - **状态**多选（默认「进行中 + 失败」）
-- **任务类型**多选（`single` / `group` / `sizes`，复制视图有自己的一套）
+- **任务类型**多选（`single` / `group`，复制视图有自己的一套）
 - **时间窗**：`updatedAfter` / `updatedBefore`（默认「近 7 天」）
 - **搜索串**：按 `partnerSku` / `product.title` 子串过滤
 

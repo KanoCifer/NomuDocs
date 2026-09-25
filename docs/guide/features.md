@@ -17,7 +17,8 @@ Nomu 围绕「1688 / 淘宝 / 天猫 / 京东 / noon 源商品 → Noon 已上�
 | AI 生图 | 独立画布 NomuDesign 跑商品图，覆盖模型选择、提示词优化、应用到商品 | [NomuDesign](./nomu-design) |
 | 上架流水线 | 声明式步骤表驱动单商品走完 `product/create` → `activate` + `warranty` 全链路 | [快速上手](./quick-start) |
 | 归组上架 | 同品牌多件商品按规格轴（尺码 / 型号 / 颜色）归并成组发布 | [归组与尺寸变体组](./group-and-sizes) |
-| 尺寸变体组 | 父品挂 size 子品变体，父品未上架由后端兜底 | [归组与尺寸变体组](./group-and-sizes) |
+| 尺寸变体组 | 尺码并入单商品上架表单，父品与子品一次提交 | [归组与尺寸变体组](./group-and-sizes) |
+| 条码标签打印 | 自有 SKU 打印条码标签，可直接打印或导出 SVG / PNG / ZPL | [条码标签打印](./barcode-labels) |
 | 复制商品 | 通过 PartnerSku 复制 Noon 已上架商品，单件 / 批量 / 模板 | [复制商品](./duplicate) |
 
 ## 店铺与账号

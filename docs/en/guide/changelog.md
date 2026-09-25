@@ -2,6 +2,15 @@
 
 Every noteworthy version change is recorded here.
 
+## 0.86.0 _2026-09-26_
+
+- **Barcode label printing** — a dedicated barcode label page is now available straight from the toolbar. Pick an encoding format and label size, fill in the SKU, brand, and origin, and the label is generated. Single and batch modes are both supported: print straight from the browser, or export SVG / PNG / ZPL for your label printer.
+- **Size variants folded into single-product listing** — size variants no longer need a separate task. They now live as a "Size variants" section in the single-product listing form. Enter one parent size, then add child rows (size / SKU / barcode, with SKUs generated for you) and submit them together with the product — replacing the old two-step flow of publishing the parent first and children second.
+- **Child barcodes submit with the variant** — each variant row accepts its own barcode, submitted in the same batch as size and SKU, so there's no second pass to add them later.
+- **Email code sign-in** — the account page now leads with email code sign-in, with password sign-in kept as an alternative and a separate entry point for forgotten passwords.
+- **Warranty write fix** — fixes warranty settings failing to save in some cases.
+- **Product list and drawer polish** — refined interaction feedback in the product list and single-product drawer, and category selection now tracks the form more responsively.
+
 ## 0.84.0 _2026-09-19_
 
 - **Multi-locale UI copy** — every extension page's copy has moved to `react-i18next`, with Chinese and English built in. Switching language takes effect instantly. The HTML `lang` attribute and extension page titles follow the language switch.

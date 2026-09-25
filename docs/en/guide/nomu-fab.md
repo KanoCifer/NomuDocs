@@ -10,13 +10,12 @@ NomuFab is Nomu's main interaction entry. It lives as a floating button in the b
 
 ## Action sheet layout
 
-The sheet is split into three groups:
+The sheet is split into two groups:
 
 | Group | Description |
 | --- | --- |
 | Actions | Shortcuts for core features |
 | My groups | Product group list + create group |
-| Sizes variants | Existing size variants (only when present) |
 
 ## All entries
 
@@ -65,10 +64,7 @@ Shows every product group you've created, with member count per group.
 
 ### Sizes variants
 
-Only shown when size variants exist. Each row shows the Partner SKU, child count, and listing status.
-
-- Tap a row → enter that size group's edit view.
-- Tap the trash icon on the right → dissolve the size group (after a confirmation).
+Size variants no longer form their own section in the action sheet — they're configured inside the single-product listing form (see [Group & sizes](./group-and-sizes)).
 
 ## Related
 

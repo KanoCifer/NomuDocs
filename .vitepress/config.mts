@@ -42,6 +42,8 @@ export default defineConfig({
                 { text: 'NomuDesign 商品图生图', link: '/guide/nomu-design' },
                 { text: '复制商品', link: '/guide/duplicate' },
                 { text: '归组与尺寸变体组', link: '/guide/group-and-sizes' },
+                { text: '条码标签打印', link: '/guide/barcode-labels' },
+                { text: '条码标签打印', link: '/guide/barcode-labels' },
               ],
             },
             {
@@ -111,6 +113,8 @@ export default defineConfig({
                 { text: 'NomuDesign image generation', link: '/en/guide/nomu-design' },
                 { text: 'Duplicate product', link: '/en/guide/duplicate' },
                 { text: 'Group & sizes variants', link: '/en/guide/group-and-sizes' },
+                { text: 'Barcode label printing', link: '/en/guide/barcode-labels' },
+                { text: 'Barcode label printing', link: '/en/guide/barcode-labels' },
               ],
             },
             {

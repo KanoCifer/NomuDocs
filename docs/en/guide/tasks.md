@@ -20,7 +20,7 @@ It opens in a new tab with no "back" button — closing it exits.
 
 The top-level `TaskViewSwitch` toggles between two views. Status and filter are independent:
 
-- **Publish tasks** (`publish`) — single-item, group, and sizes-variant listing pipelines
+- **Publish tasks** (`publish`) — the single-item and group listing pipelines. Size variants are the final step of a single-item listing, not a task of their own
 - **Duplicate tasks** (`duplicate`) — cloning already-listed Noon products by PartnerSku
 
 Switching views preserves the search box and filters — both filters live independently.
@@ -46,7 +46,7 @@ Every row (about 56px tall) shows:
 - Thumbnail + product title
 - Status dot
 - Country chip (`sa` / `ae`)
-- taskKind chip (`single` / `group` / `sizes`)
+- taskKind chip (`single` / `group`)
 - Current step name
 - Inline expansion on failure: error.message + error.code + failing step.type + retryCount + **Retry** / **Cancel**
 
@@ -61,7 +61,7 @@ Dates show as relative time ("a few minutes ago" / "a few hours ago") with the a
 The left-side `TaskFilterPanel` in the panel gives three filter groups:
 
 - **Status** multi-select (default "running + failed")
-- **Task type** multi-select (`single` / `group` / `sizes`; the duplicate view has its own set)
+- **Task type** multi-select (`single` / `group`; the duplicate view has its own set)
 - **Time window**: `updatedAfter` / `updatedBefore` (default "last 7 days")
 - **Search string**: substring match on `partnerSku` / `product.title`
 

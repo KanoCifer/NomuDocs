@@ -33,7 +33,9 @@ features:
   - title: Multi-store / multi-account
     details: Keep several stores under the same PartnerCode, auto-detect the store code from the active tab, and snap FBP warehouses straight into the listing pipeline.
   - title: Group + Sizes variants
-    details: Publish same-brand batches along a specification axis (Group), or attach standard sizes as parent/child variants (Sizes). The two paths never collide.
+    details: Publish same-brand batches along a specification axis (Group), or add standard sizes as variants right in the single-product form and submit once (Sizes). The two paths never collide.
+  - title: Barcode label printing
+    details: Print barcode labels for your own SKUs. Code 128 / EAN-13 / UPC-A, printable directly or exported as SVG / PNG / ZPL.
   - title: Duplicate products
     details: Clone already-listed Noon products by PartnerSku, one item or many. Batch mode accepts pasted Excel / CSV cells.
   - title: Catalog browse + quick search
