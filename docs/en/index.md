@@ -1,6 +1,5 @@
 ---
 layout: NomuDocsHome
-pageClass: nomu-home
 title: Nomu Docs
 description: Official documentation for Nomu — install, store setup, the capture-to-publish pipeline, the task panel, product duplication, barcode labels, quick search, plus the changelog and support.
 

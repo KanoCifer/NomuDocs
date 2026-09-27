@@ -1,6 +1,5 @@
 ---
 layout: NomuDocsHome
-pageClass: nomu-home
 title: Nomu 文档
 description: Nomu 官方文档 —— 安装、店铺配置、采集与发布流程、任务面板、复制商品、条码标签、快捷搜索，以及更新日志与支持入口。
 
