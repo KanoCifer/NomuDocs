@@ -4,7 +4,7 @@ title: Features overview
 
 # Features overview
 
-Nomu runs one main line — "1688 / Taobao / Tmall / JD / noon source product → Noon listing" — and folds store management, bulk duplication, AI imagery, catalog browsing, and task tracking into the same pipeline. This page is an index of every capability, each linked to a full guide.
+Nomu runs one main line — "1688 / Taobao / Tmall / JD / noon source product → Noon listing" — and folds store management, bulk duplication, AI imagery, the AI assistant, catalog browsing, and task tracking into the same pipeline. This page is an index of every capability, each linked to a full guide.
 
 ## Main line: capture → list
 
@@ -52,8 +52,9 @@ Nomu runs one main line — "1688 / Taobao / Tmall / JD / noon source product �
 
 | Capability | Details |
 | --- | --- |
+| Nomu Assistant | Standalone page for streaming Q&A and product parsing; reachable from both the popup and the action menu | [Nomu Assistant](./nomu-assistant) |
 | Live FX rates | Open the FX dialog from the action menu; convert CNY-base prices into SAR / AED | [Quick start](./quick-start) |
-| AI category prediction | Source data auto-recommends Noon category (family / product_type / subtype) | [Quick start](./quick-start) |
+| AI category prediction | Assembles a description from English title + brand + audience + selling points + details, then recommends the four-level Noon category (family / product_type / subtype / fulltype) | [Quick start](./quick-start) |
 | Category + brand templates | Save and reuse "category + brand" bundles for the same kind of product | [Duplicate product](./duplicate) |
 | Keyboard shortcuts | Four global commands: side panel, action menu, quick search, floating button toggle | [Keyboard shortcuts](./shortcuts) |
 | Welcome onboarding | Six steps on first install to walk through permissions, stores, and a trial capture | Pops up automatically on first install |

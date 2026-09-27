@@ -12,6 +12,7 @@ Nomu is a Chrome extension built for Noon sellers (UAE / Saudi) that turns a sou
 - **Compliance guardrails baked in** — product images are forced to 660×900 white-background JPEG; category, brand, and FX conversions are validated inside the engine.
 - **Sizes variant group** — same-brand, same-category items are merged along a specification axis (size / model / color); the parent is auto-published if it is not already live.
 - **Task panel** — full-history view of all publishing tasks with filtering by status, type, and time window. Failed items can be retried or cancelled one by one.
+- **Nomu Assistant** — a general assistant for Noon sellers; answers and product parsing stream back word by word, and capabilities are delivered by the server.
 - **Chinese UI** — the working language is Chinese; dark mode follows the system.
 
 ## How it works
@@ -19,7 +20,7 @@ Nomu is a Chrome extension built for Noon sellers (UAE / Saudi) that turns a sou
 Nomu does not require extra credentials. It coexists with the seller's normal workflow:
 
 1. The extension's service worker issues requests directly to Noon's APIs. `credentials: "include"` carries the seller's already-signed-in Noon cookie, so no Noon tab has to be open.
-2. When direct calls hit a network failure or return 401 / 403, they fall back to a page-world fetch bridge.
+2. A 401 / 403 response is treated as an expired Noon session: it is not retried, and instead refreshes the auth probe and opens the login page automatically (not repeated in quick succession).
 3. Every request URL is gated by an allow-list. Anything outside the allow-list is rejected.
 
 ## Supported platforms

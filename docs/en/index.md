@@ -1,23 +1,65 @@
 ---
-layout: home
+layout: NomuDocsHome
+pageClass: nomu-home
+title: Nomu Docs
+description: Official documentation for Nomu — install, store setup, the capture-to-publish pipeline, the task panel, product duplication, barcode labels, quick search, plus the changelog and support.
 
 hero:
-  name: "Nomu"
-  text: "The efficiency tool for Noon sellers"
-  tagline: Capture from 1688, Taobao/Tmall, JD.com and noon.com, translate, build images, and publish one item at a time.
-  image:
-    src: /logo.png
-    alt: Nomu mascot
+  eyebrow: Nomu Docs · Documentation
+  headline: From install to first listing,
+  accent: all of it documented
+  subheadline: The manual for capture, translation, image work and one-by-one publishing — install, store setup, publishing, duplication, barcodes, search, and every place you get stuck.
   actions:
-    - theme: brand
-      text: Quick start
+    - text: Quick start
       link: /en/guide/quick-start
-    - theme: alt
-      text: Features overview
+      variant: brand
+    - text: Install Nomu
+      link: /en/guide/install
+      variant: alt
+    - text: Changelog
+      link: /en/guide/changelog
+      variant: link
+
+# Hero flow strip: how the first item gets out
+flow:
+  title: Your first listing, five steps
+  steps:
+    - Install the extension
+    - Sign in to Noon
+    - Capture a source item
+    - Translate · images · category
+    - Publish item by item
+  note: 'Sources: 1688 / Taobao & Tmall / JD.com / noon.com · Destinations: Noon UAE & Saudi'
+
+# Three starting points
+paths:
+  eyebrow: Get started
+  title: Start from one of these
+  subtitle: Three pages to get moving. Already running Nomu? Jump straight to what you need.
+  items:
+    - number: '01'
+      title: Install Nomu
+      body: One click from the Chrome Web Store, or drag in the zip to load it unpacked.
+      link: /en/guide/install
+    - number: '02'
+      title: Quick start
+      body: From a fresh install to your first published item, in one pipeline.
+      link: /en/guide/quick-start
+    - number: '03'
+      title: Features overview
+      body: What every capability does, and where its edges are, on one page.
       link: /en/guide/features
-    - theme: alt
-      text: Privacy policy
-      link: /en/privacy/
+
+# No items here: the section reads the sidebar from .vitepress/config.mts
+map:
+  eyebrow: Contents
+  title: All documentation
+  subtitle: Everything the sidebar can reach.
+
+capabilities:
+  eyebrow: At a glance
+  title: What is inside
+  subtitle: Ten capabilities, and the stretch each one covers.
 
 features:
   - title: End-to-end automation
@@ -40,4 +82,29 @@ features:
     details: Clone already-listed Noon products by PartnerSku, one item or many. Batch mode accepts pasted Excel / CSV cells.
   - title: Catalog browse + quick search
     details: Side-panel browsing of active / hidden items in the current store; press ⌘+Shift+S anywhere to open the focused search overlay.
+
+cta:
+  title: Install it, keep this tab open
+  body: Capture, translate, build images, publish, duplicate, track tasks — whichever step you are on, the matching page is here.
+  primary:
+    text: Quick start
+    link: /en/guide/quick-start
+  secondary:
+    text: Install Nomu
+    link: /en/guide/install
+  support:
+    text: Need help?
+    link: /en/guide/support
+
+footer:
+  note: 'Nomu: an easy-to-use tool for Noon sellers'
+  links:
+    - text: Privacy policy
+      link: /en/privacy/
+    - text: Changelog
+      link: /en/guide/changelog
+    - text: Get support
+      link: /en/guide/support
+    - text: Back to the site
+      link: https://nomu.kanocifer.chat
 ---

@@ -1,23 +1,65 @@
 ---
-layout: home
+layout: NomuDocsHome
+pageClass: nomu-home
+title: Nomu 文档
+description: Nomu 官方文档 —— 安装、店铺配置、采集与发布流程、任务面板、复制商品、条码标签、快捷搜索，以及更新日志与支持入口。
 
 hero:
-  name: "Nomu"
-  text: "Noon 卖家的效率工具"
-  tagline: 从 1688、淘宝/天猫、京东、noon.com 采集、翻译、建图并逐件发布。
-  image:
-    src: /logo.png
-    alt: Nomu 吉祥物
+  eyebrow: Nomu Docs · 文档
+  headline: 从安装到上架，
+  accent: 全部文档
+  subheadline: 采集、翻译、建图、逐件发布的操作手册 —— 安装、店铺配置、发布、复制、条码、搜索，以及每一个卡住你的地方。
   actions:
-    - theme: brand
-      text: 快速开始
+    - text: 快速开始
       link: /guide/quick-start
-    - theme: alt
-      text: 查看功能
+      variant: brand
+    - text: 安装 Nomu
+      link: /guide/install
+      variant: alt
+    - text: 更新日志
+      link: /guide/changelog
+      variant: link
+
+# Hero 里的流程条：第一条商品怎么走出来
+flow:
+  title: 第一条商品，五步
+  steps:
+    - 装上扩展
+    - 登录 Noon
+    - 采集源商品
+    - 翻译 · 建图 · 归类
+    - 逐件发布
+  note: '货源：1688 / 淘宝、天猫 / 京东 / noon.com · 目标站点：Noon 阿联酋、沙特站'
+
+# 三张起步卡
+paths:
+  eyebrow: 快速开始
+  title: 从这三页开始
+  subtitle: 三步之内能进正题；已经在用的话，直接跳到你关心的那一页。
+  items:
+    - number: '01'
+      title: 安装 Nomu
+      body: 网上应用商店一键装，或者拖 zip 手动加载。
+      link: /guide/install
+    - number: '02'
+      title: 快速上手
+      body: 从装好到第一条商品上架，一条流水线走完。
+      link: /guide/quick-start
+    - number: '03'
+      title: 功能总览
+      body: 每个能力做什么、边界在哪，一页看完。
       link: /guide/features
-    - theme: alt
-      text: 隐私政策
-      link: /privacy/
+
+# 目录区不写条目：直接读 .vitepress/config.mts 的 sidebar
+map:
+  eyebrow: 目录
+  title: 全部文档
+  subtitle: 侧边栏能翻到的，这里都能翻到。
+
+capabilities:
+  eyebrow: 能力速览
+  title: 里面装了什么
+  subtitle: 十个能力，各自解决哪一段。
 
 features:
   - title: 全流程自动化
@@ -40,4 +82,29 @@ features:
     details: 按 PartnerSku 单件 / 批量复制 Noon 已上架商品；批量模式支持 Excel / CSV 直接粘贴。
   - title: 目录浏览与快捷搜索
     details: 侧栏浏览当前店铺在售 / 隐藏商品；任意页面按 ⌘+Shift+S 唤起快捷搜索浮层。
+
+cta:
+  title: 边做边查
+  body: 采集、翻译、建图、发布、复制、盯任务 —— 卡在哪一步，回来翻哪一页。
+  primary:
+    text: 快速开始
+    link: /guide/quick-start
+  secondary:
+    text: 安装 Nomu
+    link: /guide/install
+  support:
+    text: 遇到问题？
+    link: /guide/support
+
+footer:
+  note: 'Nomu：一款易用的 Noon 插件'
+  links:
+    - text: 隐私政策
+      link: /privacy/
+    - text: 更新日志
+      link: /guide/changelog
+    - text: 获取支持
+      link: /guide/support
+    - text: 回到官网
+      link: https://nomu.kanocifer.chat
 ---
