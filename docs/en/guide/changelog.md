@@ -2,6 +2,17 @@
 
 Every noteworthy version change is recorded here.
 
+## 0.87.0 _2026-09-27_
+
+- **Knowledge base Q&A gets its own page** — a dedicated knowledge base Q&A page is now available straight from the toolbar. Ask questions against your local knowledge base and answers stream out word by word, with Markdown and code blocks rendered. The sidebar keeps your past sessions so you can start a new conversation and keep going.
+- **Q&A identity now follows your real account** — the sidebar and message bubble avatars show the signed-in username, instead of every user seeing the same hard-coded placeholder identity.
+- **Accurate message timestamps** — each message shows its own send time instead of always displaying the current time.
+- **Attachment entry point** — the composer gains an attach button that tells you attachments aren't available yet, so you won't expect to be able to upload.
+- **Design canvas visual overhaul** — canvas nodes and menus get unified borders, spacing, and icon weights. Press feedback is gone, the scrollbar gutter is fixed so content no longer shifts while scrolling horizontally, and the canvas reads more calmly overall.
+- **Visible keyboard focus** — Tab navigation now shows a focus ring in the same family as the design system, while mouse clicks stay clean.
+- **Bottom search button** — a persistent search entry point sits below the toolbar, so you're not digging through menus each time.
+- **Product image node fallback** — when a product image fails to load, the node shows a fallback instead of going blank.
+
 ## 0.86.0 _2026-09-26_
 
 - **Barcode label printing** — a dedicated barcode label page is now available straight from the toolbar. Pick an encoding format and label size, fill in the SKU, brand, and origin, and the label is generated. Single and batch modes are both supported: print straight from the browser, or export SVG / PNG / ZPL for your label printer.
