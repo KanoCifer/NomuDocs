@@ -2,6 +2,15 @@
 
 Every noteworthy version change is recorded here.
 
+## 0.88.0 _2026-09-27_
+
+- **Nomu Assistant is now a general-purpose assistant** — it no longer answers only knowledge base questions. It's now a general assistant for Noon sellers, with a new "Nomu Assistant" entry in the extension popup so you can ask whenever you need.
+- **Answers render as they stream in** — answers appear as they're generated, so you can start reading a long answer instead of waiting for it to finish, and code blocks and tables are readable along the way.
+- **More solid Chinese typography** — Chinese punctuation, code highlighting, and inline styling are handled the way Chinese expects while streaming, so lines no longer break in odd places.
+- **Jump to latest** — when an answer grows long, a "Jump to latest" control appears at the bottom right. One click takes you back to the part still being written, so you aren't scrolling down by hand.
+- **Empty state rebuilt** — the example questions are reduced to three flat cards. Example questions, answers, and the composer all sit on the same vertical axis, and the composer stays pinned to the bottom of the window.
+- **Clearer session state** — the sidebar shows connection status, and an answer that's still being generated carries a "thinking" hint.
+
 ## 0.87.0 _2026-09-27_
 
 - **Knowledge base Q&A gets its own page** — a dedicated knowledge base Q&A page is now available straight from the toolbar. Ask questions against your local knowledge base and answers stream out word by word, with Markdown and code blocks rendered. The sidebar keeps your past sessions so you can start a new conversation and keep going.
