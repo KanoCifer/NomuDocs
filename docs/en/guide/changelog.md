@@ -2,6 +2,16 @@
 
 Every noteworthy version change is recorded here.
 
+## 0.89.0 _2026-09-29_
+
+- **Conversations now have titles** — assistant sessions are no longer all called "New session". Each conversation is named automatically, so you can tell at a glance what you asked last time.
+- **Progress is visible while it thinks** — the assistant shows a loading animation while it composes an answer, so you're no longer staring at a blank panel waiting for the result.
+- **Barcode labels export to PNG without distortion** — exported PNGs are produced at the label's real DPI, so dropping one into Word or a document and printing it no longer shrinks it to half size. Output is pure black and white, with no gray edges or speckle, so thermal printers produce cleaner bars.
+- **Batch barcode exports produce one file per label** — batch PNG and SVG exports no longer stack into one long image. Each label is its own file, named to match its SKU.
+- **Label border and brand text size are adjustable** — border thickness and the size of the brand/origin text are now entered directly in millimeters, so they no longer scale up along with the label size.
+- **New TSPL and ZPL exports** — alongside SVG and PNG, you can now export TSPL for Deli / TSC label printers and ZPL for Zebra label printers.
+- **Knowledge base coverage stays in the sidebar** — the bottom of the sidebar shows how many documents have been indexed, with gaps split into indexed / failed / pending. You no longer need to open settings to find out what's missing.
+
 ## 0.88.0 _2026-09-27_
 
 - **Nomu Assistant is now a general-purpose assistant** — it no longer answers only knowledge base questions. It's now a general assistant for Noon sellers, with a new "Nomu Assistant" entry in the extension popup so you can ask whenever you need.
