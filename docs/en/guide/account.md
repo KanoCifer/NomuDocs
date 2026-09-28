@@ -26,13 +26,47 @@ When not signed in or the session has expired, translation, generation, and prom
 
 ## Sign-in methods
 
-Open the **Account** extension page (standalone `account.html`, entry points: popup / action sheet / Welcome onboarding). Three tabs:
+Open the **Account** extension page (standalone `account.html`, entry points: toolbar popup / action sheet / online status modal). When signed out there are two tabs:
 
-- **Password sign-in** — username + password
-- **Sign up** — username + email + email verification code
-- **Email magic link** — enter email → backend sends a sign-in link → click the link in your browser to confirm
+- **Email link** — enter your email → the backend sends a one-time sign-in link → click the link in your browser to confirm. The link is valid for 10 minutes, and the page shows a countdown of the remaining time
+- **Verification code** — enter your email, receive a 6-digit code (valid for 5 minutes), type it in to sign in
 
-The magic link is the preferred passwordless option: the link carries a `device_id`, and once the browser's polling confirms the click, a session is issued automatically. The poll is guarded by an AbortController — closing the page stops it.
+Neither tab needs a password. The email link carries a `device_id`; once the extension's polling confirms the click, a session is issued automatically. The poll is guarded by an AbortController — closing the page stops it.
+
+Two outbound links sit at the bottom of the account page, both pointing to the website:
+
+- "No account yet? Sign up at nomu.kanocifer.chat" → <https://nomu.kanocifer.chat/register>
+- "Forgot your password? Reset it at kanocifer.chat" → <https://nomu.kanocifer.chat/forgot-password>
+
+**There is no sign-up form and no password sign-in inside the extension** — both happen on the website.
+
+## Signing up for a Nomu account
+
+Sign-up page: <https://nomu.kanocifer.chat/register>
+
+Capture, listing, and the rest of the main flow work without signing in. An account only unlocks AI translation, NomuDesign generation, and prompt optimization.
+
+1. Fill in a username (3–50 characters), email, password (at least 6 characters), and the password confirmation
+2. Hit **Send code** next to the verification field, copy the 6 digits from the email, and paste them in. The button then runs a 60-second countdown before it can send again
+3. Click **Sign up**
+4. On the success card, **Install Nomu** jumps straight to the Chrome Web Store; **Back home** returns to the landing page
+
+A successful sign-up **does not create a session**. To start using the AI features, go back to the extension's account page and sign in once with the email you just registered (email link or verification code, your pick).
+
+The code is 6 digits and may start with a 0 — don't drop the leading digit.
+
+## Forgot your password
+
+Reset page: <https://nomu.kanocifer.chat/forgot-password> (the account page footer links straight to it). The whole flow is two steps.
+
+**Step 1 · Request the reset email**: enter the email you registered with and click **Send reset email**. The page always shows "If that email is registered, a reset email has been sent." — whether or not the email is registered, and even if the request fails, it moves on to step 2. That's deliberate: it stops anyone using this page to probe which emails have accounts.
+
+**Step 2 · Verify and set a new password**: copy the 6-digit code from the email (valid for 5 minutes), enter a new password (at least 6 characters, and not the same as the old one) plus its confirmation, then click **Reset password**. On success you get a confirmation card with a link to install Nomu.
+
+- Wrong email? Step 2 shows the address it was sent to with a **Change email** link that takes you back to step 1
+- "Invalid code or email not registered": the code is wrong or expired, or that email never registered — the page gives the same sentence for all three
+- "Session expired, request the code again": you refreshed the page between the two steps. Step 2 depends on a one-time session token handed back by step 1, and refreshing kills it — go back to step 1
+- "Please choose a password you have not used before": the new password matches the old one
 
 ## Session & multi-device
 
@@ -87,3 +121,11 @@ Concurrent consumption is judged server-side; the client does not pre-check. Neg
 ### How do I delete my Nomu account?
 
 Logout only clears local tokens. To fully delete the account, email the admin.
+
+### Do I still need to sign in after signing up?
+
+Yes. Sign-up only creates the account on the website and creates no session; the AI features need one sign-in from the extension's account page.
+
+### The verification email never arrived
+
+Check spam first. The code is one-time and valid for 5 minutes — resend once it expires. Login codes are rate-limited on the server too, so wait a minute before resending.

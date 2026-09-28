@@ -45,7 +45,7 @@ For Noon — no. Nomu operates through your already-signed-in Noon session, so y
 
 ### Do I need a Nomu account?
 
-Translation requires a Nomu account (password or email magic-link). Without an account, capture, image cleanup, and listing still work. The account is used for translation authentication only — see the [Privacy policy](/en/privacy/).
+AI translation, NomuDesign generation, and prompt optimization require a Nomu account — sign in with an email code or an email link, sign up on the website. Without an account, capture, image cleanup, and listing still work. The account only covers authentication and credit billing for those AI features — see [Account & AI credits](/en/guide/account).
 
 ### How good is the translation? Do I still need to proofread?
 

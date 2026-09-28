@@ -1,6 +1,6 @@
 # Privacy policy
 
-> **Note: this English version is a machine translation for reference. The authoritative version is the Chinese one at [/privacy/](/privacy/).** Last updated: 2026-09-13
+> **Note: this English version is a machine translation for reference. The authoritative version is the Chinese one at [/privacy/](/privacy/).** Last updated: 2026-09-28
 
 A tool that does your bidding shouldn't ask for blind trust. This document explains what data Nomu processes, where it goes, and what we will never see.
 
@@ -12,8 +12,8 @@ A tool that does your bidding shouldn't ask for blind trust. This document expla
 
 Translation, NomuDesign (generation / prompt optimization) and AI credits all require signing in to a Nomu account. The relationship between the account and the listing flow is:
 
-- **Sign up** requires a username, email, and email verification code. **Sign in** supports either username + password or email magic link (click the link in the email to confirm).
-- The password is sent over HTTPS to the account service (`api.kanocifer.chat`) for verification only. The extension itself never stores your password.
+- **Sign up** happens on the website (`nomu.kanocifer.chat/register`) and needs a username, email, email verification code, and password. **Sign in** happens on the extension's account page and supports either an email verification code or an email link (click the link in the email to confirm). Neither needs a password.
+- The password is submitted over HTTPS to the account service (`api.kanocifer.chat`) only by the sign-up and password-reset forms on the website. The extension itself neither collects nor stores your password.
 - After sign-in, the access and refresh tokens are stored in your browser's local storage and are used only to identify you to Nomu services. Logging out clears them locally.
 - The account follows a **single-session** model: signing in on a new device invalidates the old session.
 - The Nomu account is fully independent of your Noon sign-in: signing into Nomu does not read or affect your Noon session.
@@ -47,8 +47,8 @@ These requests are identical to those you would generate by hand in the Noon sel
 
 On sign-in and sign-up, the following information is submitted over HTTPS to the Nomu account service (`api.kanocifer.chat`):
 
-- Username and password (on username/password sign-in or sign-up)
-- Email and email verification code (on sign-up or magic-link sign-in)
+- Username and password (on sign-up / password reset, submitted by the `nomu.kanocifer.chat` website)
+- Email and email verification code (on sign-up, code sign-in, email-link sign-in, and password reset)
 
 ### Nomu AI services (sign-in required)
 
@@ -122,6 +122,8 @@ The extension's cross-origin access is limited to: noon.partners, alicdn.com, 36
 Access to Noon APIs is gated by a URL allow-list. Anything outside is rejected.
 
 ## Changelog
+
+- 2026-09-28 — Account method notes updated. Sign-up and password reset now happen on the website (`nomu.kanocifer.chat/register`, `nomu.kanocifer.chat/forgot-password`); the extension no longer ships a sign-up form or password sign-in. Sign-in is now the account page's "email verification code" and "email link" pair. The password is only submitted by the website forms; the extension neither collects nor stores it. No other data handling changed.
 
 - 2026-09-13 — Permission tightening. Removed the `tabs` permission; removed direct-access permissions for the Noon store (noon.com), 1688, Taobao / Tmall, and JD.com. Their product data is now read in-page by content scripts in the same origin; capture scope is unchanged. Added `activeTab` (on-demand) and `scripting` (script injection) for "capture current page", effective only when you actively trigger it. Permission table and sites-accessed table updated accordingly.
 - 2026-09-11 — Product capture adds Taobao / Tmall and JD.com as new sources. Read behavior is identical to 1688 — only page product info. The sites-accessed table adds the Taobao / Tmall and JD.com rows.

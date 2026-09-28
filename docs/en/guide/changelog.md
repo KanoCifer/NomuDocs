@@ -27,7 +27,7 @@ Every noteworthy version change is recorded here.
 - **Barcode label printing** — a dedicated barcode label page is now available straight from the toolbar. Pick an encoding format and label size, fill in the SKU, brand, and origin, and the label is generated. Single and batch modes are both supported: print straight from the browser, or export SVG / PNG / ZPL for your label printer.
 - **Size variants folded into single-product listing** — size variants no longer need a separate task. They now live as a "Size variants" section in the single-product listing form. Enter one parent size, then add child rows (size / SKU / barcode, with SKUs generated for you) and submit them together with the product — replacing the old two-step flow of publishing the parent first and children second.
 - **Child barcodes submit with the variant** — each variant row accepts its own barcode, submitted in the same batch as size and SKU, so there's no second pass to add them later.
-- **Email code sign-in** — the account page now leads with email code sign-in, with password sign-in kept as an alternative and a separate entry point for forgotten passwords.
+- **Email code sign-in** — the account page drops password sign-in and now offers "email link" and "email code" instead; sign-up and password reset moved to the nomu.kanocifer.chat website.
 - **Warranty write fix** — fixes warranty settings failing to save in some cases.
 - **Product list and drawer polish** — refined interaction feedback in the product list and single-product drawer, and category selection now tracks the form more responsively.
 
