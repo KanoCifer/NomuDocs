@@ -2,6 +2,20 @@
 
 Every noteworthy version change is recorded here.
 
+## 0.90.1 _2026-09-29_
+
+- **Generate a whole batch of labels at once** — paste a list of "SKU, brand, origin" and every label comes out carrying its own brand and origin. Pasting straight from a spreadsheet, where columns are tab-separated, works too, and commas inside the origin are no longer treated as separators.
+- **Batch exports arrive as a single ZIP** — the PNG and SVG of a whole batch are packed into one zip, so Windows shows the "Save as" dialog once instead of once per label.
+- **Barcode page rebuilt** — the settings are now split into three groups (label spec / label content / displayed content), so the preview and the parameters read more clearly.
+- **TSPL and ZPL printer command export removed** — the command-stream export added last release is gone, leaving PNG, SVG and ZIP.
+
+## 0.89.4 _2026-09-29_
+
+- **Extension popup rebuilt** — the quick entries are rearranged into a dock, and store switching moves to a store rail at the top of the popup where you can step through shops or pick one directly.
+- **Thinking process in past conversations no longer lost** — reopening an old conversation shows the reasoning that produced its answer again.
+- **New conversations no longer vanish from the sidebar** — starting a new one now shows a highlighted placeholder row right away, instead of looking like nothing is selected.
+- **Product preview no longer occasionally renders blank** — some drawer views used to come up empty; they now display correctly.
+
 ## 0.89.0 _2026-09-29_
 
 - **Conversations now have titles** — assistant sessions are no longer all called "New session". Each conversation is named automatically, so you can tell at a glance what you asked last time.
