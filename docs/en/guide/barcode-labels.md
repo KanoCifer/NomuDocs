@@ -6,6 +6,48 @@ title: Barcode label printing
 
 A standalone page for printing barcode labels for your own SKUs, reachable from the extension toolbar. Pick an encoding format and label size, fill in the SKU, brand, and origin, and you get a live label preview you can print directly or export to your label printer.
 
+## Two ways to do it
+
+Barcode labels come in two flavours. They produce the same thing — pick whichever fits the job:
+
+| | [Standalone page](#getting-in) | [Ask the assistant](#ask-the-assistant) |
+| --- | --- | --- |
+| Best for | A few items in hand, previewing and printing one by one | A list of SKUs, a whole batch at once |
+| How | Fill the form, adjust settings, watch the preview | Say which codes you need in the Nomu assistant |
+| Output | Browser print / SVG / PNG / ZPL | One zip download link |
+| Batch size | A few dozen is comfortable | Up to 200 per call |
+
+Both routes read the same layout geometry, so the same settings draw bars in exactly the same place and at exactly the same thickness.
+
+## Ask the assistant
+
+In the [Nomu assistant](./nomu-assistant), just say which codes you need. The assistant calls the tool, generates the whole batch, and hands you a zip link. For example:
+
+> Make 50×30 labels at 203 DPI for these 12 SKUs, brand Nomu, origin China
+
+The assistant lists what it's about to generate and confirms with you first.
+
+**Supported specs**
+
+| Option | Values |
+| --- | --- |
+| Format | Code 128 (default) / EAN-13 / UPC-A |
+| Label size | 40×20, 50×30, 60×40, 70×50, 80×60, 100×60 mm — or just say an arbitrary size like "45×25" in mm |
+| Resolution | 203 DPI (default) / 300 DPI |
+| What's shown | Border, the encoded digits under the barcode, and the brand/origin line — each can be asked for or left off |
+
+**How it differs from the page**
+
+- **The output is a zip**: every label contributes an SVG and a PNG. Print shops want bitmaps, design firms and sticker printers want vectors — both are in the package, so nobody clicks download twice.
+- **One call, one whole batch**: up to 200 labels. Go over that and the assistant tells you to split the run rather than quietly truncating it.
+- **Brand is per label**: different brands in one batch get filled in individually, not defaulted to a single value for the whole run.
+- **Invalid and duplicate codes are skipped**: codes are de-duplicated after checksums are filled in, and the assistant tells you exactly which ones were dropped — the rest of the batch still generates.
+- **Bad specs get called out**: when the module width falls below what a scanner can physically read, the assistant gets a warning and passes it on, so you can switch to a bigger label or a higher DPI. You won't get a label that prints and then won't scan.
+
+::: warning Login required
+The assistant needs a signed-in Nomu account. Without one the tool isn't available.
+:::
+
 ## Getting in
 
 Click the **Barcode** button on the extension toolbar to open the barcode label page. Like the task panel and NomuDesign, it's a standalone extension page — pop it into its own tab or another window so you aren't switching back and forth while printing.
@@ -58,3 +100,17 @@ Batch PNG export is a single tall image, so very large batches run into the brow
 ### Chinese brand names come out as garbage when printing.
 
 ZPL relies on the printer's built-in font for Chinese, and support varies by model. When you need reliable Chinese on the label, export PNG.
+
+### Do the assistant's zip links expire?
+
+The link points at a file on our server, kept for about a week. Anything you need to keep long-term, download and store it yourself.
+
+### What happens if I ask for 500 labels?
+
+The cap is 200 per call. The assistant will tell you to split it; once you say how many batches, it generates them one by one — it won't take 500 and hand you a fraction.
+
+## See also
+
+- [Nomu assistant](./nomu-assistant) — where batch barcode generation lives
+- [Feature overview](./features) — full index of Nomu capabilities
+- [Account and AI credits](./account) — the assistant requires a login

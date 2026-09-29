@@ -18,7 +18,7 @@ Nomu runs one main line — "1688 / Taobao / Tmall / JD / noon source product �
 | Listing pipeline | Declarative step table drives each item through `product/create` → `activate` + `warranty` | [Quick start](./quick-start) |
 | Group listing | Same-brand items merged along a specification axis (size / model / color) | [Group & sizes](./group-and-sizes) |
 | Sizes variants | Sizes live in the single-product listing form; parent and children go out in one submission | [Group & sizes](./group-and-sizes) |
-| Barcode label printing | Print barcode labels for your own SKUs; print directly or export SVG / PNG / ZPL | [Barcode label printing](./barcode-labels) |
+| Barcode label printing | Print barcode labels for your own SKUs: preview and print one by one on the standalone page or export SVG / PNG / ZPL, or ask the assistant for a whole batch and download a zip | [Barcode label printing](./barcode-labels) |
 | Duplicate product | Clone an already-listed Noon product by PartnerSku — single, batch, or template | [Duplicate product](./duplicate) |
 
 ## Stores & accounts

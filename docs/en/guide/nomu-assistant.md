@@ -25,7 +25,9 @@ An empty conversation offers three example questions; click one to fill the comp
 - What is the Currency fetch interval?
 - Parse this product for me
 
-Day-to-day it splits into two shapes: **ask** (listing rules, what a field means, what to do about an error) and **have it do something** (parse a product, look something up). Whether a given question can be answered directly is decided per answer.
+Day-to-day it splits into two shapes: **ask** (listing rules, what a field means, what to do about an error) and **have it do something** (parse a product, look something up, generate barcode labels in bulk). Whether a given question can be answered directly is decided per answer.
+
+Batch barcode labels are covered in full under [Barcode label printing](./barcode-labels#ask-the-assistant) — supported specs, how duplicates are counted, and how many labels one call can produce.
 
 ## Reading an answer
 
@@ -80,5 +82,6 @@ Right-click parse fits "this site has no adapter but I want a draft right now". 
 ## Related docs
 
 - [NomuFab entry point](./nomu-fab) — where the assistant sits in the action menu
+- [Barcode label printing](./barcode-labels) — the assistant can generate labels in bulk
 - [Account & AI credits](./account) — sign-in and credits
 - [Features overview](./features) — index of every Nomu capability
