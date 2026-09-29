@@ -1,5 +1,6 @@
 ---
 title: 键盘快捷键
+description: "Nomu 键盘快捷键：全局 Chrome 命令清单，覆盖采集、批量上架、目录浏览、快捷搜索等常用动作，可在 chrome://extensions/shortcuts 改键位。"
 ---
 
 # 键盘快捷键

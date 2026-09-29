@@ -1,5 +1,6 @@
 ---
 title: Cloud pool & transfer station
+description: "The Nomu cloud pool is a cross-device handoff for captured products. Push items captured on device A to the cloud and claim them into the local batch on device B with one click."
 ---
 
 # Cloud pool & transfer station

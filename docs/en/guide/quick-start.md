@@ -1,3 +1,8 @@
+---
+title: "Quick start"
+description: "Nomu quick start: capture from a 1688, Taobao or JD product page, review items in the draft list, then publish to Noon. Three steps to ship your first batch."
+---
+
 # Quick start
 
 Three steps to ship a batch: capture → confirm → publish.

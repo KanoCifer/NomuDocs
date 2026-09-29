@@ -1,5 +1,6 @@
 ---
 title: Nomu Assistant
+description: "The Nomu Assistant is a built-in AI assistant for Noon sellers. Ask in plain Chinese and get a streamed answer; it can call tools to parse products and batch-generate barcode labels."
 ---
 
 # Nomu Assistant

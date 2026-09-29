@@ -1,5 +1,6 @@
 ---
 title: Nomu 助手
+description: "Nomu 助手：面向 Noon 卖家的内置 AI 助手。用中文提问即可流式得到答案，能主动调用工具解析商品，还能为一列 SKU 批量生成条码标签打包下载。"
 ---
 
 # Nomu 助手

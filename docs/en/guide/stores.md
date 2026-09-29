@@ -1,5 +1,6 @@
 ---
 title: Store management
+description: "Nomu store management: manage multiple Noon stores across country, PartnerCode, warehouse, warranty registration and PSKU sequence. A whole captured batch shares one set of store settings."
 ---
 
 # Store management

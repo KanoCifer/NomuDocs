@@ -1,5 +1,6 @@
 ---
 title: Account & AI credits
+description: "Nomu account and AI credits: capture, image work, listing and catalog browse need no sign-in. Only AI translation, NomuDesign generation and prompt optimization use an account, billed by credits."
 ---
 
 # Account & AI credits

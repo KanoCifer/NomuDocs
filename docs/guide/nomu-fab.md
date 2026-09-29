@@ -1,3 +1,8 @@
+---
+title: "NomuFab 功能入口"
+description: "NomuFab 是 Nomu 在 Noon 卖家后台的主交互入口。点击右下角悬浮按钮打开操作菜单，集中提供商品采集、店铺管理与工具入口，支持键盘导航。"
+---
+
 # NomuFab 功能入口
 
 NomuFab 是 Nomu 的主交互入口，在 Noon 卖家后台右下角以悬浮按钮形式存在。点击后升起操作菜单（ActionSheet），提供商品采集、管理与工具入口。

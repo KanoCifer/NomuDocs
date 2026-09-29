@@ -1,5 +1,6 @@
 ---
 title: Cloud config sync
+description: "Nomu cloud config sync backs up PartnerCode, store code, warranty and PSKU prefix settings to your Nomu account so you can restore them on another device. Sync is manual only."
 ---
 
 # Cloud config sync

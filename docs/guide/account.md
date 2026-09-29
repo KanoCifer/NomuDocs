@@ -1,5 +1,6 @@
 ---
 title: 账户与 AI 积分
+description: "Nomu 账户与 AI 积分：采集、建图、上架、目录浏览等主流程无需登录，仅 AI 翻译、NomuDesign 生图与提示词优化需要账户，按积分计费。"
 ---
 
 # 账户与 AI 积分

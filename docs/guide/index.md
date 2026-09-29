@@ -1,3 +1,8 @@
+---
+title: "Nomu 是什么"
+description: "Nomu 是什么：面向 Noon UAE 与沙特卖家的 Chrome 商品上架扩展。把 1688、淘宝、天猫、京东、noon.com 的商品页一键采集，自动翻译成英文与阿拉伯语、处理成合规商品图，逐件发布到 Noon 完成上架。"
+---
+
 # Nomu 是什么
 
 Nomu 是面向 Noon 卖家合作平台（UAE / Saudi）的商品上架 Chrome 扩展。它把源商品页（1688 / 淘宝 / 天猫 / 京东 / noon.com）的抓取、翻译、建图与发布收敛进同一条流水线，帮助卖家从「商品页」走到「Noon 已上架」：

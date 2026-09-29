@@ -1,5 +1,6 @@
 ---
 title: Group & sizes variants
+description: "Group and sizes variants in Nomu: two parallel paths for publishing multiple same-product-different-spec items on Noon, compared across platform UI, data shape, configuration and use case."
 ---
 
 # Group & sizes variants

@@ -1,5 +1,48 @@
 import { defineConfig } from 'vitepress';
 
+const SITE_URL = 'https://nomu.kanocifer.chat';
+
+/**
+ * canonical / OG / Twitter / hreflang 必须在构建时写进静态 HTML。
+ * 客户端注入的 head 爬虫读不到 —— 那正是 landing 页现在无效的原因。
+ *
+ * @param page 输出文件名（相对 dist），如 'guide/features.html'
+ */
+function seoHead(page: string, description: string, title: string) {
+  const isEn = page.startsWith('en/');
+  // page 是源文件相对路径（'guide/features.md'），站点路径要挂上 base 再去掉 .md
+  const rel = page.replace(/(^|\/)index\.md$/, '$1').replace(/\.md$/, '');
+  const clean = rel ? `/docs/${rel}` : '/docs/';
+  const canonical = `${SITE_URL}${clean}`;
+  // 中英目录结构对称：zh 在 docs/guide/，en 在 docs/en/guide/
+  const counterpart = isEn
+    ? `${SITE_URL}${clean.replace('/docs/en/', '/docs/')}`
+    : `${SITE_URL}/docs/en${clean.replace('/docs', '')}`;
+
+  return [
+    ['link', { rel: 'canonical', href: canonical }],
+    // 中英互指，Google 据此把两者判为同一内容的两个语言版本而非重复页
+    ['link', { rel: 'alternate', hreflang: isEn ? 'en' : 'zh-CN', href: canonical }],
+    ['link', { rel: 'alternate', hreflang: isEn ? 'zh-CN' : 'en', href: counterpart }],
+    ['link', { rel: 'alternate', hreflang: 'x-default', href: `${SITE_URL}/docs/` }],
+    ['meta', { property: 'og:type', content: 'website' }],
+    ['meta', { property: 'og:url', content: canonical }],
+    ['meta', { property: 'og:site_name', content: 'Nomu' }],
+    ['meta', { property: 'og:title', content: title }],
+    ['meta', { property: 'og:description', content: description }],
+    ['meta', { property: 'og:image', content: `${SITE_URL}/docs/logo.png` }],
+    ['meta', { property: 'og:locale', content: isEn ? 'en_US' : 'zh_CN' }],
+    [
+      'meta',
+      { property: 'og:locale:alternate', content: isEn ? 'zh_CN' : 'en_US' },
+    ],
+    ['meta', { name: 'twitter:card', content: 'summary' }],
+    ['meta', { name: 'twitter:title', content: title }],
+    ['meta', { name: 'twitter:description', content: description }],
+    ['meta', { name: 'twitter:image', content: `${SITE_URL}/docs/logo.png` }],
+  ];
+}
+
 // https://vitepress.dev/reference/site-config
 export default defineConfig({
   srcDir: 'docs',
@@ -8,7 +51,29 @@ export default defineConfig({
   cleanUrls: true,
   title: 'Nomu Docs',
   description: 'Nomu — Noon 卖家的商品上架扩展文档',
-  head: [['link', { rel: 'icon', type: 'image/png', href: '/docs/logo.png' }]],
+  head: [
+    ['link', { rel: 'icon', type: 'image/png', href: '/docs/logo.png' }],
+    ['meta', { name: 'twitter:site', content: '@KanoCifer' }],
+  ],
+
+  sitemap: {
+    // 必须带 base，否则生成的 URL 会指向 /guide/... 而非实际部署的 /docs/guide/...
+    hostname: `${SITE_URL}/docs/`,
+    transformItems: (items) => [
+      // 落地页在 SPA 里，正文爬虫读不到，但品牌词和商店链接仍需要它被收录
+      { url: `${SITE_URL}/`, changefreq: 'weekly' as const, priority: 1.0 },
+      { url: `${SITE_URL}/register`, priority: 0.3 },
+      ...items,
+    ],
+  },
+
+  transformHead({ page, pageData, siteData, title }) {
+    return seoHead(
+      page,
+      pageData.description ?? siteData.description,
+      title,
+    ) as never[];
+  },
 
   locales: {
     root: {

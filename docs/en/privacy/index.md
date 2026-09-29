@@ -1,3 +1,8 @@
+---
+title: "Privacy policy"
+description: "The Nomu privacy policy explains which data is processed, where it goes and what the tool never sees. Store settings and batch drafts stay local by default, with no tracking or analytics."
+---
+
 # Privacy policy
 
 > **Note: this English version is a machine translation for reference. The authoritative version is the Chinese one at [/privacy/](/privacy/).** Last updated: 2026-09-28

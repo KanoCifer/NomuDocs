@@ -1,5 +1,6 @@
 ---
 title: 云端配置同步
+description: "Nomu 云端配置同步：把 PartnerCode、店铺编码、保修设置、PSKU 前缀等店铺配置备份到 Nomu 账户，换设备或重装扩展时一键恢复，不会自动执行。"
 ---
 
 # 云端配置同步

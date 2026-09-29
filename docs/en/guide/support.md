@@ -1,3 +1,8 @@
+---
+title: "Get support"
+description: "Get support for Nomu. If installation, capture or publishing stalls, or you want to request a feature, reach out over WeChat — this page also lists what to include in a bug report."
+---
+
 # Get support
 
 If you run into problems while using Nomu, or have a feature you'd like to request, you can reach me directly.

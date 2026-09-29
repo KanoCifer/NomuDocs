@@ -1,5 +1,6 @@
 ---
 title: NomuDesign image generation
+description: "NomuDesign is Nomu's AI product image workspace. Compose source images, references, prompts and generation nodes on a canvas, then push generated images back to the product gallery in one click."
 ---
 
 # NomuDesign image generation

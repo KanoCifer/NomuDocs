@@ -1,5 +1,6 @@
 ---
 title: Features overview
+description: "Nomu features overview: 1688, Taobao, Tmall and JD product capture, batch listing, Chinese-to-English and Arabic translation, image processing, AI category recommendation, task panel, product duplication and barcode labels."
 ---
 
 # Features overview

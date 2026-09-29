@@ -1,3 +1,8 @@
+---
+title: "安装 Nomu"
+description: "Nomu 安装教程：从 Chrome Web Store 安装面向 Noon 卖家的商品上架扩展，全程不到一分钟。含安装步骤、首次打开与常见安装问题排查。"
+---
+
 # 安装 Nomu
 
 Nomu 已上架 Chrome Web Store，整个安装过程不到一分钟。

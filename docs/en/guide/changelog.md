@@ -1,3 +1,8 @@
+---
+title: "Changelog"
+description: "The Nomu changelog records every noteworthy version change — features, fixes and adjustments across batch listing, translation, image processing, the task panel, barcode labels and cloud sync."
+---
+
 # Changelog
 
 Every noteworthy version change is recorded here.

@@ -1,5 +1,6 @@
 ---
 title: Duplicate product
+description: "Duplicate product pulls a complete snapshot from an already-listed Noon item by PartnerSku and rebuilds a fresh draft in the current store, reusing category, brand, attributes and images."
 ---
 
 # Duplicate product

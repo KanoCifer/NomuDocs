@@ -1,5 +1,6 @@
 ---
 title: 快捷搜索
+description: "Nomu 快捷搜索：任意页面按 Ctrl / ⌘ + Shift + S 唤起搜索浮层，输入 Partner SKU 或标题即时命中当前店铺的在售与隐藏商品，可直接跳详情或改状态。"
 ---
 
 # 快捷搜索

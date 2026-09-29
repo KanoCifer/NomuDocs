@@ -1,3 +1,8 @@
+---
+title: "NomuFab entry point"
+description: "The NomuFab entry point is Nomu's main interaction surface in the Noon seller backend. Tap the floating button to open the action sheet for capture, store management and tools."
+---
+
 # NomuFab entry point
 
 NomuFab is Nomu's main interaction entry. It lives as a floating button in the bottom-right corner of the Noon seller backend. Tapping it opens the action sheet, which exposes capture, management, and tools.

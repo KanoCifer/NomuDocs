@@ -1,5 +1,6 @@
 ---
 title: Task panel
+description: "The Nomu task panel shows every listing and duplication task across pages, sessions and stores. Progress, per-step timing and failure reasons expand inline, and failed items can be retried."
 ---
 
 # Task panel

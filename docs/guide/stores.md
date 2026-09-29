@@ -1,5 +1,6 @@
 ---
 title: 店铺管理
+description: "Nomu 店铺管理：管理多家 Noon 店铺的国家、合作方代码（PartnerCode）、仓库、保修登记与 PSKU 序号。一次采集的整批商品共享同一份店铺设置。"
 ---
 
 # 店铺管理

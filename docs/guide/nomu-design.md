@@ -1,5 +1,6 @@
 ---
 title: NomuDesign 商品图生图
+description: "NomuDesign 是 Nomu 自带的 AI 商品图工作台。把商品原图、参考图、提示词与生图节点拼在画布上，生成结果一键写回商品图集，用于 Noon 上架前的图片处理。"
 ---
 
 # NomuDesign 商品图生图

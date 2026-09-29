@@ -1,5 +1,6 @@
 ---
 title: Catalog browse
+description: "Nomu catalog browse overlays an active and hidden item panel on the Noon seller catalog. Searchable, paginated and status-toggleable, with every detail of the original page preserved."
 ---
 
 # Catalog browse

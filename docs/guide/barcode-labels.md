@@ -1,5 +1,6 @@
 ---
 title: 条码标签打印
+description: "Nomu 条码标签打印：给自己的 SKU 生成条码标签，Code 128 / EAN-13 / UPC-A 可选，支持单张与批量，直接打印或导出 SVG / PNG / ZPL 喂给标签打印机。"
 ---
 
 # 条码标签打印

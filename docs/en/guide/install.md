@@ -1,3 +1,8 @@
+---
+title: "Install Nomu"
+description: "Install Nomu from the Chrome Web Store in under a minute. Step-by-step instructions for the Chrome extension built for Noon sellers, plus first-run and troubleshooting notes."
+---
+
 # Install Nomu
 
 Nomu is on the Chrome Web Store. The whole install takes less than a minute.

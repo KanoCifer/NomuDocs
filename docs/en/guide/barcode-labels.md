@@ -1,5 +1,6 @@
 ---
 title: Barcode label printing
+description: "Print barcode labels for your own SKUs with Nomu. Code 128, EAN-13 and UPC-A are supported, single or batch, printable or exportable as SVG, PNG or ZPL for label printers."
 ---
 
 # Barcode label printing

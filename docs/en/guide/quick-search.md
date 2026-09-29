@@ -1,5 +1,6 @@
 ---
 title: Quick search
+description: "Nomu quick search: press Ctrl / Cmd + Shift + S on any page to open the search overlay, type a Partner SKU or title keyword, and jump to detail or flip status in the current store."
 ---
 
 # Quick search

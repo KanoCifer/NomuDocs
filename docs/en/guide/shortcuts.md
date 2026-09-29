@@ -1,5 +1,6 @@
 ---
 title: Keyboard shortcuts
+description: "Nomu keyboard shortcuts: a list of global Chrome commands covering capture, batch listing, catalog browse and quick search, rebindable from chrome://extensions/shortcuts."
 ---
 
 # Keyboard shortcuts
