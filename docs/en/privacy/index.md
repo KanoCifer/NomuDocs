@@ -1,6 +1,6 @@
 ---
 title: "Privacy policy"
-description: "The Nomu privacy policy explains which data is processed, where it goes and what the tool never sees. No tracking or analytics; the cloud product pool, assistant conversations and the upstream content of all five AI call types are spelled out item by item."
+description: "The Nomu privacy policy explains which data is processed, where it goes and what the tool never sees. No tracking or analytics; the cloud pool, assistant conversations and the upstream content of all five AI call types are spelled out item by item."
 ---
 
 # Privacy policy
@@ -84,7 +84,7 @@ When listing, the extension calls the FX service to convert local-currency price
 
 The account page exposes two manual buttons: **Upload to cloud** and **Download to local**. When triggered, your store configuration (PartnerCode, store code, memo, warranty, PSKU prefix, etc.) syncs via the account service (`api.kanocifer.chat`). **Only triggered manually by you on the account page — it never runs automatically.** The last-synced time is stored locally in your browser and shown on the account page.
 
-### Cloud product pool (sign-in required)
+### Cloud pool (sign-in required)
 
 When the right-click "AI parse product draft" action succeeds, the resulting product draft is saved server-side via the account service (`api.kanocifer.chat`) so that **other devices under your own account** can pick it up. The behavior:
 
@@ -121,7 +121,7 @@ The items below **do** leave your device and are stored on the server. They are 
 | Data | Stored in | Who can see it |
 | --- | --- | --- |
 | Body text and full-viewport screenshot of the page you right-clicked | Nomu AI service (product parsing) | The parsing process |
-| Product draft produced by right-click parsing, plus the writing device's `device_id` and device name | Cloud product pool | **Only other devices under your own account** |
+| Product draft produced by right-click parsing, plus the writing device's `device_id` and device name | Cloud pool | **Only other devices under your own account** |
 | Your assistant questions and answers | Nomu assistant service | Persisted server-side, read back by `session_id` |
 | Email, email verification code, account access token | Account service | Required for account authentication and billing |
 
@@ -159,7 +159,7 @@ We do not request sensitive permissions like `cookies` or `tabs`: the extension 
 | Nomu translation service | Text translation |
 | Nomu image generation service | Prompt optimization and product image generation |
 | Nomu media storage | Storage for NomuDesign-generated images |
-| Nomu product parsing service | Asynchronous parsing for the right-click "AI parse product draft" action, and writing the result to the cloud product pool |
+| Nomu product parsing service | Asynchronous parsing for the right-click "AI parse product draft" action, and writing the result to the cloud pool |
 | Nomu assistant service | Knowledge-base Q&A, session read-back and ingestion status |
 | FX service | Convert local-currency prices during listing |
 
@@ -170,7 +170,7 @@ Access to Noon APIs is gated by a URL allow-list. Anything outside is rejected.
 ## Changelog
 
 - 2026-09-30 — Three previously undisclosed data flows documented, plus two corrections.
-  1. **New "Cloud product pool" section**: the output of the right-click "AI parse product draft" action is saved server-side via the account service and synced across devices under your own account over an account-authenticated connection (`v3/nomu/sync/ws`). Items carry the writer's `device_id` and device name, and are removed from the account's other devices once claimed. **Not shared with other Nomu accounts.**
+  1. **New "Cloud pool" section**: the output of the right-click "AI parse product draft" action is saved server-side via the account service and synced across devices under your own account over an account-authenticated connection (`v3/nomu/sync/ws`). Items carry the writer's `device_id` and device name, and are removed from the account's other devices once claimed. **Not shared with other Nomu accounts.**
   2. **New "Nomu assistant" section**: assistant questions and answers are stored server-side (locally only the session id, title and last-used time), read back by `session_id`.
   3. **AI call types expanded from three to five**: added "product parsing" (uploads the page body text and a full-viewport screenshot) and "assistant Q&A"; the credit history source enum gains two corresponding entries.
   4. The permission table drops "Side panel" — the extension does not request that permission — and gains "Context menus", which was missing. Since the right-click menu appears on any http/https page, its consequences are now called out in the permissions section.
