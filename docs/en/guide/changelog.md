@@ -7,6 +7,20 @@ description: "The Nomu changelog records every noteworthy version change — fea
 
 Every noteworthy version change is recorded here.
 
+## 0.91.0 _2026-09-30_
+
+- **A new FBN pricing calculator** — a dedicated page where you enter product cost, first-mile shipping, FBN fee, commission and target margin, and it works back the price to charge, along with the net profit and net margin per order.
+- **See where the price goes** — a stacked bar shows how the price splits across commission, FBN fee, first-mile, product cost and net profit, so a thin margin is obvious at a glance.
+- **Calculate without knowing the FBN fee** — type the expected price and weight into the helper and it looks up the current rate table, then fills the fee back into the form.
+- **Category commission lookup** — search NOON's current commission rates by site and category, or by keyword.
+- **FBN shipping fee lookup** — enter weight and expected price to get the outbound fee; incremental bands (per extra kg) are called out for you to add by hand rather than guessed.
+- **Every table links back to the official source** — the official fee page, the outbound-fee calculation guide and the official fees & revenue calculator are all one click away, so when a rate doesn't match you know who to believe.
+
+## 0.90.3 _2026-09-30_
+
+- **Batch duplicate moved to its own page** — no longer squeezed into a popup modal, so large batches have room to work in.
+- **Price shown on the account page** — the current price is visible on the account page after signing in.
+
 ## 0.90.1 _2026-09-29_
 
 - **Generate a whole batch of labels at once** — paste a list of "SKU, brand, origin" and every label comes out carrying its own brand and origin. Pasting straight from a spreadsheet, where columns are tab-separated, works too, and commas inside the origin are no longer treated as separators.
