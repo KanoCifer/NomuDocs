@@ -7,6 +7,21 @@ description: "The Nomu changelog records every noteworthy version change — fea
 
 Every noteworthy version change is recorded here.
 
+## 0.93.0 _2026-10-01_
+
+- **A new overview page** — one track shows this week's captured, drafts, in progress and listed side by side, so you can see at a glance which stage things are piling up in instead of doing the subtraction yourself.
+- **See what is running right now** — each in-progress item says which step it has reached, so you no longer have to open the task panel and check one by one.
+- **Only the things that need you** — failures only; the details and the retry button stay in the task panel, the overview does not take over task handling.
+- **Every entry shows its own state** — source sites show how much you captured from them this week, tasks show how many are running or failed, stores show how many you have; tool entries carry no number, so one is never misread as that tool's progress.
+- **"Clicking Overview did nothing" is fixed** — checking whether a page was already open relied on a browser permission the released build does not have. It was silently ignored, which focused an unrelated tab instead, so opening Overview looked broken. Opening a page no longer depends on it.
+
+## 0.92.0 _2026-10-01_
+
+- **A first-mile shipping calculator** — a new tool page that works out total first-mile cost by volumetric weight for air and by CBM for sea, then divides by your unit count to get the per-piece cost. The result can be copied straight into the pricing page's first-mile field, so you no longer retype a forwarder's quote.
+- **A reworked onboarding flow** — the header is now a six-step progress bar, and the opening screen describes what you will actually do rather than naming features.
+- **A rebuilt account page** — the two coexisting visual languages on one screen are unified and the header became a glass layer floating over the content; the balance on the overview no longer always reads 0; signing in and the credit history no longer show a scrollbar.
+- **The assistant's suggested questions now do real things** — fee lookup, barcode generation and product parsing. Click and you get an answer, without filling in the assistant's arguments first.
+
 ## 0.91.0 _2026-09-30_
 
 - **A new FBN pricing calculator** — a dedicated page where you enter product cost, first-mile shipping, FBN fee, commission and target margin, and it works back the price to charge, along with the net profit and net margin per order.
