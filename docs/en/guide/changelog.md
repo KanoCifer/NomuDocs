@@ -7,6 +7,18 @@ description: "The Nomu changelog records every noteworthy version change — fea
 
 Every noteworthy version change is recorded here.
 
+## 0.94.0 _2026-10-02_
+
+- **Nomu Design on the overview page** — the overview opens the design workspace directly, where you pick the product before entering the canvas, instead of hunting for that product on some other page first. With nothing picked yet, "Select product" sits right in the middle rather than an empty canvas that looks broken. The pill in the header is itself the switch-product control, and the link follows along when you switch.
+- **The product picker stops misleading you** — it now lands on the search box when it opens (the close button used to steal focus, so you had to press Tab first). Product names are back as the row's main title instead of a screen full of "Untitled"; the check mark no longer sits on top of the SKU; and when there is nothing to pick, the glyph that looked like an error is gone and the empty state just says what to do.
+- **Generated images no longer go to products that do not exist** — size-variant children have no local row, so looking for siblings by parent group code never matched anything, and applying an image could target a product that was not there. Only products genuinely in the same group are targeted now.
+- **Live rates get their own page** — moved out of the overlay into a page of its own. Choose a base currency and an amount, see the converted result across currencies at once, and copy either the rate or the converted figure.
+- **Connection status gets its own page** — the sync bus connection, heartbeat and latency have a page to themselves, and the overview keeps a readout card, so a dropped connection no longer has to be guessed at.
+- **A "More product information" section** — basics, origin, product size, shipping size, MSRP and VAT move into a collapsed section grouped by category, so they only take up room when you open them.
+- **A Nomu account card on the overview** — balance, credits and recent spending are visible from the overview, and whether you are signed in no longer takes a guess. "In progress" now says the same thing as the English build.
+- **Collecting no longer picks up the Edge add-on store page** — the store page could be captured as if it were an ordinary page; it is now excluded.
+- **The store listing has its one-line summary** — the extension now carries the short description the store listing needs, and the submission notes cover both the Chrome Web Store and Edge.
+
 ## 0.93.0 _2026-10-01_
 
 - **A new overview page** — one track shows this week's captured, drafts, in progress and listed side by side, so you can see at a glance which stage things are piling up in instead of doing the subtraction yourself.
