@@ -7,7 +7,7 @@ description: "NomuDesign is Nomu's AI product image workspace. Compose source im
 
 NomuDesign is Nomu's built-in AI workspace for product imagery. It is not a "one-click background swap" filter — it is a composable canvas: you wire source images, reference images, prompts, and generation nodes, the AI generates new images, and you push them back to the product gallery with one click.
 
-> A Nomu account is required to run generation — AI credits from [Account & credits](./account) will be consumed.
+> Without a signed-in Nomu account the whole design workspace is replaced by a sign-in wall. Once you are signed in you can run generation, which consumes AI credits from [Account & credits](./account).
 
 ## How to enter
 

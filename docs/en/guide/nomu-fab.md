@@ -24,6 +24,10 @@ The sheet is split into two groups:
 
 ## All entries
 
+### When signed out
+
+Without a signed-in Nomu account, the floating button on noon-catalog shows a single **Sign in** action — it opens a sign-in card, and one click takes you to the account page. The entries below only appear once you are signed in.
+
 ### Data & capture
 
 | Entry | Function |

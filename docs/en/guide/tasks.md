@@ -95,7 +95,7 @@ Send those four pieces plus the task ID back to the author and you'll get the fa
 
 ## Noon session state
 
-A persistent `NoonLoginBanner` sits at the top of the task panel:
+A persistent `NoonLoginBanner` sits at the top of the task panel (this one is about the Noon session — without a signed-in Nomu account the whole page is replaced by a sign-in wall, so you never see the banner):
 
 - **Not signed in to Noon** → red banner with a "Sign in now" CTA
 - **Signed in** → banner disappears automatically

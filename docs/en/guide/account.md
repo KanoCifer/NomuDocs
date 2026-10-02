@@ -1,29 +1,31 @@
 ---
 title: Account & AI credits
-description: "Nomu account and AI credits: capture, image work, listing and catalog browse need no sign-in. Only AI translation, NomuDesign generation and prompt optimization use an account, billed by credits."
+description: "Nomu account and AI credits: using Nomu requires signing in — capture, image work, listing and catalog browse included. AI translation, NomuDesign generation and prompt optimization are additionally billed by credits."
 ---
 
 # Account & AI credits
 
-The Nomu account is the identity in the Kanocifer user system v3. The Nomu tool itself (capture, image cleanup, listing, catalog browse) **does not require sign-in** — only AI features (translation, NomuDesign generation, prompt optimization) use the Nomu account.
+The Nomu account is the identity in the Kanocifer user system v3. Every page of the Nomu extension, the capture drawer, and the floating button **require sign-in**. AI features (translation, NomuDesign generation, prompt optimization) are additionally billed by credits.
 
 The Nomu account is fully independent of your Noon seller account: signing into Nomu does not read or affect your Noon session.
 
 ## Which features need sign-in
 
+Apart from the rows the Billing column marks as consuming credits, every other feature needs a signed-in Nomu account too — it just isn't billed.
+
 | Feature | Nomu sign-in required | Billing |
 | --- | --- | --- |
-| Capture from 1688 / Taobao / Tmall / JD / noon source | No | Free |
-| Local image compliance processing | No | Free |
-| Listing pipeline (product/create → activate) | No | Free |
-| Duplicate product | No | Free |
-| Catalog browse / quick search | No | Free |
-| Live FX rates | No | Free |
+| Capture from 1688 / Taobao / Tmall / JD / noon source | Yes | Free |
+| Local image compliance processing | Yes | Free |
+| Listing pipeline (product/create → activate) | Yes | Free |
+| Duplicate product | Yes | Free |
+| Catalog browse / quick search | Yes | Free |
+| Live FX rates | Yes | Free |
 | AI translation (Chinese → English / Arabic) | Yes | Consumes credits |
 | NomuDesign generation | Yes | Consumes credits |
 | AI prompt optimization | Yes | Consumes credits |
 
-When not signed in or the session has expired, translation, generation, and prompt optimization are unavailable. Capture, image cleanup, and listing are **not** affected.
+When you are not signed in, the extension's pages are replaced by a sign-in wall, and the capture drawer's form and action buttons are replaced by a sign-in card; the host product pages themselves (1688 / Taobao / Tmall / JD / noon.com) are unaffected and still browse normally.
 
 ## Sign-in methods
 
@@ -45,14 +47,14 @@ Two outbound links sit at the bottom of the account page, both pointing to the w
 
 Sign-up page: <https://nomu.kanocifer.chat/register>
 
-Capture, listing, and the rest of the main flow work without signing in. An account only unlocks AI translation, NomuDesign generation, and prompt optimization.
+An account is required before you can use any part of Nomu. AI translation, NomuDesign generation, and prompt optimization additionally consume credits.
 
 1. Fill in a username (3–50 characters), email, password (at least 6 characters), and the password confirmation
 2. Hit **Send code** next to the verification field, copy the 6 digits from the email, and paste them in. The button then runs a 60-second countdown before it can send again
 3. Click **Sign up**
 4. On the success card, **Install Nomu** jumps straight to the Chrome Web Store; **Back home** returns to the landing page
 
-A successful sign-up **does not create a session**. To start using the AI features, go back to the extension's account page and sign in once with the email you just registered (email link or verification code, your pick).
+A successful sign-up **does not create a session**. To start using Nomu, go back to the extension's account page and sign in once with the email you just registered (email link or verification code, your pick).
 
 The code is 6 digits and may start with a 0 — don't drop the leading digit.
 
@@ -72,7 +74,7 @@ Reset page: <https://nomu.kanocifer.chat/forgot-password> (the account page foot
 ## Session & multi-device
 
 - The session is stored under `chrome.storage.local` in the `noonTool.authSession` key. Both access and refresh tokens live locally.
-- **Single-session model**: signing in on a new device invalidates the old session (the backend uses a fixed `refresh:<uid>` key, so multiple ends push each other off).
+- **Multi-device model**: one account can stay signed in on up to 5 devices. Signing in on a new device does not invalidate existing sessions, and signing out on a device clears only that device's session.
 - Logout clears local tokens immediately; the extension, account page, and task panel all log out together.
 
 ## AI credits card
@@ -113,7 +115,6 @@ AI requests carry idempotency keys — timeout retries do not double-charge; the
 ### Signed in but still seeing `auth_required`?
 
 - Check `chrome.storage.local`'s `noonTool.authSession` — it may have been cleared by another extension or a cleanup tool
-- Signing in on another device kicks the old session off — make sure no other device is logged in
 
 ### Credits went negative?
 
@@ -125,7 +126,7 @@ Logout only clears local tokens. To fully delete the account, email the admin.
 
 ### Do I still need to sign in after signing up?
 
-Yes. Sign-up only creates the account on the website and creates no session; the AI features need one sign-in from the extension's account page.
+Yes. Sign-up only creates the account on the website and creates no session; you sign in once on the extension's account page, and every feature unlocks after that.
 
 ### The verification email never arrived
 

@@ -9,6 +9,8 @@ description: "Nomu 复制商品：按 PartnerSku 拉取已上架商品的完整�
 
 适用场景：同款商品要在 UAE / Saudi 双站都上、要把一个老 partnerCode 下的爆款搬到新 partnerCode、或者店铺之间迁品。
 
+> 需要登录 Nomu 账户才能用；未登录时该页面被登录墙替换。
+
 ## 入口
 
 复制入口在 noon-catalog 卖家目录页：

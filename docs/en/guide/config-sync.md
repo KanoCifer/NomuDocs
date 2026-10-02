@@ -67,4 +67,4 @@ A toast shows the error (network, auth, parameter validation, etc.) and local da
 
 ### Don't want cloud sync?
 
-Totally optional — if you never upload, nothing leaves your browser. No Nomu feature depends on cloud sync.
+Not syncing sends nothing extra — but signing in itself submits your email and token to the account service. No Nomu feature depends on cloud sync.

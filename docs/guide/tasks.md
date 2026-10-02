@@ -95,7 +95,7 @@ description: "Nomu 任务面板：跨页面、跨会话、跨店铺查看全部�
 
 ## Noon 登录态
 
-任务面板顶部固定挂着 `NoonLoginBanner`：
+任务面板顶部固定挂着 `NoonLoginBanner`（这一横幅说的是 Noon 登录；Nomu 账户未登录时整页会被登录墙替换，根本看不到它）：
 
 - **未登录 Noon** → 顶部红 banner 提示「立即登录」
 - **登录后** → banner 自动消失

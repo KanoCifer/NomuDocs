@@ -63,7 +63,9 @@ The bottom floating island can be turned off:
 | Push side | Any capturing device | Must have a source PSKU (an already-listed Noon product) |
 | Landing side | Claim device's local batch | Target PartnerSku's already-listed product (upsert semantics) |
 | What runs after | Capture → listing after claim | Joins the publishTask step table directly |
-| Sign-in required | Yes | No |
+| Sign-in required | Yes | Yes |
+
+Both require a signed-in Nomu account; the difference is that the cloud pool stores the draft server-side, while Duplicate product writes straight to an existing Noon product.
 
 ## FAQ
 

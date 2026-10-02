@@ -1,11 +1,15 @@
 ---
 title: "Quick start"
-description: "Nomu quick start: capture from a 1688, Taobao or JD product page, review items in the draft list, then publish to Noon. Three steps to ship your first batch."
+description: "Nomu quick start: sign in to your Nomu account, capture from a 1688, Taobao or JD product page, review items in the draft list, then publish to Noon."
 ---
 
 # Quick start
 
-Three steps to ship a batch: capture → confirm → publish.
+Sign in, then ship a batch: sign in → capture → confirm → publish.
+
+## 0. Sign in to your Nomu account (once)
+
+Open the extension's **Account** page and sign in with an email code or an email link — neither needs a password. Nothing in Nomu works until you are signed in; AI translation, NomuDesign generation, and prompt optimization are then billed by credits on top of that. See [Account & AI credits](/en/guide/account).
 
 ## 1. Capture from the source page
 
@@ -50,7 +54,7 @@ For Noon — no. Nomu operates through your already-signed-in Noon session, so y
 
 ### Do I need a Nomu account?
 
-AI translation, NomuDesign generation, and prompt optimization require a Nomu account — sign in with an email code or an email link, sign up on the website. Without an account, capture, image cleanup, and listing still work. The account only covers authentication and credit billing for those AI features — see [Account & AI credits](/en/guide/account).
+Yes — every part of Nomu needs a signed-in Nomu account. Sign up on the website, then sign in on the extension's account page with an email code or an email link. Signed out, the pages show a sign-in wall. AI translation, NomuDesign generation, and prompt optimization are then billed by credits on top of that. See [Account & AI credits](/en/guide/account).
 
 ### How good is the translation? Do I still need to proofread?
 

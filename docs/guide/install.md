@@ -5,7 +5,7 @@ description: "Nomu 安装教程：从 Chrome Web Store 安装面向 Noon 卖家�
 
 # 安装 Nomu
 
-Nomu 已上架 Chrome Web Store，整个安装过程不到一分钟。
+Nomu 已上架 Chrome Web Store，安装本身不到一分钟，登录一次 Nomu 账户后即可开始。
 
 ## 安装步骤
 
@@ -31,6 +31,10 @@ https://chromewebstore.google.com/detail/nomu/idfojgkppleknejhenmggcnnnmdglaik
 
 安装完成后，点浏览器工具栏的拼图图标 🧩，把 Nomu 固定住，方便随时打开侧栏店铺面板。
 
+### 5. 登录 Nomu 账户
+
+打开扩展的「账户」页（独立页 `account.html`，入口在工具条弹窗、操作菜单与在线状态弹窗），用邮箱验证码或邮件链接登录——两种方式都不用密码。没登录之前，功能页与采集抽屉只会显示登录卡。详见[账户与 AI 积分](./account)。
+
 ## 常见问题
 
 ### 商店页打不开？
@@ -52,7 +56,7 @@ Chrome 会自动更新已安装的扩展；也可以在 `chrome://extensions` �
 
 ### 图标点了没反应？
 
-Nomu 的主界面挂在源商品页（1688 / 淘宝 / 天猫 / 京东 / noon.com）和 Noon 卖家目录页上——先登录 Noon，再打开对应页面即可看到。
+Nomu 的主界面挂在源商品页（1688 / 淘宝 / 天猫 / 京东 / noon.com）和 Noon 卖家目录页上——先登录 Noon，再打开对应页面即可看到。首次使用还需在扩展账户页登录 Nomu 账户，否则功能页与采集抽屉只会显示登录卡。
 
 ## 其他问题
 

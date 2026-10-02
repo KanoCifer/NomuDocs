@@ -30,7 +30,7 @@ Nomu runs one main line — "1688 / Taobao / Tmall / JD / noon source product �
 | Detect from current page | One-click recognize and save the store code from the active noon-catalog tab | [Store management](./stores) |
 | FBP warehouse snapshot | Pull and store the FBP warehouse list; pick directly during publishing | [Store management](./stores) |
 | Noon session detection | Banner in tasks / popup surfaces the seller's Noon session state | [Task panel](./tasks) |
-| Nomu account | Required for translation, image generation, prompt optimization, AI credits | [Account & credits](./account) |
+| Nomu account | Required to use any part of Nomu; balance and history are on the account page | [Account & credits](./account) |
 | AI credits card | Balance + latest 10 transactions (translation / prompt optimization / generation) | [Account & credits](./account) |
 
 ## Catalog browse & search
@@ -63,6 +63,6 @@ Nomu runs one main line — "1688 / Taobao / Tmall / JD / noon source product �
 ## General guarantees
 
 - **Request allow-list** — every request URL to Noon / 1688 / Taobao / Tmall / JD / the Nomu backend is gated by a hardcoded allow-list. Anything outside is rejected.
-- **Local-first data** — store records, batch drafts, NomuDesign drafts, and Nomu account tokens live in your browser. No analytics, no tracking. See the [Privacy policy](/en/privacy/).
+- **Local-first data** — store records, batch drafts, NomuDesign drafts, and Nomu account tokens live in your browser. No analytics, no tracking. Once you sign in, account tokens and the upstream content of AI calls go to the account service — see the [Privacy policy](/en/privacy/).
 - **Cookie channel** — operates through your browser's already-signed-in Noon session. Nomu itself never stores Noon credentials.
 - **Dark mode** — the UI follows the system `prefers-color-scheme: dark` setting.

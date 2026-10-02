@@ -21,9 +21,10 @@ hero:
 
 # Hero flow strip: how the first item gets out
 flow:
-  title: Your first listing, five steps
+  title: Your first listing, six steps
   steps:
     - Install the extension
+    - Sign in to Nomu
     - Sign in to Noon
     - Capture a source item
     - Translate · images · category

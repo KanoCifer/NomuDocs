@@ -9,6 +9,8 @@ description: "Duplicate product pulls a complete snapshot from an already-listed
 
 Typical scenarios: the same item listed on both UAE / Saudi, moving a hit from an old PartnerCode to a new one, or migrating inventory between stores.
 
+> A signed-in Nomu account is required; without one the page is replaced by a sign-in wall.
+
 ## Entry
 
 The duplicate entry lives on the noon-catalog seller catalog page:

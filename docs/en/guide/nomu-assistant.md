@@ -56,7 +56,7 @@ Only the session id, title, and time are stored locally. The conversation body i
 
 ## Sign-in
 
-The assistant needs a signed-in Nomu account. When you are signed out or the session has expired, the composer is disabled and reads "Sign in to your Nomu account" — sign in on the [account page](./account) and come back.
+The assistant needs a signed-in Nomu account. When you are not signed in, the whole assistant page is replaced by a sign-in wall. Sign in on the [account page](./account) and come back.
 
 Once signed in, the sidebar and message bubbles show your own username as the avatar.
 

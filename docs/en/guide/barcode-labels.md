@@ -46,7 +46,7 @@ The assistant lists what it's about to generate and confirms with you first.
 - **Bad specs get called out**: when the module width falls below what a scanner can physically read, the assistant gets a warning and passes it on, so you can switch to a bigger label or a higher DPI. You won't get a label that prints and then won't scan.
 
 ::: warning Login required
-The assistant needs a signed-in Nomu account. Without one the tool isn't available.
+Both the standalone page and the assistant require a signed-in Nomu account. Signed out, opening either one just shows a sign-in card.
 :::
 
 ## Getting in
@@ -114,4 +114,4 @@ The cap is 200 per call. The assistant will tell you to split it; once you say h
 
 - [Nomu assistant](./nomu-assistant) — where batch barcode generation lives
 - [Feature overview](./features) — full index of Nomu capabilities
-- [Account and AI credits](./account) — the assistant requires a login
+- [Account and AI credits](./account) — both the page and the assistant require sign-in

@@ -22,7 +22,7 @@ Nomu is a Chrome extension built for Noon sellers (UAE / Saudi) that turns a sou
 
 ## How it works
 
-Nomu does not require extra credentials. It coexists with the seller's normal workflow:
+Nomu needs a free Nomu account, but no API keys and no OAuth grants. On the Noon side it simply coexists with the seller's normal workflow:
 
 1. The extension's service worker issues requests directly to Noon's APIs. `credentials: "include"` carries the seller's already-signed-in Noon cookie, so no Noon tab has to be open.
 2. A 401 / 403 response is treated as an expired Noon session: it is not retried, and instead refreshes the auth probe and opens the login page automatically (not repeated in quick succession).

@@ -22,7 +22,7 @@ Nomu 是面向 Noon 卖家合作平台（UAE / Saudi）的商品上架 Chrome �
 
 ## 工作原理
 
-Nomu 不要求额外凭证，而是与卖家日常操作共生：
+Nomu 需要一个免费的 Nomu 账户，但不需要任何 API 密钥或 OAuth 授权；面向 Noon 的一侧完全与卖家日常操作共生：
 
 1. 扩展的 Service Worker 直接向 Noon 接口发起请求，`credentials: "include"` 会自动携带卖家已登录的 Noon Cookie，不依赖打开的 Noon 页面。
 2. 返回 401 / 403 视为 Noon 会话失效：不再重试，改为刷新登录态探针并自动打开登录页（短时间内不重复弹）。

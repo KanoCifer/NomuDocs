@@ -7,6 +7,12 @@ description: "The Nomu changelog records every noteworthy version change — fea
 
 Every noteworthy version change is recorded here.
 
+## 0.95.1 _2026-10-02_
+
+- **You see the interface before signing in** — pages are no longer blank. The ten standalone pages, the popup's store slot, the capture drawer and the floating button all show a sign-in card saying "Sign in to your Nomu account", and one click takes you there.
+- **Accounts no longer knock each other off** — one account can stay signed in on up to 5 devices. Signing in on a new device doesn't log the old one out, and signing out on a device clears only that one.
+- **A reworked sign-in page** — the email-code and passwordless sign-in options are laid out anew, and the register and forgot-password links are sorted out along with them, so the whole page is easier to read.
+
 ## 0.94.0 _2026-10-02_
 
 - **Nomu Design on the overview page** — the overview opens the design workspace directly, where you pick the product before entering the canvas, instead of hunting for that product on some other page first. With nothing picked yet, "Select product" sits right in the middle rather than an empty canvas that looks broken. The pill in the header is itself the switch-product control, and the link follows along when you switch.

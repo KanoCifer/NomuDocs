@@ -5,7 +5,7 @@ description: "Install Nomu from the Chrome Web Store in under a minute. Step-by-
 
 # Install Nomu
 
-Nomu is on the Chrome Web Store. The whole install takes less than a minute.
+Nomu is on the Chrome Web Store. The install itself takes less than a minute, and you can start as soon as you have signed in to a Nomu account.
 
 ## Steps
 
@@ -31,6 +31,10 @@ Review the permissions in the prompt, then click **Add extension** to finish the
 
 After install, click the puzzle icon 🧩 in your toolbar and pin Nomu so the side panel is always one click away.
 
+### 5. Sign in to your Nomu account
+
+Open the extension's **Account** page (standalone `account.html`, entry points: toolbar popup / action menu / online status modal) and sign in with an email code or an email link — neither needs a password. Until you do, the pages and the capture drawer only show a sign-in card. See [Account & AI credits](./account).
+
 ## FAQ
 
 ### Store page won't open?
@@ -52,7 +56,7 @@ Chrome auto-updates installed extensions. You can also force a check on `chrome:
 
 ### I click the icon and nothing happens?
 
-Nomu's UI lives on source product pages (1688, Taobao/Tmall, JD.com or noon.com) and the Noon seller catalog. Sign in to Noon first, then open one of those pages.
+Nomu's UI lives on source product pages (1688, Taobao/Tmall, JD.com or noon.com) and the Noon seller catalog. Sign in to Noon first, then open one of those pages. On first run you also need to sign in to a Nomu account on the extension's account page — otherwise the pages and the capture drawer only show a sign-in card.
 
 ## Other questions
 

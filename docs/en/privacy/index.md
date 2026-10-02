@@ -5,7 +5,7 @@ description: "The Nomu privacy policy explains which data is processed, where it
 
 # Privacy policy
 
-> **Note: this English version is a machine translation for reference. The authoritative version is the Chinese one at [/privacy/](/privacy/).** Last updated: 2026-09-30
+> **Note: this English version is a machine translation for reference. The authoritative version is the Chinese one at [/privacy/](/privacy/).** Last updated: 2026-10-02
 
 A tool that does your bidding shouldn't ask for blind trust. This document explains what data Nomu processes, where it goes, and what we will never see.
 
@@ -15,14 +15,14 @@ A tool that does your bidding shouldn't ask for blind trust. This document expla
 
 ## The Nomu account
 
-Translation, NomuDesign (generation / prompt optimization), the right-click "AI parse product draft" action, and the Nomu assistant all require signing in to a Nomu account. The relationship between the account and the listing flow is:
+Every page of the Nomu extension, the capture drawer, and the floating button all require you to sign in to a Nomu account. Sign-up and sign-in work like this:
 
 - **Sign up** happens on the website (`nomu.kanocifer.chat/register`) and needs a username, email, email verification code, and password. **Sign in** happens on the extension's account page and supports either an email verification code or an email link (click the link in the email to confirm). Neither needs a password.
 - The password is submitted over HTTPS to the account service (`api.kanocifer.chat`) only by the sign-up and password-reset forms on the website. The extension itself neither collects nor stores your password.
 - After sign-in, the access and refresh tokens are stored in your browser's local storage and are used only to identify you to Nomu services. Logging out clears them locally.
-- The account follows a **single-session** model: signing in on a new device invalidates the old session.
+- The account follows a **multi-device** model: one account can stay signed in on up to 5 devices, and signing in on a new device does not invalidate existing sessions. Signing out on a device clears only that device's session.
 - The Nomu account is fully independent of your Noon sign-in: signing into Nomu does not read or affect your Noon session.
-- When not signed in, or when the session has expired, translation, generation, prompt optimization, right-click parsing, and the assistant are unavailable. Regular capture, image cleanup, and listing are not affected.
+- When you are not signed in, the extension's pages show a sign-in prompt, and the capture drawer's form and submit buttons likewise require you to sign in first. **The host product pages themselves (1688 / Taobao / Tmall / JD / noon.com) are not affected** — you can browse and view products normally before signing in; only the capture and action features Nomu adds to those pages need an account.
 
 ## Where data goes
 
@@ -168,6 +168,11 @@ The extension's cross-origin access is limited to: noon.partners, alicdn.com, 36
 Access to Noon APIs is gated by a URL allow-list. Anything outside is rejected.
 
 ## Changelog
+
+- 2026-10-02 — Sign-in gating is now at every entry point: when signed out, the extension's pages, capture drawer and floating button all require an account.
+  1. **Pages**: the ten standalone extension pages — dashboard, tasks, options, nomu-catalog, nomu-design, nomu-agent, nomu-fx, nomu-pricing, duplicate, barcode — are replaced in full by a sign-in wall. The popup keeps its brand header and dock navigation, with the store carousel position replaced by a sign-in card. The capture drawer keeps its shell and close button, with the form and action buttons replaced by a sign-in card. The noon-catalog floating button collapses to a single "Sign in" action.
+  2. **Account model corrected**: the "single session" description is corrected to "multi-device" — one account can stay signed in on up to 5 devices, signing in on a new device does not affect existing ones, and signing out on a device clears only that device.
+  3. **Host pages are unaffected**: 1688 / Taobao / Tmall / JD / noon.com product pages browse normally as before — this is unchanged.
 
 - 2026-09-30 — Three previously undisclosed data flows documented, plus two corrections.
   1. **New "Cloud pool" section**: the output of the right-click "AI parse product draft" action is saved server-side via the account service and synced across devices under your own account over an account-authenticated connection (`v3/nomu/sync/ws`). Items carry the writer's `device_id` and device name, and are removed from the account's other devices once claimed. **Not shared with other Nomu accounts.**
