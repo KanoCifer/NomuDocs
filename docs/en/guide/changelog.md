@@ -7,6 +7,14 @@ description: "The Nomu changelog records every noteworthy version change — fea
 
 Every noteworthy version change is recorded here.
 
+## 0.96.0 _2026-10-03_
+
+- **An announcement board on the overview page** — platform announcements sit in a running list at the top of the overview, each with its type tag and time. Click a row to mark it read, and marked rows recede into the background; what you have read is remembered, so a refresh, a closed page, or coming back tomorrow still shows the same ones as read. Collapsed it shows the 3 most recent, expandable to all of them, with one click to mark everything read. With no announcements the whole block stays away and takes no space.
+- **The account page gives its width back to the content** — the sidebar narrows from 200px to a 56px icon rail, so the content pane fills the whole window and only the content side scrolls while the rail stays put. On a narrow window the rail becomes a horizontal row instead of standing as a lonely thin strip.
+- **The popup's lower half is reorganised** — the entry area is no longer a set of eight bordered boxes competing with each other. It now relies on whitespace alone, in two rows of four: the top row is the work you do daily (Overview, Tasks, Pricing, Rates), the bottom row is tools and settings. The gaps are even by construction, so they stay even in English copy too.
+- **Switching stores now looks like a shipping docket** — the store card in the carousel takes the form of a cross-border shipping docket: header tag, number, note, routing mark and serial number, with the numbers and the serial set in tabular figures so they line up when you scan them. The active store is marked with a yellow block. With no store, or only one, the paging controls stay away.
+- **The popup shows its version at the bottom** — so a bug report can name the build you are actually on.
+
 ## 0.95.1 _2026-10-02_
 
 - **You see the interface before signing in** — pages are no longer blank. The ten standalone pages, the popup's store slot, the capture drawer and the floating button all show a sign-in card saying "Sign in to your Nomu account", and one click takes you there.
@@ -106,6 +114,10 @@ Every noteworthy version change is recorded here.
 - **Email code sign-in** — the account page drops password sign-in and now offers "email link" and "email code" instead; sign-up and password reset moved to the nomu.kanocifer.chat website.
 - **Warranty write fix** — fixes warranty settings failing to save in some cases.
 - **Product list and drawer polish** — refined interaction feedback in the product list and single-product drawer, and category selection now tracks the form more responsively.
+
+## 0.85.2 _2026-09-21_
+
+- **Warranty now saves** — the warranty duration in months used to be sent as text, which the platform rejected as a malformed value, so publishing stalled at the warranty step. It is now sent as a number.
 
 ## 0.85.0 _2026-09-20_
 
