@@ -1,41 +1,37 @@
 ---
 title: Keyboard shortcuts
-description: "Nomu keyboard shortcuts: a list of global Chrome commands covering capture, batch listing, catalog browse and quick search, rebindable from chrome://extensions/shortcuts."
+description: "Nomu keyboard shortcuts: three global Chrome commands for the action menu, quick search and the floating button toggle, rebindable from chrome://extensions/shortcuts."
 ---
 
 # Keyboard shortcuts
 
-Nomu binds common actions to global Chrome commands — not page-specific — so they work everywhere. The commands are defined in `wxt.config.ts` under `manifest.commands` and are visible alongside everything else in the Chrome commands panel (`chrome://extensions/shortcuts`). You can rebind them there.
+Nomu puts its common actions on global Chrome commands. You rebind them in `chrome://extensions/shortcuts`.
 
 ## Command list
 
 | Command | mac | Windows / Linux | Action |
 | --- | --- | --- | --- |
-| Open Nomu catalog browse | `⌘ + Shift + O` | `Ctrl + Shift + O` | Open the catalog browse side panel on the current page ([Catalog browse](./catalog-browse)) |
-| Open action menu | `⌘ + Shift + P` | `Ctrl + Shift + P` | Trigger the action sheet; from a product page it jumps straight to listing / duplicate / NomuDesign |
-| Open QuickSearch | `⌘ + Shift + S` | `Ctrl + Shift + S` | Trigger the quick search overlay ([Quick search](./quick-search)) |
-| Hide / show Nomu floating button | `Alt + Shift + H` | `Alt + Shift + H` | Toggle the floating entry's visibility in the bottom-right corner |
-
-> All 4 commands are `global` level (they fire even when Chrome is not focused), but the **current** default `Ctrl/⌘ + Shift + Y` for opening the side panel appears **additionally** on the Welcome onboarding page and in the manifest — it is a different entry from **Open Nomu catalog browse**: the former goes through `sidePanel.open()`, the latter through the catalog-browse entry in the action sheet.
+| Open action menu | `⌘ + Shift + P` | `Ctrl + Shift + P` | Open the action sheet; from a product page it takes you straight to listing, duplicate, NomuDesign |
+| Open QuickSearch | `⌘ + Shift + S` | `Ctrl + Shift + S` | Open the quick search overlay ([Quick search](./quick-search)) |
+| Hide / show Nomu floating button | `Alt + Shift + H` | `Alt + Shift + H` | Show or hide the floating button in the bottom-right corner |
 
 ## Behavior details
 
-- Command conflicts are silently dropped by Chrome; rebind from `chrome://extensions/shortcuts`.
-- Shortcuts work whenever Chrome is focused; they also respond when focus is inside a Noon backend or 1688 source page.
-- `Alt + Shift + H` toggles the floating entry in the bottom-right corner only. It does not affect popup / side panel / other shortcuts.
+- Shortcuts respond on Noon seller backend pages. Press them on other sites and nothing happens
+- If a command collides with another extension, Chrome drops it silently. Rebind it from `chrome://extensions/shortcuts`
+- `Alt + Shift + H` only toggles the floating button in the bottom-right corner. It leaves the popup, the overlays and the other shortcuts alone
 
 ## Rebinding
 
-Open `chrome://extensions/shortcuts` (on Mac: Chrome menu → Tools → Extension shortcuts), find the **Nomu** group, and rebind. Nomu does not store keybindings — Chrome persists them.
+Open `chrome://extensions/shortcuts` (on Mac: Chrome menu → Tools → Extension shortcuts), find the Nomu group, and set the keys you want. Chrome stores the keybindings, not Nomu.
 
 ## FAQ
 
 ### Pressed but nothing happens?
 
 - Make sure Chrome is the focused window
-- Check `chrome://extensions/shortcuts` — the command may be set to "Unassigned" or taken by another extension
-- Search command names with the "Nomu" prefix
+- Check `chrome://extensions/shortcuts`. The command may be set to "Unassigned", or another extension may have taken it
 
 ### Want more shortcuts?
 
-The Welcome onboarding's "Shortcuts" panel only shows the four above; there are no more bindings right now. Reach out if you want one added.
+There are only the three above today. Tell us what you need.

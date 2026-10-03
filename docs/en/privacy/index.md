@@ -1,6 +1,6 @@
 ---
 title: "Privacy policy"
-description: "The Nomu privacy policy explains which data is processed, where it goes and what the tool never sees. No tracking or analytics; the cloud pool, assistant conversations and the upstream content of all five AI call types are spelled out item by item."
+description: "The Nomu privacy policy explains which data is processed, where it goes and what the tool never sees. No tracking or analytics; the cloud pool, assistant conversations and the upstream content of all five AI call types are spelled out item by item, along with the third-party model providers the calls are passed to and what each of them receives."
 ---
 
 # Privacy policy
@@ -11,7 +11,7 @@ A tool that does your bidding shouldn't ask for blind trust. This document expla
 
 ## One-line summary
 
-**Store settings and batch drafts stay local by default · No tracking or analytics · Capture supports 1688 / Taobao / Tmall / JD.com · There are exactly five AI call types that reach the cloud, and the upstream content of each is spelled out · Product drafts parsed via right-click are stored server-side, but are available only to other devices under your own account.**
+**Store settings and batch drafts stay local by default · No tracking or analytics · Capture supports 1688 / Taobao / Tmall / JD.com · There are exactly five AI call types, handed to third-party model providers, and the upstream content of each is spelled out · Product drafts parsed via right-click are stored server-side, but are available only to other devices under your own account.**
 
 ## The Nomu account
 
@@ -57,7 +57,7 @@ On sign-in and sign-up, the following information is submitted over HTTPS to the
 
 ### Nomu AI services (sign-in required)
 
-The following five call types are handled by Nomu's built-in services. Requests carry your account access token, used only for authentication and credit deduction. **The upstream content of each is listed below — please pay particular attention to types 4 and 5:**
+The following five call types are received by Nomu's cloud service and then **passed to third-party model providers** (see "Third-party model providers" below for the mapping). Requests carry your account access token for authentication and credit deduction; **the token goes only to Nomu's cloud and is never forwarded to a model provider**. **The upstream content of each is listed below — please pay particular attention to types 4 and 5:**
 
 - **Translation** — uploads the product text to translate (title, description); receives the translation back.
 - **Prompt optimization** — uploads the prompt text; receives the rewritten prompt back.
@@ -66,6 +66,27 @@ The following five call types are handled by Nomu's built-in services. Requests 
 - **Assistant Q&A** (`v2/knowledge/ask`) — see the "Nomu assistant" section below.
 
 For the first three types, beyond what authentication and billing require, requests do not carry your store configuration, batch drafts, or other local data. **Product parsing and assistant Q&A necessarily carry content you actively provide** — respectively the body text and viewport screenshot of the page you right-clicked, and your questions.
+
+### Third-party model providers
+
+Nomu's cloud does not train its own models. The five AI call types are passed to the following third-party providers by type. **Your account token, store configuration, batch drafts and sign-in details are never sent to them:**
+
+| Call type         | Provider                                     | Sent to the provider                                                                                                                                                                                   | Returned to you                                                  |
+| ----------------- | -------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ----------------------------------------------------------------- |
+| Translation       | DeepSeek                                     | The product title and description to translate                                                                                                                                                             | The translation                                                  |
+| Prompt optimisation | DeepSeek                                   | The prompt text                                                                                                                                                                                         | The rewritten prompt                                            |
+| Assistant Q&A     | DeepSeek                                     | Your question, plus the conversation context of that session                                                                                                                                             | The streamed answer                                              |
+| Product parsing   | DeepSeek                                     | Page URL, title, description, price and currency, JSON-LD (up to 5 entries), primary images (up to 20), page images (up to 40), **the full body text of the page**, **a full screenshot of your current viewport (base64 JPEG)** | The parsed product draft (also written to your own cloud pool)      |
+| Image gen `Doubao-*` | Volcengine Ark (Doubao Seedream 5.0 / 5.0-pro) | The image prompt, optional reference images (URL or base64), and the size tier                                                                                                                       | The generated image, stored on Nomu's own media storage          |
+| Image gen `gpt-image-*` | apiyi                                    | The image prompt and optional reference images (multipart upload)                                                                                                                                      | The generated image, stored on Nomu's own media storage          |
+
+A few notes on image generation:
+
+- **Routing follows the model**: whichever model you pick in NomuDesign decides who runs it — `Doubao-*` goes to Ark, `gpt-image-*` goes to apiyi. The two hold independent keys and can both be in use.
+- **Reference images** are only used for that one generation. **We do not retain them on our own servers**, but they are sent with the request to the image provider listed above, which performs the generation.
+- **Results are re-hosted immediately**: the image URL a provider returns is temporary (apiyi's expires in about 24 hours), so the cloud copies it straight to Nomu's own media storage (`api.kanocifer.chat/v3/media/design/*`) and gives the extension only that first-party address.
+
+**Upstream retention and training**: we do not know how the third-party providers retain logs internally or whether they use requests for training, and we cannot commit on their behalf. Their terms may change at any time. Assess the risk yourself before using the entry points that carry sensitive content (page body text, viewport screenshots, assistant questions, reference images); each provider's terms are whatever its own published privacy policy and terms of service say.
 
 ### AI credits & consumption history (persisted on the account side)
 
@@ -104,7 +125,7 @@ The Nomu assistant is a Q&A assistant backed by a server-side knowledge base. It
 - **Knowledge base status**: `v2/knowledge/status` reads ingestion progress; `v2/knowledge/ingest` triggers an incremental ingestion run. The knowledge base is maintained by the author and is not built from your data.
 - The assistant consumes credits; no request is made when signed out or out of credits.
 
-Note that your questions leave your machine and are stored on the server. **Do not submit sensitive information to the assistant.** To delete a session, contact the author by email (see end of document).
+Note that your questions leave your machine, **are sent to DeepSeek to run the inference, and are persisted server-side**. **Do not submit sensitive information to the assistant.** To delete a session, contact the author by email (see end of document).
 
 ## What we will never see
 
@@ -112,7 +133,7 @@ Note that your questions leave your machine and are stored on the server. **Do n
 - Any Noon-facing keys or OAuth grants
 - Any tracking, analytics, or telemetry data
 - Your browsing history or unrelated site cookies
-- NomuDesign reference images (not retained server-side)
+- NomuDesign reference images (we do not retain them on our own servers; they are sent only with the image-generation request to whichever image provider is being used)
 
 ## Exceptions you should know about
 
@@ -123,9 +144,10 @@ The items below **do** leave your device and are stored on the server. They are 
 | Body text and full-viewport screenshot of the page you right-clicked | Nomu AI service (product parsing) | The parsing process |
 | Product draft produced by right-click parsing, plus the writing device's `device_id` and device name | Cloud pool | **Only other devices under your own account** |
 | Your assistant questions and answers | Nomu assistant service | Persisted server-side, read back by `session_id` |
-| Email, email verification code, account access token | Account service | Required for account authentication and billing |
+| The upstream content of the five AI calls above | Third-party model providers | Only to run that inference — see "Third-party model providers" |
+| Email, email verification code, account access token | Account service | Required for account authentication and billing; not forwarded to model providers |
 
-None of the above is **shared with third parties**: the server side is the publisher's own account service, and access is isolated by account token.
+None of the above is **shared with third parties**: the server side is the publisher's own account service, and access is isolated by account token. The one exception is the second-to-last row: **to complete an AI call you started, its input is submitted to the matching model provider** — see "Third-party model providers" above.
 
 ## Permissions
 
@@ -161,13 +183,20 @@ We do not request sensitive permissions like `cookies` or `tabs`: the extension 
 | Nomu media storage | Storage for NomuDesign-generated images |
 | Nomu product parsing service | Asynchronous parsing for the right-click "AI parse product draft" action, and writing the result to the cloud pool |
 | Nomu assistant service | Knowledge-base Q&A, session read-back and ingestion status |
+| DeepSeek | Model inference for translation, prompt optimisation, product parsing and assistant Q&A |
+| Volcengine Ark | Product image generation for `Doubao-*` models |
+| apiyi | Product image generation for `gpt-image-*` models |
 | FX service | Convert local-currency prices during listing |
 
 The extension's cross-origin access is limited to: noon.partners, alicdn.com, 360buyimg.com, f.nooncdn.com, api.kanocifer.chat. The Noon store, 1688, Taobao / Tmall, and JD.com are not in the list — their product data is read in-page by content scripts in the same origin, scoped to the current product page. Other sites are only temporarily accessed when you actively trigger "capture current page" (see Permissions).
 
 Access to Noon APIs is gated by a URL allow-list. Anything outside is rejected.
 
+The **DeepSeek, Volcengine Ark and apiyi** rows above are calls made by the **cloud service** to its model providers, not requests from the extension, so they do not appear in the extension's cross-origin access list.
+
 ## Changelog
+
+- 2026-10-03 — Added a "Third-party model providers" section. All five AI call types are handed by the cloud to third-party providers, listed by type with what each receives: translation, prompt optimisation, assistant Q&A and product parsing go to DeepSeek, while image generation is routed by model to Volcengine Ark (`Doubao-*`) or apiyi (`gpt-image-*`). Three previously misleading statements are corrected: the "Nomu AI services" section now says the calls are passed on and that the account token is not forwarded; the reference-image entry under "What we will never see" now reads "not retained on our own servers, but sent with the image request to the image provider"; and "Exceptions you need to know about" gains a row for the upstream content of AI calls, which is now the only outbound disclosure. The sites-accessed table gains the three providers, noted as cloud-side calls that are not part of the extension's cross-origin permissions.
 
 - 2026-10-02 — Sign-in gating is now at every entry point: when signed out, the extension's pages, capture drawer and floating button all require an account.
   1. **Pages**: the ten standalone extension pages — dashboard, tasks, options, nomu-catalog, nomu-design, nomu-agent, nomu-fx, nomu-pricing, duplicate, barcode — are replaced in full by a sign-in wall. The popup keeps its brand header and dock navigation, with the store carousel position replaced by a sign-in card. The capture drawer keeps its shell and close button, with the form and action buttons replaced by a sign-in card. The noon-catalog floating button collapses to a single "Sign in" action.

@@ -1,100 +1,104 @@
 ---
 title: Group & sizes variants
-description: "Group and sizes variants in Nomu: two parallel paths for publishing multiple same-product-different-spec items on Noon, compared across platform UI, data shape, configuration and use case."
+description: "Group and sizes variants in Nomu: two ways to publish several versions of the same product together on Noon, with where each one is configured and what limits each one has."
 ---
 
 # Group & sizes variants
 
-When listing multiple same-product-different-spec items on Noon, Nomu provides two parallel "variants" paths. Both group several items for one publish, but the semantics, the platform's data shape, and where you configure them all differ:
+When you publish several versions of the same product, Nomu gives you two ways to hold them together. They sit side by side as separate tabs on the Noon backend, and they differ in where you configure them and what they let you do:
 
-| Path | Platform UI | Platform artifact | Per-item independence | Typical scenario |
+| Path | Noon backend | Code marker | Each product | Typical use |
 | --- | --- | --- | --- | --- |
-| Group | Noon backend Group Tab | `skuGroup` (`ZD…`) | Kept: each item walks its own `product/create` chain | Same product, multiple sizes / models, color series |
-| Sizes | Noon backend Sizes Tab | `parentGroupKey` / `skuParent` (`ZA…`) | Children inherit parent, price is independent | Standard size tables (clothes / shoes) |
+| Group | Group tab | Group product codes start with `ZD` | Published on its own, one failure doesn't touch the rest | Same product in several sizes or models, a colour range |
+| Sizes | Sizes tab | Variant parent codes start with `ZA` | Children hang off the parent | Standard size tables (clothes, shoes) |
 
-The two paths **do not interfere** — single-product listing (neither grouped nor with size variants) still walks the original pipeline. Nothing is mandatory.
+A plain single product that uses neither path publishes exactly as it always did.
 
 ## Group listing
 
 ### When to use
 
-Multiple products of the "same brand, same category", each with its own PartnerSku and images, but the **title / description / selling points / category / department** must stay aligned. Grouping makes the buyer see one unified PDP with selectable variants underneath.
+Several products of the same brand and category, each with its own SKU and images, but the title, description, selling points, category, and department need to stay aligned. Grouping gives buyers one product page with the variants listed underneath it.
 
 ### How it runs
 
-1. Capture or create multiple same-product items
-2. Check the ones to group in the listing drawer
-3. Set the "group name" (`partnerRef`) and the "specification axis" (`size` / `model_name` / `colour_name`)
-4. After submission, the engine walks the group path: the **first item** does `group/upsert` to create the group and get a `skuGroup` (`ZD…`); **subsequent items** join with that `skuGroup`; each item additionally writes its own axis value after joining
+Open the action menu and pick **Create group**. Three steps:
+
+1. Pick one product as the parent
+2. Tick the SKUs to pull into the group. Same brand, at least one
+3. Give the group a name, tick the specification axes, fill in the value for each product, then confirm
 
 ### Key rules
 
-- **Same brand is a hard gate** (criterion = `BrandRef.code`): enforced by the create/replace transaction in the storage layer. If either side has no brand, it is allowed; **the in-group brand must match** before the group can be created
-- **Same category is not a gate**: in-group category consistency is only maintained by "editing group shared fields overwrites members"; there is no transactional validation
-- Each item, after grouping, still walks its own full `product/create` chain and content; it does not share a SKU chain. "Group" is an **optional aggregate view** on top of the flat product model (see [CONTEXT.md](https://github.com/KanoCifer/noon-tool/blob/main/CONTEXT.md) ADR-0001 / 0006)
-- Group tasks show up in the task panel as `taskKind: 'group'`, with "N items · parent/child · #N"
+- **Everything in a group has to be the same brand.** A different brand means the group won't build. Products with no brand can join, but they end up on the brand the group already has.
+- **Category doesn't have to match.** Editing the group's shared fields overwrites every member, so think before you change one.
+- Every product in the group has to belong to the store you're working in.
+- One product can't sit in two groups at once. Move it out of the old group or dissolve that group first.
+- Once a member has a task running or already finished, you can't replace the whole group. Dissolve it and build again.
+- Each product inside a group publishes on its own. One failure doesn't roll back the others, and the task panel shows a separate status for each.
+- The group name is the one you typed when you built it, and Noon files the products under it.
 
 ### Distinguish the concepts
 
-- `skuGroup` (`ZD…`) — the group identifier in the group path
-- `skuParent` (`ZA…`) — every product's own parent code in the single-product path (in single path, the two are equal)
-- **Do not** conflate "Group" with "Sizes variant" — they are parallel mechanisms in the platform UI
+- Group product codes start with `ZD`, and they show up on the Group tab.
+- Variant parent codes start with `ZA`, and they show up on the Sizes tab.
+- These are two separate mechanisms on the Noon backend. Don't read one as the other.
 
 ## Sizes variant group
 
 ### When to use
 
-Noon backend's `Sizes` tab for standard size tables: one product acts as the parent (with price / description / images), with N size variants as children. The children's content **inherits automatically** from the parent (image, title, description, brand, etc.); **the price needs to be written separately**.
+A standard size table. The product you're on becomes the parent, with any number of size children under it. A child only needs a size, a SKU, and a barcode. Everything else follows the parent.
 
 ### How it runs
 
-Size variants no longer need a separate task — you configure them right in the **single-product listing form**:
+Size variants don't need their own task. You set them up in the single-product listing form:
 
 1. Capture or create your product (see [Quick start](./quick-start))
-2. Open the product's listing drawer and scroll to the "Size variants" section
-3. Click "Add variant" and fill in the **parent size** (this item's own size, e.g. S / M / L)
-4. Add child rows one by one: each with a size, SKU, and barcode (SKUs are generated for you, and can be edited)
-5. Submit as usual — the parent and all children go out in that single submission
+2. Open the product's listing drawer and scroll to the size variants section
+3. Fill in **Current product size** with this product's own size, say S / M / L
+4. Add children with **Add size**, one row per child with a size, a SKU, and a barcode. SKUs are generated for you and you can edit them
+5. Submit as usual. The parent and its children go out together in that one submission
 
-Leaving the "Size variants" section empty means an ordinary single-product listing, with no variant logic triggered at all.
+Leave the size variants section empty and it stays an ordinary single-product listing.
 
 ### Key rules
 
-- **The axis must be exactly 1 = size**, no multi-axis (color / style)
-- The parent size is required once you've added variants: without it, that product fails to publish
-- Child SKUs are derived as `parentCode-{index}`, numbered in the order you filled the variant rows
-- Child prices submit together with the variants, matching the row order
-- Size names are trimmed, and a child size identical to the parent size is de-duplicated — you won't get a repeated axis option
-- The engine handles variants in the **last step** of single-product listing: the parent's content (title, images, price) lands on Noon first, then children are created one by one
+- **Size is the only axis you get.** There's no second axis for colour or style.
+- **The parent size is required.** Fill in children without a parent size and that product fails to publish.
+- Two child rows can't share the same size. Duplicate child sizes are rejected.
+- If a child's size matches the parent's, that's fine. The axis option is de-duplicated instead of throwing an error.
+- A child barcode can be left empty, and then no barcode gets written for it.
+- The parent publishes first, then the children are created one by one.
 
 ### Task panel markers
 
-Size variants are no longer a separate task type — they run as the final step of the single-product listing task, so what you see in the task panel is an ordinary single-product task. The children's `parentGroupKey` / `pskuCode` / `sku` show in that task's child area.
+Size variants aren't a separate kind of task. They run as part of the single-product listing task, so what you see in the task panel is an ordinary single-product task. The children's codes show up in the task details.
 
 ## Group or Sizes?
 
 | What you want | Use |
 | --- | --- |
 | Standard size table (S / M / L / XL …) | **Sizes** |
-| Color series (red / blue / black), independent images per color | **Group** |
-| Same model with sub-models (phone 128G / 256G / 512G) | **Group** + `model_name` axis |
-| Different images per color variant | **Group** + `colour_name` axis |
-| Children content must strictly inherit from parent | **Sizes** |
+| Colour range (red / blue / black), separate images per colour | **Group**, with the Colour Name axis |
+| One model with sub-models (phone 128G / 256G / 512G) | **Group**, with the Model Name axis |
+| Different images shown per colour variant | **Group**, with the Colour Name axis |
+| Children that follow the parent | **Sizes** |
 
 ## FAQ
 
 ### After grouping, why are the items' statuses still independent?
 
-Grouping is a platform-level "shared section + members" organization, **not** "all members succeed or fail together". Every item still walks its own `product/create` chain and step table; the task panel shows independent statuses.
+Grouping lines the products up together on the Noon backend. It doesn't mean they succeed or fail as a set. Each product publishes on its own and the task panel tracks them one by one.
 
 ### Does Grouping require same brand?
 
-Yes. Same brand is a hard gate — `BrandRef.code` must match for the group to be created. If either side has no brand set, it is allowed past the UI; the storage layer still enforces the rule when actually creating.
+Yes. Same brand is a hard rule and a group won't build across brands. Products with no brand can slip in, but they take the brand the rest of the group has.
 
 ### Can Group and Sizes coexist?
 
-**No**. Once a product has size variants filled in on its single-product form, its children are not Group members. The Group section only shows unlisted single products.
+No. Once a product has size variants in its single-product form, its children stay out of any group. Grouping only takes products that haven't been listed yet.
 
 ### Do size variants need their own task?
 
-No. They're the final step of the single-product listing task and submit with the product — the parent lands on Noon first, then children are created one by one.
+No. They go out with the product. The parent publishes first, then the children are created one by one.

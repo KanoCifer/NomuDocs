@@ -85,6 +85,7 @@ export default defineConfig({
           { text: '介绍', link: 'https://nomu.kanocifer.chat' },
           { text: '指南', link: '/guide/' },
           { text: '隐私政策', link: '/privacy/' },
+          { text: '用户协议', link: '/terms/' },
         ],
 
         sidebar: {
@@ -137,8 +138,14 @@ export default defineConfig({
           ],
           '/privacy/': [
             {
-              text: '隐私',
+              text: '条款与隐私',
               items: [{ text: '隐私政策', link: '/privacy/' }],
+            },
+          ],
+          '/terms/': [
+            {
+              text: '条款与隐私',
+              items: [{ text: '用户协议', link: '/terms/' }],
             },
           ],
         },
@@ -156,6 +163,7 @@ export default defineConfig({
           { text: 'Home', link: 'https://nomu.kanocifer.chat' },
           { text: 'Guide', link: '/en/guide/' },
           { text: 'Privacy', link: '/en/privacy/' },
+          { text: 'Terms', link: '/en/terms/' },
         ],
 
         sidebar: {
@@ -208,8 +216,14 @@ export default defineConfig({
           ],
           '/en/privacy/': [
             {
-              text: 'Privacy',
+              text: 'Legal',
               items: [{ text: 'Privacy policy', link: '/en/privacy/' }],
+            },
+          ],
+          '/en/terms/': [
+            {
+              text: 'Legal',
+              items: [{ text: 'Terms of service', link: '/en/terms/' }],
             },
           ],
         },

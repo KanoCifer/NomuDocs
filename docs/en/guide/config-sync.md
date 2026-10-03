@@ -1,70 +1,50 @@
 ---
 title: Cloud config sync
-description: "Nomu cloud config sync backs up PartnerCode, store code, warranty and PSKU prefix settings to your Nomu account so you can restore them on another device. Sync is manual only."
+description: "Nomu cloud config sync backs your partner code, store code, warehouses, warranty and PSKU prefix up to your Nomu account, so a new device or a reinstall restores them in one click. Sync only happens when you ask for it."
 ---
 
 # Cloud config sync
 
-By default, your Nomu store configuration (PartnerCode, store code, warranty, PSKU prefix, etc.) is stored locally in your browser. **Cloud config sync** backs these configs up to the Nomu account service so you can restore them on another device or after a reinstall with a single click.
+Store settings (partner code, store code, warehouses, warranty, PSKU prefix and sequence) live in your browser by default. **Cloud config sync** backs them up to your Nomu account, so a new device or a reinstall gets them back in one click.
 
-> Sync requires a Nomu account. Sync is **only triggered manually from the account page** — it never runs automatically.
+> Sync needs a signed-in Nomu account. It only runs when you press a button, never on its own.
 
 ## How to use
 
-Open the **Account** extension page (standalone `account.html`), find the **Cloud config sync** card below the **AI credits** card:
+Open the **Account** extension page and find the **Cloud config sync** card under the **AI credits** card:
 
-- **Upload to cloud** — push all local store configs to the cloud, overwriting whatever is there.
-- **Download to local** — pull the full cloud config and overwrite the local one, also deleting any local records marked as deleted on the cloud side.
-- **Last synced** — the local time of the most recent successful sync; shows "Never synced" if there isn't one.
+- **Upload to cloud** pushes every local store config up and overwrites whatever the cloud already had
+- **Download to local** takes the full cloud config, overwrites the local one, and also deletes the local records the cloud has marked as deleted
+- **Last synced** shows the local time of your most recent successful sync, or **Never synced** if there hasn't been one
 
 ## Sync semantics
 
-Sync is **local-as-source-of-truth**:
-
-| Action | Up | Down |
-| --- | --- | --- |
-| Upload | Local full snapshot (with version) | Server acknowledgement |
-| Download | Local full snapshot (to satisfy server's upload contract) | Cloud full snapshot → `bulkPut` overwrites local |
-
-Every sync sends the full local config (up to 200 rows). The server does optimistic concurrency control on `version` (LWW — last write wins). Records marked `deleted: true` remotely are deleted locally.
+Both directions send the whole set of store configs, not a slice of it. When the same config was changed on two devices, the one you changed last wins and the later sync overwrites the earlier one. Uploading once before you switch devices is the safe move.
 
 ## Data scope
 
-The synced fields are the entire `ConfigModel` row in the Dexie `configs` table, primarily:
+Store settings: country, partner code, store code, warehouses, warranty type and months, PSKU prefix and sequence, fulfillment type, note, and the global settings.
 
-- `kind` (`store` / `global`)
-- `country`, `partnerCode`, `noonStoreCode`
-- `wareHouses` (FBP warehouse snapshot)
-- `warrantyType`, `warrantyDuration`
-- `pskuPrefix`, `pskuSeq`
-- `fulfillmentType`, `note`
-- `globalSettings` (global settings row only)
-- `version` (optimistic-concurrency version, incremented by +1 on every local change)
-
-Product batches, NomuDesign drafts, and task records are **not** synced — they only live in the local browser.
+Product batches, NomuDesign drafts, and task records are not synced. They stay in your own browser.
 
 ## Storage locations
 
-| Data | Location |
-| --- | --- |
-| Store config | Browser `chrome.storage.local` + Dexie `configs` table |
-| Cloud backup | Nomu account service (`api.kanocifer.chat`) |
-| Last synced time | `globalSettings.nomuLastSyncAt`, browser-local |
+Store settings live in your browser. The cloud backup lives on the Nomu account service.
 
 ## FAQ
 
 ### How do I restore on a new device?
 
-Sign in to the same Nomu account on the new device → open the account page → click **Download to local**, and the cloud config overwrites the local one.
+Sign in to the same Nomu account on the new device, open the account page, and click **Download to local**. The cloud config overwrites what the new device had.
 
 ### Will multiple people conflict?
 
-The server does LWW upsert on `version` + `updatedAt`. The later sync wins over the earlier one; we recommend doing one **Upload to cloud** before switching devices to make sure you have the latest.
+They can. The one you changed last wins, and the later sync overwrites the earlier one. Re-syncing on one device is harmless; editing back and forth across devices is how you lose a change.
 
 ### Sync failed?
 
-A toast shows the error (network, auth, parameter validation, etc.) and local data is unaffected. Hit the button again to retry.
+A toast shows the error (network, expired sign-in, rejected values), your local data is untouched, and you can press the button again to retry.
 
 ### Don't want cloud sync?
 
-Not syncing sends nothing extra — but signing in itself submits your email and token to the account service. No Nomu feature depends on cloud sync.
+You don't need it. No part of Nomu depends on it. Signing in to a Nomu account is the one thing that does send your email and token to the account service.

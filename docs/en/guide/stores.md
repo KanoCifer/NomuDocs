@@ -1,97 +1,85 @@
 ---
 title: Store management
-description: "Nomu store management: manage multiple Noon stores across country, PartnerCode, warehouse, warranty registration and PSKU sequence. A whole captured batch shares one set of store settings."
+description: "Nomu store management: manage Noon stores by country, partner code, warehouse, warranty, and PSKU sequence. A whole captured batch shares one set of store settings."
 ---
 
 # Store management
 
-Every listing action in Nomu is organized around a "store": which country, what PartnerCode, which warehouse, how warranty is registered, how the PSKU sequence advances — all live on the store record. A whole captured batch shares one set of store settings.
+Which country, which partner code, which warehouse, how warranty is registered, where the PSKU sequence starts: all of it lives on the store record. A whole captured batch shares one set of store settings, so a store filled in wrong takes the whole batch down with it.
 
 ## Where to see stores
 
-Store management lives in the Chrome side panel. Two entry points:
+Store management lives on the extension's settings page. Two ways in:
 
-- Click the Nomu icon in the toolbar to open the popup, then click **Open full side panel**.
-- From any page, press `Ctrl/⌘ + Shift + Y` (see [Keyboard shortcuts](./shortcuts)).
+- Click the Nomu icon in the toolbar, then click **Open store settings** in the popup.
+- Press `Ctrl/⌘ + Shift + P` for the action sheet, then go to **Settings**.
 
-The side panel shows the active store's overview (country / PartnerCode / warehouse count / warranty), the store list, and actions like **Detect current page**, **New store**, **Edit**, **Refresh warehouses**, and **Delete**.
+The page shows the active store at a glance (country, partner code, warehouse, warranty), the store list, and the actions **Detect current page**, **New store**, **Edit**, and **Delete**.
 
 ## What fields a store has
 
-Each store is a row in the Dexie `configs` table (`kind: 'store'`), shaped as `ConfigModel`:
-
-| Field | Meaning |
+| Field | What it does |
 | --- | --- |
-| `note` | Memo for distinguishing stores under the same PartnerCode; can be empty |
-| `country` | Country: `sa` (Saudi Arabia) or `ae` (UAE) |
-| `partnerCode` | Noon PartnerCode; new entries must start with `PRJ…` or be pure digits |
-| `noonStoreCode` | Noon store code (e.g. `STR520747-NSA`); enter manually or auto-detect |
-| `wareHouses` | FBP warehouse snapshot; chosen directly during publishing |
-| `warrantyType` | Warranty type (e.g. `seller`) |
-| `warrantyDuration` | Warranty duration (only for `seller` type) |
-| `pskuPrefix` | PSKU prefix, default `N` |
-| `pskuSeq` | PSKU sequence as a numeric string; pad-then-increment by string length (`0001 → 0002`), natural growth past the limit (`9999 → 10000`) |
-| `fulfillmentType` | Fulfillment: `fbp` (fulfilled by partner) or `fbn` (Noon warehouse) |
+| Note | Tells apart stores sharing one partner code. Optional. |
+| Country | `sa` (Saudi Arabia) or `ae` (UAE) |
+| PartnerCode | Your Noon partner code. A new store needs either `PRJ` followed by digits, or digits only, and nothing else saves otherwise. |
+| Noon Store Code | Your Noon store code, for example `STR520747-NSA`. Type it in or let Nomu detect it. |
+| Fulfillment type | `fbp` (you ship) or `fbn` (Noon warehouse) |
+| Default FBP warehouse | The warehouse new products stock against by default. Each product can still override it. You need a partner code filled in before the warehouse list will load. |
+| Warranty type | Not set / No warranty / Warranty |
+| Warranty months | Only used when the type is Warranty. Other types ignore it. |
+| PSKU prefix | The fixed prefix on every PSKU. Defaults to `N`. |
+| PSKU sequence | A digits-only string. See [PSKU sequence](#psku-sequence). |
 
 ## Multiple stores under one PartnerCode
 
-The same PartnerCode may have multiple records — e.g. an `fbp` store and an `fbn` store side by side, or UAE / Saudi as separate rows. New stores are always appended. Name collisions get auto-suffixed with `-1`, `-2`, etc. by the storage layer.
+One partner code can have several records side by side: an `fbp` store and an `fbn` store under the same partner, or UAE and Saudi as separate rows. Creating a store always appends, so it never overwrites an existing one. Notes that clash get a `-1`, `-2` suffix added automatically.
 
-Switching stores only moves the "active" pointer. Product batches, NomuDesign drafts, and task records never interfere with each other.
+Switching stores only moves which one is active. Batches, drafts, and task records stay untouched.
 
 ## Detect from current page
 
-Open a noon-catalog seller backend tab (e.g. `https://catalog.noon.partners/...`). The side panel's top-level **Detect current page** parses the active tab's URL plus the merchant API (`noon-store/list`) and writes the result into the store record. The flow:
+Open a noon-catalog seller backend tab and click **Detect current page** at the top of the settings page. Nomu reads the store details out of the current tab's address, saves them to the store record, then confirms that it detected and saved the partner code it found.
 
-1. Pull the `noonStoreCode`.
-2. Reverse-look the PartnerCode, country, and other metadata.
-3. Save to the store record and show "Detected and saved {partnerCode}".
-
-> Older builds read the `noonStore` cookie via the `cookies` permission. We have since moved to the merchant API, which has a smaller permission footprint.
-
-## FBP warehouse snapshot
-
-When you create or detect a store, Nomu best-effort fetches the FBP warehouse list once and writes it into `wareHouses`. If the network blips during the call, the old snapshot is kept — you can hit **Refresh** on the row later to retry.
-
-During publishing, the warehouses attached to the store flow straight into the listing pipeline's stock step. You don't have to pick a warehouse for every item.
+The details come from the tab's address, so an address without a store code in it can't be detected.
 
 ## PSKU sequence
 
-The PSKU sequence is a **numeric string** whose width is whatever you write:
+The sequence is a digits-only string, and its width is whatever you type:
 
-- Default `1` → writes `1`, `2`, `3` …
-- To keep the format `0001` / `0002`, store it as `"0001"`.
-- Past the limit it grows naturally: after `9999`, it becomes `10000`.
+- Start at `1` and you get `1`, `2`, `3`
+- Store it as `0001` to keep the `0001` / `0002` shape
+- Past the width it grows on its own, so `9999` becomes `10000`
 
-The publishing engine increments `pskuSeq` for the store as it goes, then writes the new value back. Same-store collisions never happen.
+Publishing increments from the store's current sequence and writes the consumed range back, so two products under one store never land on the same number.
 
 ## Fulfillment type
 
-- `fbp` (Fulfilled by Partner) — you ship from your own warehouse.
-- `fbn` (Fulfilled by Noon) — you send inventory to a Noon warehouse and Noon ships it. The store record maintains warehouses separately.
+- `fbp` (Fulfilled by Partner), you ship from your own warehouse. Pick a default FBP warehouse on the store, otherwise every product needs its own warehouse and stock.
+- `fbn` (Fulfilled by Noon), stock sits in a Noon warehouse and Noon ships it. Noon writes no stock for these.
 
-The publishing pipeline differs per fulfillment type. Picking the wrong one in the store record causes the stock step to fail.
+Getting the fulfillment type wrong leaves stock unwritten instead of failing the publish, so check stock on the Noon backend after you list.
 
 ## Delete and archive
 
-Deleting a store also clears its PSKU sequence and other metadata, but **does not** roll back products already listed on Noon — Noon listing is one-way. Before deleting, confirm no batch or task depends on the store.
+Deleting a store clears its PSKU sequence and other settings with it, but never rolls back products already listed on Noon. Noon listing only goes one way, so check that no batch or task still needs the store before you delete it.
 
-If you only want to take it offline temporarily, leave the record and change the memo. Multiple stores are normal.
+If you only want it off to one side, keep the record and change the note. Running several stores is normal anyway.
 
 ## FAQ
 
 ### How do I know which store is active?
 
-The popup hero shows "memo / PartnerCode / country" of the current store. In the side panel, the active row is highlighted with a dot.
+The popup header shows the note, partner code, and country of the active store. On the settings page the active row is highlighted with a dot.
 
-### Same PartnerCode, two stores — how?
+### Same PartnerCode, two stores: how?
 
-Just click **New store**, fill the same PartnerCode with different memos or different countries. Both records will coexist.
+Create a store with the same partner code and a different note or a different country. Both records exist side by side and don't interfere.
 
 ### Changing a store's settings affects past tasks?
 
-No. Each task record carries the store snapshot view (`ListingStoreTarget`) from the moment it ran. Editing the store does not rewrite history.
+No. Each task keeps the store details as they were when it ran. Editing the store later never rewrites history.
 
 ### I don't see the "Detect current page" button?
 
-Make sure the active tab is a noon-catalog backend tab. Otherwise you'll see "Current tab URL not detected".
+Check that the active tab really is a noon-catalog backend tab. If it isn't, Nomu says "Current tab URL not detected". If it is but nothing was detected, it says the page has no store code and to open noon-catalog.

@@ -5,13 +5,13 @@ description: "NomuDesign is Nomu's AI product image workspace. Compose source im
 
 # NomuDesign image generation
 
-NomuDesign is Nomu's built-in AI workspace for product imagery. It is not a "one-click background swap" filter — it is a composable canvas: you wire source images, reference images, prompts, and generation nodes, the AI generates new images, and you push them back to the product gallery with one click.
+NomuDesign is Nomu's built-in AI workspace for product imagery. It is not a "one-click background swap" filter, it is a composable canvas: you wire source images, reference images, prompts and generation nodes, the AI generates new images, and you push them back to the product gallery with one click.
 
 > Without a signed-in Nomu account the whole design workspace is replaced by a sign-in wall. Once you are signed in you can run generation, which consumes AI credits from [Account & credits](./account).
 
 ## How to enter
 
-All three entries jump to the standalone page `nomu-design.html?productId=...`:
+All three entries land on the same design page:
 
 - "Go to NomuDesign" from the single-product drawer or group page
 - "NomuDesign" in the action sheet, which pops a product picker first
@@ -23,66 +23,55 @@ The canvas is one-to-one with a product: one product, one draft, no loss on refr
 
 | Node | Purpose |
 | --- | --- |
-| Product image (`image`) | An image picked from the product gallery, used as source or final apply target |
-| Reference image (`referenceImage`) | An uploaded reference image that visually guides the prompt |
-| Prompt (`prompt`) | The text given to the AI; supports one-click **AI Optimize** |
-| Generation (`generation`) | The run node; carries model + tier + status + result |
+| Product image | An image picked from the product gallery, used as source or final apply target |
+| Reference image | An uploaded reference image that visually guides the prompt |
+| Prompt | The text given to the AI, with one-click **AI Optimize** |
+| Generation | The run node, carrying model, tier, status and result |
 
-Nodes wire into whatever chain you need: reference → prompt → generation. Topology decides what context the AI sees.
+Nodes wire into whatever chain you need: reference image, prompt, generation. The order you connect them in decides what the AI sees.
 
 ## Models & tiers
 
-The dropdown in the top-right of a generation node switches `model · tier`:
+The dropdown in the top-right of a generation node switches model and tier:
 
 - **Doubao-Seedream-5.0-lite**: tiers 2K / 3K / 4K
 - **Doubao-Seedream-5.0-pro**: tiers 1K / 1.5K / 2K
 
-Switching model falls back to the first tier of the new model if the old tier is not in the new model's tier list, so you never end up with an invalid value.
+If the tier you were on does not exist for the new model, it falls back to the new model's first tier.
 
 ## Prompt templates & AI optimize
 
-The prompt node ships with three tools:
+The prompt node comes with these tools:
 
-- **Preset templates** — built-in common prompts, one-click insert
-- **Template list / dropdown** — your saved template collection
-- **Save as template** — save the current prompt as your own template (with category) for reuse later
-- **AI optimize** — call AI to rewrite / strengthen the prompt (consumes credits)
-
-The prompt input box is 10 rows tall, comfortable for long prompts.
+- **Preset templates**: built-in common prompts, one-click insert
+- **Template list / dropdown**: your saved template collection
+- **Save as template**: save the current prompt as your own template (with category) for reuse later
+- **AI optimize**: call AI to rewrite or strengthen the prompt, consumes credits
 
 ## Generated images & history
 
-Each generation node keeps the **latest 5** results (`GENERATION_HISTORY_LIMIT`). You can:
+Each generation node keeps the **latest 5** results. You can:
 
 - Scrub through every version as thumbnails
-- Click to roll back to an old version (rollback only replaces the current `designRef` pointer — no two-way history)
+- Click to roll back to an older version
 - Download a single image
 - Use the canvas-level lightbox to flip through pages
 
-Re-running is **overwrite** semantics — the node only holds the current draft. Replaced rows are kept **only** when still pinned by a downstream chained node's `designRef`, preventing dangling references.
+Running a node again overwrites: the node holds only the current version. Older images that no downstream node still points at are cleaned up.
 
 ## Apply to product
 
 After a generation, hit **Apply to product…**:
 
-- **Copy** semantics — a new `productAssets` row at `${memberId}-image-${sort}` plus a short reference added to the product's `images`, independent of the source generated image
-- **Cross-member reuse** — the target can be the canvas's owning product or any sibling in the same group; multiple products in one group can share a single design
+- Apply means **append**. The new image is written into the product gallery and stays independent of the generated original
+- The target can be the canvas's owning product or any sibling in the same group, so several products in one group can share a single design
 - If the product already has 9 main images, a warning shows and nothing is appended
 
-After apply, a confirmation modal lists the targets. Confirm and the new images are written into the product gallery; you're bounced back to the canvas.
-
-## Data persistence
-
-- The canvas is persisted as a **draft** in Dexie `workbenchDrafts` (one product, one draft)
-- Generated image bytes go into `designAssets` (a standalone domain entity, with its own lineage: prompt, model, tier, reference image refs)
-- Product image bytes go into `productAssets` (split out from inline base64 in v10); main image rows hold only the short `asset:<id>` reference
-- The three tables don't pollute each other; deletion semantics are naturally decoupled
-
-> Archiving a product (`status='archived'`, with unarchive) does not delete `designAssets` — unarchiving restores the full workspace draft.
+After apply, a confirmation modal lists the targets. Confirm and the new images are written into the product gallery, and you are bounced back to the canvas.
 
 ## Relationship with the listing pipeline
 
-NomuDesign does not participate in the listing step table. It is a "pre-listing" preparation: after generating and applying, you go through the regular listing pipeline, and the image step picks up the new product images directly.
+NomuDesign does not participate in the listing step table. It is pre-listing work: after generating and applying, you go through the regular listing pipeline, and the image step picks up the new product images directly.
 
 ## FAQ
 
@@ -92,7 +81,7 @@ The credit card on the [Account & credits](./account) page shows the balance. In
 
 ### Does AI optimize double-charge?
 
-AI requests carry idempotency keys — timeout retries do not double-charge.
+No. A timeout retry of the same operation is charged once.
 
 ### Does Apply replace the original image?
 
@@ -100,4 +89,4 @@ No. Apply means "append main images to the product gallery". The original is unt
 
 ### Draft gone?
 
-Drafts are stored per product ID; reopening the canvas restores them automatically. If the product has been archived, NomuDesign still opens in read mode and the draft is intact and editable.
+Drafts are stored per product, and reopening the canvas restores them automatically. If the product has been archived, NomuDesign still opens and the draft is intact and editable.

@@ -1,128 +1,116 @@
 ---
 title: Task panel
-description: "The Nomu task panel shows every listing and duplication task across pages, sessions and stores. Progress, per-step timing and failure reasons expand inline, and failed items can be retried."
+description: "The Nomu task panel lists every listing and duplication task, shows how long each step took, and lets you retry a failed item on its own."
 ---
 
 # Task panel
 
-The task panel is Nomu's "all-history task observer": which site you published to, whether it succeeded, which step failed, and whether it can be retried — all in one standalone extension page. It is not "the progress bar next to the publish button"; it is the unified view across pages, sessions, and stores.
+The task panel is a standalone Nomu page. Which device you published from, which step the job is on, where it stopped, whether it can be retried: all of it is here, so you don't have to sit next to the listing drawer while a batch runs.
 
 ## How to open
 
-The task panel lives on a standalone extension page `tasks.html`:
+Three ways in:
 
-- "View all tasks →" button at the bottom of the popup
-- The ListChecks icon in the header of the single-product drawer (`SingleProductBody`)
-- Direct URL `chrome-extension://<id>/tasks.html`
+- Click the Nomu icon in the toolbar, then **Tasks** in the popup
+- The action menu and the floating button on your Noon seller pages both carry **Task panel**
+- The **Tasks** entry in the dashboard
 
-It opens in a new tab with no "back" button — closing it exits.
+It always opens in a new tab. Close the tab and you're out.
 
 ## Two task kinds, two views
 
-The top-level `TaskViewSwitch` toggles between two views. Status and filter are independent:
+The switch at the top toggles between two views. Each one keeps its own search text and filters, so switching back and forth loses nothing:
 
-- **Publish tasks** (`publish`) — the single-item and group listing pipelines. Size variants are the final step of a single-item listing, not a task of their own
-- **Duplicate tasks** (`duplicate`) — cloning already-listed Noon products by PartnerSku
+- **Publish tasks**, single products and grouped products going live. Size variants are the last step of a single-product listing, not a task of their own
+- **Duplicate tasks**, cloning an already-listed Noon product from its source PSKU
 
-Switching views preserves the search box and filters — both filters live independently.
+### Publish task statuses
 
-### Publish task state machine
-
-| Status | Meaning |
+| State | What it means |
 | --- | --- |
-| `pending` | Queued, waiting for the service worker to claim |
-| `running` | Step table is in progress |
-| `success` | All steps are `ok`; final state is committed |
-| `failed` | A step failed; see the failing step and error code, retry or cancel |
-| `cancelled` | Manually cancelled |
+| Pending | Queued, not started yet |
+| Running | Working through the steps |
+| Completed | Every step finished |
+| Failed | A step failed. Open the row to see why, then retry |
+| Cancelled | You cancelled it |
 
-### Duplicate task state machine
+### Duplicate task statuses
 
-`pending → enqueued / cancelled / failed`: `enqueued` is terminal and means the corresponding publishTask has been queued. Intermediate `fetching` / `building` states are not recorded.
+| State | What it means |
+| --- | --- |
+| Pending | The duplication request came in, not started yet |
+| Enqueued | Duplication is done and the product joined the listing queue. Follow its progress in the publish view |
+| Forwarded | Cross-device duplication: the other device has it, nothing was stored on this one |
+| Failed | Duplication didn't work. Open the row to see why |
+| Cancelled | You cancelled it |
 
 ## What each row shows
 
-Every row (about 56px tall) shows:
+Each row is one product:
 
-- Thumbnail + product title
-- Status dot
-- Country chip (`sa` / `ae`)
-- taskKind chip (`single` / `group`)
-- Current step name
-- Inline expansion on failure: error.message + error.code + failing step.type + retryCount + **Retry** / **Cancel**
+- Thumbnail, product title, your SKU
+- Status dot, country (Saudi / UAE), task type (single / group)
+- Which step it's on, and how long each step took
+- Grouped products also show how many items are in the group, whether this one is the parent or a child, and its value on the spec axis. See [Group & sizes](./group-and-sizes)
 
-Clicking outside the button area toggles expand / collapse; failed rows expand by default.
+Click anywhere in the row that isn't a button to expand or collapse it; failed rows start expanded. Expanding shows the full step timeline, and the failed step carries the error code, the error message, how many times it's been tried, plus **Retry** and **Copy error**. Retry only works when the error is marked retryable; otherwise the button is greyed out.
 
-> Cancelling a `running` task: the button is currently disabled with a tooltip that says "Cancelling a running task requires the service worker to release the lease (30s TTL), which is not auto-handled in this round". `pending` / `failed` rows can be cancelled normally.
+Cancelling only means anything for a pending task. A task that's already running either finishes or fails, so wait for the result.
 
-Dates show as relative time ("a few minutes ago" / "a few hours ago") with the absolute time on hover.
+Times are relative (a few minutes ago, a few hours ago); hover for the exact time.
 
 ## Filters
 
-The left-side `TaskFilterPanel` in the panel gives three filter groups:
+Four blocks down the left sidebar:
 
-- **Status** multi-select (default "running + failed")
-- **Task type** multi-select (`single` / `group`; the duplicate view has its own set)
-- **Time window**: `updatedAfter` / `updatedBefore` (default "last 7 days")
-- **Search string**: substring match on `partnerSku` / `product.title`
+- **Overview** counts every state. Click a row to see only that state, click it again to see everything again. The listing success rate sits at the bottom. By default you see only pending, running and failed: completed and cancelled are counted but hidden until you click those two rows
+- **Task type**, single or group, multi-select, everything selected by default
+- **Time**, today / 7 days / 10 days, the last 7 days by default
+- **Bulk actions**, **Clear failed** and **Clear completed**
 
-The search runs as an in-UI filter join. It is **not** pushed down to RPC.
+The search box at the top matches on title or PSKU. In the duplicate view it matches the source or target SKU.
 
 ## Loading & resume
 
-- Default limit is 200 tasks, sorted by `updatedAt` descending.
-- When the limit is hit, a **Load older** button appears at the bottom. It drops the `updatedAfter` filter and doubles the limit to 400. When there is no more, the button disappears.
-- The data source subscribes to `db.changed` for live updates: writes trigger a debounced re-fetch within 100ms.
-- The search box has a 300ms debounce before firing the query.
+- A page shows at most 200 tasks. **Load earlier tasks** appears at the bottom, doubles the window each click, and disappears once there's nothing older left
+- The list refreshes itself while tasks run, so there's nothing to reload by hand
+- One listing task runs at a time by default, so a batch of 50 takes a while. Both the concurrency and the automatic retry limit (3 tries by default) live in extension settings
 
 ## Retry & clear
 
-- **Retry** — re-enqueue the failed row. Steps that already succeeded are skipped automatically (resume semantics). AI requests carry idempotency keys, so retries do not double-charge.
-- **Clear finished** — publish view exposes a confirmation dialog.
-- **Clear failed** — publish view exposes a confirmation dialog.
-- **Clear finished duplicates** — duplicate view exposes a confirmation dialog (one click, no accumulation).
+- **Retry** puts a failed item back in the queue; steps that already passed are skipped. A timeout on the same AI call never charges twice, and retrying a failed task never submits it twice
+- **Clear completed** deletes finished and cancelled publish tasks from your browser, after a confirmation
+- **Clear failed** deletes failed publish tasks from your browser. The dialog also lists the products these tasks already created on Noon and deletes those too by default; untick the box if you'd rather keep them
+- **Clear tasks** is the duplicate view's button, and it drops finished duplicate task records
 
 ## Failure diagnosis
 
-Expanding a failed row gives you, in the UI:
-
-- **Error code** (`error.code`) — useful for backend lookup or scripting
-- **Error message** (`error.message`) — human-readable
-- **Failing step.type** — which step it stalled at (`product/create` / `zsku/upsert` / `stock/upsert/stock-v2` …)
-- **retryCount** — how many retries already happened
-
-Send those four pieces plus the task ID back to the author and you'll get the fastest turnaround.
+To report a failed task, send all of it: the text from **Copy error**, the product title and SKU, and the country and store. With those four nobody has to ask you a follow-up question.
 
 ## Noon session state
 
-A persistent `NoonLoginBanner` sits at the top of the task panel (this one is about the Noon session — without a signed-in Nomu account the whole page is replaced by a sign-in wall, so you never see the banner):
+The task panel and the popup both carry a Noon session banner. When Noon isn't connected it says **Not logged in**, with **Session expired · Listing, sync and stock push are paused** underneath and three actions: **Log in now**, **Refresh**, **Remind me later**. It disappears once you're logged in, and **Remind me later** keeps it away for the rest of the session.
 
-- **Not signed in to Noon** → red banner with a "Sign in now" CTA
-- **Signed in** → banner disappears automatically
-- Pick **Remind later** to hide it for this session; it comes back the next time it goes stale
+An expired session pauses listing, sync and stock push, so a batch will fail in a row. Fix the session before you submit anything.
 
-This prevents tasks from silently failing — every publishTask stalls on 401 / 403 once the Noon session expires.
+If you aren't signed in to a Nomu account, this whole page is a sign-in wall and you never see the banner.
 
 ## Relationship with past listings
 
-- Task records are saved independently by `taskId` and survive browser close / store switch.
-- Editing a store does not rewrite history — historical tasks keep the store snapshot view (`ListingStoreTarget`) from the moment they ran.
-- After a task finishes, the product's `pskuCode` (the real Noon PSKU) is written back to the Product row. Find it in [Store management](./stores) or the store's task list.
+- Task records are kept per task and survive closing the browser or switching stores
+- Editing a store later never rewrites tasks that already ran: a task holds the store settings as they were when it ran
+- Once a task finishes, the product's real PSKU on Noon is stored on that publication record
 
 ## FAQ
 
 ### Does retry double-charge?
 
-No. AI translation / generation / prompt optimization all carry idempotency keys — the server dedupes on timeout retries. The publishing step table's resume semantics also skip steps that already passed.
+No. A timeout on the same AI call never charges twice, retrying a failed task never submits it twice, and steps that already passed are skipped.
 
 ### Task disappeared?
 
-It may have been filtered out — clear the filter back to the default "running + failed / last 7 days" and try again. It may also have been wiped by **Clear finished** / **Clear failed**.
+Check the filters and the time window first. The default view is pending, running and failed from the last 7 days, so anything outside that window, or anything already completed, stays hidden. **Clear completed** and **Clear failed** also delete local records, and those are gone for good.
 
 ### Can I batch-retry failed tasks?
 
-Currently retry is per row. Use the status filter to surface failed rows, then retry one by one.
-
-### What does taskKind `group` mean?
-
-That task corresponds to a group listing (see [Group & sizes](./group-and-sizes)): all items in the group walk the same `group/upsert` chain.
+Not yet, one item at a time. Use the overview row to surface the failed ones, then retry them one by one.

@@ -1,68 +1,67 @@
 ---
 title: Features overview
-description: "Nomu features overview: 1688, Taobao, Tmall and JD product capture, batch listing, Chinese-to-English and Arabic translation, image processing, AI category recommendation, task panel, product duplication and barcode labels."
+description: "Nomu features overview: capture from 1688, Taobao, Tmall, JD and noon.com, list item by item, translate Chinese into English and Arabic, process product images, predict Noon categories, track tasks, duplicate across devices and print barcode labels."
 ---
 
 # Features overview
 
-Nomu runs one main line — "1688 / Taobao / Tmall / JD / noon source product → Noon listing" — and folds store management, bulk duplication, AI imagery, the AI assistant, catalog browsing, and task tracking into the same pipeline. This page is an index of every capability, each linked to a full guide.
+Nomu runs one line, from a source product to a live Noon listing, and store management, bulk duplication, AI imagery, catalog browsing and task tracking all ride on it. This page indexes every capability, and each one links to the full guide.
 
 ## Main line: capture → list
 
 | Stage | Capability | Details |
 | --- | --- | --- |
-| Source capture | One-click capture from 1688, Taobao/Tmall, JD.com or noon.com product pages; title, image gallery, variant specs, and price land in one shot | [Quick start](./quick-start) |
-| Field editing | Per-item drawer to confirm every field — adjust price, change currency, switch category, change brand, apply a template | [Quick start](./quick-start) |
-| AI translation | Chinese → English / Arabic, titles and selling points auto-translated for UAE / Saudi | [Quick start](./quick-start) · [Account & credits](./account) |
-| Image compliance | Auto-processed to Noon spec (width ≥ 660px, aspect ≥ 0.5, ≤ 10MB JPEG) | [Quick start](./quick-start) |
-| AI imagery | NomuDesign canvas runs image generation with model selection, prompt optimization, and apply-to-product | [NomuDesign](./nomu-design) |
-| Listing pipeline | Declarative step table drives each item through `product/create` → `activate` + `warranty` | [Quick start](./quick-start) |
-| Group listing | Same-brand items merged along a specification axis (size / model / color) | [Group & sizes](./group-and-sizes) |
-| Sizes variants | Sizes live in the single-product listing form; parent and children go out in one submission | [Group & sizes](./group-and-sizes) |
-| Barcode label printing | Print barcode labels for your own SKUs: preview and print one by one on the standalone page or export SVG / PNG / ZPL, or ask the assistant for a whole batch and download a zip | [Barcode label printing](./barcode-labels) |
-| Duplicate product | Clone an already-listed Noon product by PartnerSku — single, batch, or template | [Duplicate product](./duplicate) |
+| Source capture | One-click capture from 1688, Taobao, Tmall, JD.com and noon.com product pages: title, image gallery, variant specs and price in one go | [Quick start](./quick-start) |
+| Field editing | A per-item drawer to confirm every field: adjust price, change currency, switch category, change brand, apply a template | [Quick start](./quick-start) |
+| AI translation | Chinese into English or Arabic, titles and selling points translated for the UAE and Saudi sites | [Quick start](./quick-start) · [Account & credits](./account) |
+| Image compliance | Product images processed to Noon's spec (width ≥ 660px, aspect ≥ 0.5, ≤ 10MB JPEG) | [Quick start](./quick-start) |
+| AI imagery | The NomuDesign canvas generates product images, with model choice, prompt optimization and apply-to-product | [NomuDesign](./nomu-design) |
+| Listing | Every product is its own task, run through fixed steps: create, upload images, write attributes, set price, set stock, activate. One failure never stops the rest | [Quick start](./quick-start) |
+| Group listing | Same-brand products merged along a spec axis (size, model, colour) and published as one group | [Group & sizes](./group-and-sizes) |
+| Size variants | Sizes go into the single-product listing form, parent and children submitted in one go | [Group & sizes](./group-and-sizes) |
+| Barcode label printing | Barcode labels for your own SKUs (Code 128, EAN-13, UPC-A): preview and print one by one on the standalone page, export PNG or SVG, or have the assistant build a whole batch as a ZIP | [Barcode label printing](./barcode-labels) |
+| Duplicate product | Clone a listed Noon product from its source PSKU, one at a time, in bulk, or onto another device | [Duplicate product](./duplicate) |
 
 ## Stores & accounts
 
 | Capability | Details |
 | --- | --- |
-| Side-panel multi-store | Maintain multiple stores in the side panel — country, PartnerCode, warehouse, warranty, PSKU sequence, fulfillment type | [Store management](./stores) |
-| Detect from current page | One-click recognize and save the store code from the active noon-catalog tab | [Store management](./stores) |
-| FBP warehouse snapshot | Pull and store the FBP warehouse list; pick directly during publishing | [Store management](./stores) |
-| Noon session detection | Banner in tasks / popup surfaces the seller's Noon session state | [Task panel](./tasks) |
-| Nomu account | Required to use any part of Nomu; balance and history are on the account page | [Account & credits](./account) |
-| AI credits card | Balance + latest 10 transactions (translation / prompt optimization / generation) | [Account & credits](./account) |
+| Multiple stores | Keep several stores with their country, partner code, store code, warehouse, warranty, PSKU sequence and fulfillment type | [Store management](./stores) |
+| Detect from current page | Read the store code off the open noon-catalog tab and save it to the store record | [Store management](./stores) |
+| FBP warehouse snapshot | Pull and store the FBP warehouse list, pick from it while listing | [Store management](./stores) |
+| Noon session check | A banner in the task panel and the popup tells you whether your Noon session is still valid | [Task panel](./tasks) |
+| Nomu account | Required before you can use any part of Nomu; balance and history live on the account page | [Account & credits](./account) |
+| AI credits card | Balance plus your latest 10 transactions (translation, prompt optimization, generation) | [Account & credits](./account) |
 
 ## Catalog browse & search
 
 | Capability | Details |
 | --- | --- |
-| Catalog browse | Side-panel browse of the current store's offer list with search, paging, inline seller-status toggling | [Catalog browse](./catalog-browse) |
-| Quick search | `Ctrl/⌘ + Shift + S` global overlay; search active / hidden items, jump to detail or change status | [Quick search](./quick-search) |
-| Inline edit | Edit dialog can be opened straight from catalog browse or quick search | [Catalog browse](./catalog-browse) · [Quick search](./quick-search) |
+| Catalog browse | A panel down the right of your Noon seller catalog page listing the store's active and hidden products, with search, paging and one-click seller-status changes | [Catalog browse](./catalog-browse) |
+| Quick search | Press `Ctrl/⌘ + Shift + S` on a Noon seller page to bring up the overlay: search active or hidden products, jump to detail, change status | [Quick search](./quick-search) |
+| Inline edit | Open the edit dialog straight from catalog browse or quick search | [Catalog browse](./catalog-browse) · [Quick search](./quick-search) |
 
 ## Tracking & retry
 
 | Capability | Details |
 | --- | --- |
-| Task panel | Standalone extension page `tasks.html` with publish / duplicate dual view, filtering, retry, clear | [Task panel](./tasks) |
-| Failure pinpointing | Failed rows expand inline with error code / failing step / retry count, plus one-click retry or cancel | [Task panel](./tasks) |
-| Resume | When retrying, steps that already succeeded are skipped automatically | [Task panel](./tasks) |
+| Task panel | A standalone page with publish and duplicate views, filters, retry on failure, and clearing finished tasks | [Task panel](./tasks) |
+| Failure pinpointing | The failed item is flagged, and the failing step, error code and retry count are all spelled out, ready for a single-item retry | [Task panel](./tasks) |
+| Resume | Retrying skips the steps that already passed, and you are not charged twice | [Task panel](./tasks) |
 
 ## Utilities
 
 | Capability | Details |
 | --- | --- |
-| Nomu Assistant | Standalone page for streaming Q&A and product parsing; reachable from both the popup and the action menu | [Nomu Assistant](./nomu-assistant) |
-| Live FX rates | Open the FX dialog from the action menu; convert CNY-base prices into SAR / AED | [Quick start](./quick-start) |
-| AI category prediction | Assembles a description from English title + brand + audience + selling points + details, then recommends the four-level Noon category (family / product_type / subtype / fulltype) | [Quick start](./quick-start) |
-| Category + brand templates | Save and reuse "category + brand" bundles for the same kind of product | [Duplicate product](./duplicate) |
-| Keyboard shortcuts | Four global commands: side panel, action menu, quick search, floating button toggle | [Keyboard shortcuts](./shortcuts) |
-| Welcome onboarding | Six steps on first install to walk through permissions, stores, and a trial capture | Pops up automatically on first install |
+| Nomu Assistant | A standalone page for streaming Q&A and product parsing, reachable from the popup and the action menu | [Nomu Assistant](./nomu-assistant) |
+| Live FX rates | Open the FX dialog from the action menu and convert CNY prices into SAR or AED | [Quick start](./quick-start) |
+| AI category prediction | Assembles a description from the English title, brand, audience, selling points and details, recommends a Noon category, and you can still change it by hand | [Quick start](./quick-start) |
+| Category and brand templates | Save a category plus brand pairing as a template and reuse it on the next product | [Quick start](./quick-start) |
+| Keyboard shortcuts | Four Chrome commands; the action menu, quick search and floating button toggle only fire on Noon seller pages | [Keyboard shortcuts](./shortcuts) |
+| Welcome onboarding | Six steps on first install covering permissions, store detection, creating a store and a trial capture | Pops up automatically on first install |
 
 ## General guarantees
 
-- **Request allow-list** — every request URL to Noon / 1688 / Taobao / Tmall / JD / the Nomu backend is gated by a hardcoded allow-list. Anything outside is rejected.
-- **Local-first data** — store records, batch drafts, NomuDesign drafts, and Nomu account tokens live in your browser. No analytics, no tracking. Once you sign in, account tokens and the upstream content of AI calls go to the account service — see the [Privacy policy](/en/privacy/).
-- **Cookie channel** — operates through your browser's already-signed-in Noon session. Nomu itself never stores Noon credentials.
-- **Dark mode** — the UI follows the system `prefers-color-scheme: dark` setting.
+- **Only whitelisted sites**. The extension only talks to the sites listed here, and anything outside that list is never called
+- **Your data stays local**. Stores, batch drafts and NomuDesign drafts live in your browser. Once you sign in, your account token and the content sent upstream for AI calls go to the account service, see the [Privacy policy](/en/privacy/)
+- **Cookie channel**. Nomu works through the Noon session already signed in in your browser, so you never hand over a Noon key, and Nomu stores no Noon credentials of its own

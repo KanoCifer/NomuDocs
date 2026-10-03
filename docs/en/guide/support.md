@@ -1,24 +1,28 @@
 ---
 title: "Get support"
-description: "Get support for Nomu. If installation, capture or publishing stalls, or you want to request a feature, reach out over WeChat — this page also lists what to include in a bug report."
+description: "Get support for Nomu. If installation, capture or publishing stalls, or you want to request a feature, reach out over WeChat or Feishu. This page also lists what to include in a bug report."
 ---
 
 # Get support
 
-If you run into problems while using Nomu, or have a feature you'd like to request, you can reach me directly.
+If something stalls while you're using Nomu, or you want a feature added, just get in touch.
 
 ## Contact
 
-The fastest way is WeChat. Scan to add me, with a note "Nomu":
+WeChat is the fastest way. Scan to add me, with a note saying "Nomu":
 
 ![WeChat](/support-wechat-qr.jpg)
 
+Feishu works too:
+
+![Feishu](/feishu.jpeg)
+
 ## When reporting an issue
 
-The more specific you are, the faster the fix:
+Three things and I can get to it faster:
 
-- **Nomu version number** — visible on the extensions management page (`chrome://extensions`)
-- **What you did** — at which step things went wrong (capture / confirm / publish)
-- **What you saw** — error message, screenshot, or the failed task's status in the task panel
+- **The Nomu version number**, visible on the extensions management page (`chrome://extensions`)
+- **What you did**, and which step it went wrong at (capture, confirm, publish)
+- **What you saw**: the error message, a screenshot, or the failed task's state in the task panel. Expand the failed item and click **Copy error**; that text is fine to paste as it is
 
-For install issues, please first check the [Install Nomu](/en/guide/install) FAQ.
+For install issues, check the [Install Nomu](/en/guide/install) FAQ first.
