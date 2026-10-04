@@ -11,6 +11,12 @@ Nomu Chrome 扩展的官方文档站,VitePress 2.x;线上 `https://nomu.kanocife
 
 **Footer 联动**:`~/Code/NomuLanding/src/features/landing/components/NoonToolFooter.vue` 里的 `DOCS_URL` 拼出本站 `/docs/`、`/docs/privacy/`、`/docs/guide/changelog`、`/docs/guide/support`。本站改了路由要去落地页 footer 同步,反过来也成立。
 
+## 收录
+
+- **本站没有 robots.txt,也不该加。** 文档站和落地页共用同一个 host(`nomu.kanocifer.chat`),robots 协议规定一个 host 只有根目录一份(`https://nomu.kanocifer.chat/robots.txt`),写在 `docs/public/robots.txt` 会变成 `/docs/robots.txt`,爬虫根本不读。`/docs/**` 由根目录那份 `Allow: /` 覆盖。根目录那份在 `~/Code/NomuLanding/public/robots.txt`,要改爬取规则改那里。
+- 站点地图是 **sitemap index**:`https://nomu.kanocifer.chat/sitemap.xml`(NomuLanding 构建时生成)下面挂着本仓库产出的 `/docs/sitemap.xml` 和落地页的 `/landing-sitemap.xml`。**别把落地页 URL 塞进本仓库的 sitemap** —— 那是 NomuLanding 的职责,两边都声明同一批 URL 属于重复提交。
+- 想挡掉某个页面就别指望 robots.txt:它是控制抓取流量的,不是把页面挡在索引外的(外部链接照样会被索引)。要真挡,用 `noindex` 或在 nginx 上回真 404。`/docs/404.html` 已经在 NomuLanding 的 `deploy/nginx-nomu.conf` 里回 404 了。
+
 ## 目录
 
 - `docs/index.md` — 首页 hero + 特性卡片

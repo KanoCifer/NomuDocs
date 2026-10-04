@@ -59,12 +59,9 @@ export default defineConfig({
   sitemap: {
     // 必须带 base，否则生成的 URL 会指向 /guide/... 而非实际部署的 /docs/guide/...
     hostname: `${SITE_URL}/docs/`,
-    transformItems: (items) => [
-      // 落地页在 SPA 里，正文爬虫读不到，但品牌词和商店链接仍需要它被收录
-      { url: `${SITE_URL}/`, changefreq: 'weekly' as const, priority: 1.0 },
-      { url: `${SITE_URL}/register`, priority: 0.3 },
-      ...items,
-    ],
+    // 这里只管文档站自己的页面。落地页的 / 与 /register 由 NomuLanding 的
+    // /landing-sitemap.xml 负责，两边都声明同一批 URL 属于重复提交。
+    // 两份子 sitemap 统一挂在 https://nomu.kanocifer.chat/sitemap.xml 这个 index 下。
   },
 
   transformHead({ page, pageData, siteData, title }) {
