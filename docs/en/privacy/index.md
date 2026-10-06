@@ -1,17 +1,17 @@
 ---
 title: "Privacy policy"
-description: "The Nomu privacy policy explains which data is processed, where it goes and what the tool never sees. No tracking or analytics; the cloud pool, assistant conversations and the upstream content of all five AI call types are spelled out item by item, along with the third-party model providers the calls are passed to and what each of them receives."
+description: "The Nomu privacy policy explains which data is processed, where it goes and what the tool never sees. No usage-behaviour tracking; anonymous diagnostic events are reported only when the extension crashes; the cloud pool, assistant conversations and the upstream content of all five AI call types are spelled out item by item, along with the third-party model providers the calls are passed to and what each of them receives."
 ---
 
 # Privacy policy
 
-> **Note: this English version is a machine translation for reference. The authoritative version is the Chinese one at [/privacy/](/privacy/).** Last updated: 2026-10-02
+> **Note: this English version is a machine translation for reference. The authoritative version is the Chinese one at [/privacy/](/privacy/).** Last updated: 2026-10-06
 
 A tool that does your bidding shouldn't ask for blind trust. This document explains what data Nomu processes, where it goes, and what we will never see.
 
 ## One-line summary
 
-**Store settings and batch drafts stay local by default · No tracking or analytics · Capture supports 1688 / Taobao / Tmall / JD.com · There are exactly five AI call types, handed to third-party model providers, and the upstream content of each is spelled out · Product drafts parsed via right-click are stored server-side, but are available only to other devices under your own account.**
+**Store settings and batch drafts stay local by default · No usage-behaviour tracking; anonymous diagnostic events only when the extension crashes · Capture supports 1688 / Taobao / Tmall / JD.com · There are exactly five AI call types, handed to third-party model providers, and the upstream content of each is spelled out · Product drafts parsed via right-click are stored server-side, but are available only to other devices under your own account.**
 
 ## The Nomu account
 
@@ -127,11 +127,15 @@ The Nomu assistant is a Q&A assistant backed by a server-side knowledge base. It
 
 Note that your questions leave your machine, **are sent to DeepSeek to run the inference, and are persisted server-side**. **Do not submit sensitive information to the assistant.** To delete a session, contact the author by email (see end of document).
 
+### Anonymous diagnostic events
+
+The extension reports one diagnostic event when it throws an uncaught exception, plus one version heartbeat the first time each version runs. These are sent via the account service (`api.kanocifer.chat`) and **need no sign-in**. No normal usage is recorded. See the "Anonymous diagnostic events" section below.
+
 ## What we will never see
 
 - Your Noon account password
 - Any Noon-facing keys or OAuth grants
-- Any tracking, analytics, or telemetry data
+- Any usage-behaviour tracking: feature clicks, page visits, or usage analytics
 - Your browsing history or unrelated site cookies
 - NomuDesign reference images (we do not retain them on our own servers; they are sent only with the image-generation request to whichever image provider is being used)
 
@@ -146,8 +150,19 @@ The items below **do** leave your device and are stored on the server. They are 
 | Your assistant questions and answers | Nomu assistant service | Persisted server-side, read back by `session_id` |
 | The upstream content of the five AI calls above | Third-party model providers | Only to run that inference — see "Third-party model providers" |
 | Email, email verification code, account access token | Account service | Required for account authentication and billing; not forwarded to model providers |
+| Anonymous diagnostic events when the extension crashes | Nomu diagnostics service | Only to diagnose and fix defects |
 
-None of the above is **shared with third parties**: the server side is the publisher's own account service, and access is isolated by account token. The one exception is the second-to-last row: **to complete an AI call you started, its input is submitted to the matching model provider** — see "Third-party model providers" above.
+None of the above is **shared with third parties**: the server side is the publisher's own account service, and access is isolated by account token. The one exception is the "Third-party model providers" row: **to complete an AI call you started, its input is submitted to the matching model provider** — see "Third-party model providers" above.
+
+## Anonymous diagnostic events
+
+To diagnose and fix defects, the extension reports a diagnostic event **when it throws an uncaught exception**. It also sends one version heartbeat the first time each version runs, solely to count installs per version. **No normal usage is recorded** — there are no feature-click events and no page-view analytics.
+
+The uploaded fields are strictly limited to: the error summary, the error stack, the extension version, the runtime environment (background / extension page / content script), the browser user agent, and an anonymous install identifier. The server additionally records the request IP address. The extension **does not deliberately upload** product data, page content, or account information; but the error summary and stack come from the exception itself, so a URL or text fragment involved in the error may travel with it.
+
+The install identifier is a UUID generated randomly on first run. It only links events from the same installation: it is not tied to your Nomu account, not merged across devices, and cannot be used to identify you.
+
+This data is not shared with third parties and is used only to fix defects.
 
 ## Permissions
 
@@ -195,6 +210,8 @@ Access to Noon APIs is gated by a URL allow-list. Anything outside is rejected.
 The **DeepSeek, Volcengine Ark and apiyi** rows above are calls made by the **cloud service** to its model providers, not requests from the extension, so they do not appear in the extension's cross-origin access list.
 
 ## Changelog
+
+- 2026-10-06 — Added a disclosure of the anonymous diagnostic event data flow. A new "Anonymous diagnostic events" section sets out when an event is sent (one when the extension itself throws an uncaught exception, plus one version heartbeat the first time each version runs), what is uploaded (the error summary, the error stack, the extension version, the runtime environment, the browser user agent and an anonymous install identifier, with the server also recording the request IP), what the install identifier is, and two facts worth stating plainly: there is no switch to turn reporting off, and there is no retention period or automatic cleanup. "Exceptions you should know about" gains a row for the same flow. Previously over-broad absolute wording is narrowed at the same time: "Any tracking, analytics, or telemetry data" under "What we will never see" now reads "Any usage-behaviour tracking: feature clicks, page visits, or usage analytics", so the absence of anonymous diagnostic events is no longer implied.
 
 - 2026-10-03 — Added a "Third-party model providers" section. All five AI call types are handed by the cloud to third-party providers, listed by type with what each receives: translation, prompt optimisation, assistant Q&A and product parsing go to DeepSeek, while image generation is routed by model to Volcengine Ark (`Doubao-*`) or apiyi (`gpt-image-*`). Three previously misleading statements are corrected: the "Nomu AI services" section now says the calls are passed on and that the account token is not forwarded; the reference-image entry under "What we will never see" now reads "not retained on our own servers, but sent with the image request to the image provider"; and "Exceptions you need to know about" gains a row for the upstream content of AI calls, which is now the only outbound disclosure. The sites-accessed table gains the three providers, noted as cloud-side calls that are not part of the extension's cross-origin permissions.
 

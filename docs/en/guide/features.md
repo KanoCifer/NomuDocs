@@ -63,5 +63,5 @@ Nomu runs one line, from a source product to a live Noon listing, and store mana
 ## General guarantees
 
 - **Only whitelisted sites**. The extension only talks to the sites listed here, and anything outside that list is never called
-- **Your data stays local**. Stores, batch drafts and NomuDesign drafts live in your browser. Once you sign in, your account token and the content sent upstream for AI calls go to the account service, see the [Privacy policy](/en/privacy/)
+- **Your data stays local**. Stores, batch drafts and NomuDesign drafts live in your browser. Once you sign in, your account token and the content sent upstream for AI calls go to the account service; one anonymous diagnostic event is also reported when the extension crashes, see the [Privacy policy](/en/privacy/)
 - **Cookie channel**. Nomu works through the Noon session already signed in in your browser, so you never hand over a Noon key, and Nomu stores no Noon credentials of its own
