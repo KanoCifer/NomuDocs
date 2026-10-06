@@ -20,7 +20,7 @@ Every page of the Nomu extension, the capture drawer, and the floating button al
 - **Sign up** happens on the website (`nomu.kanocifer.chat/register`) and needs a username, email, email verification code, and password. **Sign in** happens on the extension's account page and supports either an email verification code or an email link (click the link in the email to confirm). Neither needs a password.
 - The password is submitted over HTTPS to the account service (`api.kanocifer.chat`) only by the sign-up and password-reset forms on the website. The extension itself neither collects nor stores your password.
 - After sign-in, the access and refresh tokens are stored in your browser's local storage and are used only to identify you to Nomu services. Logging out clears them locally.
-- The account follows a **multi-device** model: one account can stay signed in on up to 5 devices, and signing in on a new device does not invalidate existing sessions. Signing out on a device clears only that device's session.
+- The account follows a **multi-device** model: one account can stay signed in on up to 3 devices, and signing in on a new device does not invalidate existing sessions. Signing out on a device clears only that device's session.
 - The Nomu account is fully independent of your Noon sign-in: signing into Nomu does not read or affect your Noon session.
 - When you are not signed in, the extension's pages show a sign-in prompt, and the capture drawer's form and submit buttons likewise require you to sign in first. **The host product pages themselves (1688 / Taobao / Tmall / JD / noon.com) are not affected** — you can browse and view products normally before signing in; only the capture and action features Nomu adds to those pages need an account.
 

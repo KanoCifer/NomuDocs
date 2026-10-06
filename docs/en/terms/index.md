@@ -22,7 +22,7 @@ In this document, "Nomu" and "we" refer to the Nomu extension and its publisher;
 
 1. **Registration details must be accurate**: the username and email should belong to you, and the email must be able to receive verification codes and sign-in links. If inaccurate details prevent you from signing in or recovering your account, you bear the consequences.
 2. **You are responsible for your credentials**: custody and use of the password, email verification codes and email sign-in links is your responsibility. Anyone who signs in with those credentials without your knowledge is treated as acting for you.
-3. **Device limit**: one account can stay signed in on up to 5 devices. Signing in on a new device does not push out an existing one, and signing out on a device clears only that device's session. Log out on old devices before exceeding the limit.
+3. **Device limit**: one account can stay signed in on up to 3 devices. Signing in on a new device does not push out an existing one, and signing out on a device clears only that device's session. Log out on old devices before exceeding the limit.
 4. **No lending or transfer**: accounts may not be shared, sold or transferred, nor used to bypass credits, rate limits or any other risk control. We may suspend features or terminate the account if you do.
 5. **Account deletion**: "Sign out" in the extension only clears the session on that machine; it does not delete the account. To delete your account entirely, email us. Afterwards, account data, credits and cloud pool items are handled as described in the [privacy policy](/en/privacy/).
 6. **Report anything unusual**: if you think your account is being used by someone else, change your password and email us immediately.

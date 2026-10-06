@@ -80,8 +80,8 @@ features:
     details: 自有 SKU 打印条码标签，支持 Code 128 / EAN-13 / UPC-A，可直接打印或导出 SVG / PNG。
   - title: 复制商品
     details: 按 PartnerSku 单件 / 批量复制 Noon 已上架商品；批量模式支持 Excel / CSV 直接粘贴。
-  - title: 目录浏览与快捷搜索
-    details: 浮层浏览当前店铺在售 / 隐藏商品；在 Noon 卖家后台页按 Cmd/Ctrl+Shift+S 唤起快捷搜索。
+  - title: 商品目录与快捷搜索
+    details: 独立扩展页三栏浏览当前店铺商品，可筛选、可算费用构成与利润；在 Noon 卖家后台页按 Cmd/Ctrl+Shift+S 唤起快捷搜索。
 
 cta:
   title: 边做边查

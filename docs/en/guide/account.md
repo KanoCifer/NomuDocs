@@ -75,7 +75,7 @@ Reset page: <https://nomu.kanocifer.chat/forgot-password> (the account page foot
 
 ## Session & multi-device
 
-- **Multi-device model**: one account can stay signed in on up to 5 devices. Signing in on a new device does not invalidate existing sessions, and signing out on a device clears only that device's session
+- **Multi-device model**: one account can stay signed in on up to 3 devices. Signing in on a new device does not invalidate existing sessions, and signing out on a device clears only that device's session
 - After you sign out, the extension, the account page and the task panel all sign out together
 
 ## AI credits card

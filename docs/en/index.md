@@ -80,8 +80,8 @@ features:
     details: Print barcode labels for your own SKUs. Code 128 / EAN-13 / UPC-A, printable directly or exported as SVG / PNG.
   - title: Duplicate products
     details: Clone already-listed Noon products by PartnerSku, one item or many. Batch mode accepts pasted Excel / CSV cells.
-  - title: Catalog browse + quick search
-    details: Browse active and hidden items in the current store from the overlay, and press Cmd/Ctrl+Shift+S on a Noon seller page to open quick search.
+  - title: Product catalog + quick search
+    details: Browse the current store's products in a three-column page of its own, filterable and costed out, and press Cmd/Ctrl+Shift+S on a Noon seller page to open quick search.
 
 cta:
   title: Browse as you go

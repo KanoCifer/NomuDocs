@@ -37,9 +37,9 @@ Nomu runs one line, from a source product to a live Noon listing, and store mana
 
 | Capability | Details |
 | --- | --- |
-| Catalog browse | A panel down the right of your Noon seller catalog page listing the store's active and hidden products, with search, paging and one-click seller-status changes | [Catalog browse](./catalog-browse) |
+| Catalog browse | A page of its own with list, detail and filter columns side by side, searchable and filterable, and selecting a product produces its fee breakdown and profit | [Product catalog](./catalog-browse) |
 | Quick search | Press `Ctrl/⌘ + Shift + S` on a Noon seller page to bring up the overlay: search active or hidden products, jump to detail, change status | [Quick search](./quick-search) |
-| Inline edit | Open the edit dialog straight from catalog browse or quick search | [Catalog browse](./catalog-browse) · [Quick search](./quick-search) |
+| Inline edit | Open the edit dialog straight from catalog browse or quick search | [Product catalog](./catalog-browse) · [Quick search](./quick-search) |
 
 ## Tracking & retry
 
@@ -54,7 +54,7 @@ Nomu runs one line, from a source product to a live Noon listing, and store mana
 | Capability | Details |
 | --- | --- |
 | Nomu Assistant | A standalone page for streaming Q&A and product parsing, reachable from the popup and the action menu | [Nomu Assistant](./nomu-assistant) |
-| Live FX rates | Open the FX dialog from the action menu and convert CNY prices into SAR or AED | [Quick start](./quick-start) |
+| Live FX rates | A page of its own: pick a base currency and an amount, see the converted result across currencies at once, and copy either the rate or the converted figure | [Quick start](./quick-start) |
 | AI category prediction | Assembles a description from the English title, brand, audience, selling points and details, recommends a Noon category, and you can still change it by hand | [Quick start](./quick-start) |
 | Category and brand templates | Save a category plus brand pairing as a template and reuse it on the next product | [Quick start](./quick-start) |
 | Keyboard shortcuts | Four Chrome commands; the action menu, quick search and floating button toggle only fire on Noon seller pages | [Keyboard shortcuts](./shortcuts) |

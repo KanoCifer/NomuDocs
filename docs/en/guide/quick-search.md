@@ -42,16 +42,16 @@ Besides opening a product with `Enter`, each candidate can also:
 - **Flip the status** with `Shift + Enter`. The result goes straight back to Noon
 - **Open the edit dialog** from the pencil button, to change product content, price, barcode and so on
 
-## Relationship with catalog browse
+## Relationship with the product catalog
 
-Quick search is the focused version of [Catalog browse](./catalog-browse), with the same status toggle and the same edit dialog. What differs:
+Quick search is the focused version of the [Product catalog](./catalog-browse), with the same status toggle and the same edit panel. What differs:
 
-| Dimension | Quick search | Catalog browse |
+| Dimension | Quick search | Product catalog |
 | --- | --- | --- |
-| Entry | Shortcut | Drawer from the action sheet |
-| Space | Centered at the top, leaves the page usable | Side drawer |
-| Candidates | Up to 5 | 20 per page, pageable |
-| Use case | Locate something fast, flip a status | Browse through a batch of products |
+| Entry | Shortcut | "View Catalog" in the action sheet, or the extension popup |
+| Form | A centered overlay you type into | A page of its own: list / detail / filter columns |
+| Candidates | Up to 5 | 50 per page, pageable |
+| Use case | Locate something fast, flip a status | Browse through a batch of products and cost them out |
 
 ## FAQ
 

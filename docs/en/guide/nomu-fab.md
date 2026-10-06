@@ -24,7 +24,7 @@ From top to bottom: capture, tools, account and help, then your product groups.
 | Entry | Function |
 | --- | --- |
 | Single product | Open the single-product drawer with the captured list and progress. The badge counts what is still waiting. |
-| View Catalog | Browse the current store's catalog, filter by status and page through it ([Catalog browse](./catalog-browse)). |
+| View Catalog | Browse the current store's catalog, filter by status and page through it ([Product catalog](./catalog-browse)). |
 | QuickSearch | Search overlay by Partner SKU or title, up to 5 candidates. Shortcut `Cmd/Ctrl + Shift + S`. |
 | Archived products | View archived products, restore them or delete them for good. |
 
