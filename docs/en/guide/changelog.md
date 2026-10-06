@@ -7,6 +7,16 @@ description: "The Nomu changelog records every noteworthy version change — fea
 
 Every noteworthy version change is recorded here.
 
+## 0.100.1 _2026-10-07_
+
+- **The product catalog becomes three columns** — list, detail and filters each get a column of their own, so nothing is squeezed in the middle. The detail pane now reads real product data: open it and the full product information is there, and what you edit flows back in, instead of guessing from half-filled fields.
+- **You can see where the money goes** — selecting a product produces a fee breakdown and a profit card, showing how the price splits across commission, FBN shipping, first-mile and product cost at a glance. Items with missing data are named rather than folded into a number that merely looks complete.
+- **Filters narrow by dimension** — status, stock and price each get their own facet, and clearing them tells you how many were cleared. When there is nothing to filter by, the panel stays away instead of taking up space.
+- **Editing moves back where it belongs** — editing returns to a single edit panel, with support for deleting multiple psku at once. Draft rows missing a psku are explicitly skipped and the count reported, rather than the whole batch failing quietly.
+- **List rows show sold instead** — the list no longer shows the selling price and shows sold instead, so you can judge what actually moves before picking stock.
+- **The popup's entries are filled out** — Overview, source sites (1688 / Taobao / JD / noon.com), the pricing calculator and barcode labels all moved into the popup, each with a line saying what it does, so you no longer have to guess which is which.
+- **Two failures are fixed** — a product price that cannot be fetched no longer shows blank, and signing out now renews the credential before exiting, so no stale credential state is left behind.
+
 ## 0.96.0 _2026-10-03_
 
 - **An announcement board on the overview page** — platform announcements sit in a running list at the top of the overview, each with its type tag and time. Click a row to mark it read, and marked rows recede into the background; what you have read is remembered, so a refresh, a closed page, or coming back tomorrow still shows the same ones as read. Collapsed it shows the 3 most recent, expandable to all of them, with one click to mark everything read. With no announcements the whole block stays away and takes no space.
