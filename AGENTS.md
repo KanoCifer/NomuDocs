@@ -26,6 +26,8 @@ Nomu Chrome 扩展的官方文档站,VitePress 2.x;线上 `https://nomu.kanocife
 
 新增页面要在 `.vitepress/config.mts` 中对应 locale 的 `sidebar` 块登记,然后另语言复制一份。
 
+**安装渠道写在 `docs/guide/install.md`**(中英两份):Chrome Web Store 与紫鸟浏览器插件中心两条路径,紫鸟那节带插件详情页 URL 和「分配店铺」的步骤。紫鸟改 slug 时 URL 要跟着改,这也是落地页 `ZINIAO_PLUGIN_URL` 的真源,两边别各记一份。站内别再散写「拖 zip 加载」——没有对外发过 zip,写了就是给不出货的路。
+
 ## 发版
 
 1. `docs/guide/changelog.md` 顶部加 `## <version> _<YYYY-MM-DD>_` 段,要点形如 `**能力名**:一句话说明`

@@ -26,7 +26,7 @@ Nomu is a Chrome extension built for Noon sellers (UAE / Saudi). Open a source p
 | --- | --- |
 | Source | 1688, Taobao/Tmall, JD.com, noon.com |
 | Publish target | Noon UAE (`ae`), Noon Saudi (`sa`) |
-| Browser | Chrome (Manifest V3) |
+| Browser | Chrome, Edge, Purple Bird (all Chromium-based, Manifest V3) |
 
 Other source platforms are on the roadmap but are not committed yet.
 

@@ -39,7 +39,7 @@ paths:
   items:
     - number: '01'
       title: Install Nomu
-      body: One click from the Chrome Web Store, or drag in the zip to load it unpacked.
+      body: One click from the Chrome Web Store, or assigned per store environment in the Purple Bird (紫鸟) browser.
       link: /en/guide/install
     - number: '02'
       title: Quick start

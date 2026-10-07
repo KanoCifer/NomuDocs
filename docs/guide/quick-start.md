@@ -9,7 +9,7 @@ description: "Nomu 快速上手：登录 Nomu 账户，在 1688 / 淘宝 / 京�
 
 ## 0. 安装并登录 Nomu 账户
 
-在 Chrome Web Store 或紫鸟浏览器插件中心搜索 Nomu 并安装。
+按[安装页](./install)选一条路径装上：Chrome Web Store，或者紫鸟浏览器插件中心（可按店铺环境分配）。
 
 打开扩展的「账户」页，用邮箱验证码或邮件链接登录，两种方式都不用密码。AI 翻译、NomuDesign 生图与提示词优化在此基础上另按积分计费。详见[账户与 AI 积分](/guide/account)。
 

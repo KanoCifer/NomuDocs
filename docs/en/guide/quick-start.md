@@ -9,7 +9,7 @@ Ship a batch in four moves: sign in, capture, confirm, publish.
 
 ## 0. Install Nomu and sign in to your account
 
-Search for Nomu in the Chrome Web Store or the Purple Bird (紫鸟) plugin center and install it.
+Pick a route on the [install page](/en/guide/install): the Chrome Web Store, or the Purple Bird (紫鸟) plugin center, which can assign Nomu per store environment.
 
 Open the extension's **Account** page and sign in with an email code or an email link, neither of which needs a password. On top of that, AI translation, NomuDesign generation and prompt optimization are billed by credits. See [Account & AI credits](/en/guide/account).
 

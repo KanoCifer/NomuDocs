@@ -39,7 +39,7 @@ paths:
   items:
     - number: '01'
       title: 安装 Nomu
-      body: 网上应用商店一键装，或者拖 zip 手动加载。
+      body: Chrome 网上应用商店一键装，或者在紫鸟浏览器里按店铺环境分配。
       link: /guide/install
     - number: '02'
       title: 快速上手
