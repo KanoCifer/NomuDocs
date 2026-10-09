@@ -7,6 +7,15 @@ description: "The Nomu changelog records every noteworthy version change — fea
 
 Every noteworthy version change is recorded here.
 
+## 0.100.8 _2026-10-09_
+
+- **Email and password sign-in returns to the account page** — alongside the one-time code, the account page offers email and password sign-in again, so switching devices or recovering from an expired password no longer means waiting on a code.
+- **Tokens look after themselves** — the access token renews itself shortly before it expires, so you are not signed out mid-session while it renews; when the refresh token does become invalid the session is cleared outright, leaving you neither logged in nor stuck.
+- **Cloud sync reconnects on its own** — once the retry backoff is used up it still dials out again, so a single network wobble no longer drops the connection permanently; a failed heartbeat is no longer swallowed, and a disconnect records the close code and timestamp so it can be diagnosed.
+- **Device presence now follows the server** — whether a device is online is decided server-side rather than re-derived from a local timestamp; devices that were really online used to show as offline. Devices can also be given a name of your own.
+- **The product catalog gains a way to report trouble** — a new issue-report entry point, and an empty state that explains *why* it is empty and *what to do next* instead of a bare notice. Store detection failures are fixed as well.
+- **Products can be grouped** — group products into categories and pick stock by group, instead of digging through one long list.
+
 ## 0.100.1 _2026-10-07_
 
 - **The product catalog becomes three columns** — list, detail and filters each get a column of their own, so nothing is squeezed in the middle. The detail pane now reads real product data: open it and the full product information is there, and what you edit flows back in, instead of guessing from half-filled fields.
