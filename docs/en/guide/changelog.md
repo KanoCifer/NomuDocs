@@ -7,6 +7,30 @@ description: "The Nomu changelog records every noteworthy version change — fea
 
 Every noteworthy version change is recorded here.
 
+## 0.101.2 _2026-10-12_
+
+- **The login page remembers your last email** — all three sign-in methods (password, one-time code, email link) start with it already filled in, so you open the page and go; choosing “use another email” clears it for good instead of the old value coming back.
+- **Passwords can be remembered, but not by default** — tick “Remember password” and the password is kept encrypted on this device and expires on its own after 30 days; leave it unticked and nothing is ever written down. Unticking wipes what was stored.
+- **The tick box was redrawn** — it now matches the checkbox used everywhere else instead of standing out as a default system square.
+
+## 0.101.1 _2026-10-11_
+
+- **“Last synced” now comes from the server** — each device used to keep its own local timestamp, so the same account showed different sync times on two machines; they all read the server’s record now.
+- **A failed lookup no longer claims you have never synced** — while offline or signed out the previous value stays put, instead of one failed request being reported as “never synced”.
+
+## 0.101.0 _2026-10-10_
+
+- **Three more columns in the catalog table** — performance, seller status and live status sit side by side, so you can tell whether something can be listed without opening each detail pane.
+- **Edit the price right where it is** — the pencil beside the price opens the editor directly, saving a step of “open details, then hunt for Edit”.
+- **Winning the Buy Box is called out** — no more guessing.
+- **Sign-in is steadier** — the access token renews itself before it expires, so you are no longer dropped while it still had time left; rebuilding the live connection no longer writes your sign-in credential into a web address.
+
+## 0.100.9 _2026-10-10_
+
+- **The catalog list became a table** — with a new sales column, one product per row and aligned across, instead of comparing prices across a long stack of cards.
+- **Filters moved into a single bar** — “All Filters” opens a drawer, and each facet can take multiple choices.
+- **The action menu is grouped** — sign-in and account actions live under “Mine”, so you are not hunting through one long list.
+
 ## 0.100.8 _2026-10-09_
 
 - **Email and password sign-in returns to the account page** — alongside the one-time code, the account page offers email and password sign-in again, so switching devices or recovering from an expired password no longer means waiting on a code.
