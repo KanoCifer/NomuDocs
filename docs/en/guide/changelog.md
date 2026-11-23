@@ -7,6 +7,14 @@ description: "The Nomu changelog records every noteworthy version change — fea
 
 Every noteworthy version change is recorded here.
 
+## 0.112.0 _2026-11-23_
+
+- **The listing drawer keeps a tree-shaped category picker open** — it lists the top-level categories as soon as it opens, drills down level by level and searches them; the AI parsing entry stays right there so you can run it again.
+- **The category and brand pickers now wear a liquid-glass look** — a rounded glass panel, a search box floating on the glass, options laid out as inset pills, and a selected item you can spot at a glance.
+- **Both pickers share one set of panel behaviors** — opening, positioning, clicking outside to close, Esc and arrow-key navigation all work the same way, and the brand panel is no longer clipped by the list container.
+- **Category names read the same everywhere** — the drawer, the trigger and the search results all show the same names, with no more mixed Chinese and English.
+- **Fixed a chosen category that stayed invisible** — the drawer no longer lands in a state where the category is selected but not shown and the listing button stalls.
+
 ## 0.111.0 _2026-11-23_
 
 - **Translation now runs on machine translation** — more direct and consistent results, and no longer billed per call; batch translation covers more words at once, and a word it cannot translate keeps its original.
