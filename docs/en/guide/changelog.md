@@ -7,6 +7,15 @@ description: "The Nomu changelog records every noteworthy version change — fea
 
 Every noteworthy version change is recorded here.
 
+## 0.111.0 _2026-11-23_
+
+- **Translation now runs on machine translation** — more direct and consistent results, and no longer billed per call; batch translation covers more words at once, and a word it cannot translate keeps its original.
+- **You can pick the target category when duplicating** — choose it right on the copy task row; category names now show in Chinese, and the full category tree is listed as soon as the picker opens.
+- **A confirmation step before listing** — publishing asks once more before it goes out and throws confetti on success; the duplicate form was rebuilt, and batch duplication and range-copy now share one form.
+- **The task panel can start a copy batch** — a new “New copy batch” view, from which both batch duplication and cross-device draft delivery can be started.
+- **Barcodes export to PDF** — one PDF per barcode, with PNG / PDF / SVG packed into a ZIP.
+- **SKU conflicts are visible** — new SKU-conflict detection; fixing a SKU no longer leaves the old conflict warning behind; the account page can switch straight to the store activated under the signed-in account.
+
 ## 0.101.2 _2026-10-12_
 
 - **The login page remembers your last email** — all three sign-in methods (password, one-time code, email link) start with it already filled in, so you open the page and go; choosing “use another email” clears it for good instead of the old value coming back.
