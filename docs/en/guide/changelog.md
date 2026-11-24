@@ -7,6 +7,12 @@ description: "The Nomu changelog records every noteworthy version change — fea
 
 Every noteworthy version change is recorded here.
 
+## 0.113.1 _2026-11-25_
+
+- **Choose how translation runs** — three modes now: built-in first, built-in only, or cloud only; the built-in model translates on this device so the text never leaves it, and cloud translation takes over automatically when a model is missing.
+- **Try a translation right in settings** — run a sample on the translation page to see whether the current setup works and which engine actually served it.
+- **Built-in models are visible and downloadable** — a new “Built-in models” section lists every language pair with its state and what it is for (titles, copy, category names, search queries), with a download button where one can be fetched and a single action to download them all.
+
 ## 0.112.0 _2026-11-23_
 
 - **The listing drawer keeps a tree-shaped category picker open** — it lists the top-level categories as soon as it opens, drills down level by level and searches them; the AI parsing entry stays right there so you can run it again.
